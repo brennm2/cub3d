@@ -19,6 +19,7 @@ NC=\033[0m
 SRC = src/main.c \
 	src/key_handler.c \
 	src/free.c \
+	src/map_check.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)

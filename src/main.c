@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/08/30 16:01:52 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:11:52 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ int	main(int ac, char **av)
 
 	(void)fd;
 	(void)ac;
-	(void)av;
 	game = malloc(sizeof(t_game));
 	if (!game)
 		return (0);
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
+	ft_check_map(game, av);
+	printf("Hello\n");
 	init_game(game);
 	game->map_name = av[1];
 	printf("map name: %s\n", game->map_name);
