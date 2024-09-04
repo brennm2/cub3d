@@ -63,7 +63,6 @@ int	main(int ac, char **av)
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
 	ft_check_map(game, av);
-	printf("Hello\n");
 	init_game(game);
 	game->map_name = av[1];
 	printf("map name: %s\n", game->map_name);

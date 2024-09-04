@@ -6,14 +6,14 @@
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/03 16:44:29 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/04 10:38:50 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef		CUB3D_H
 # define	CUB3D_H
 
-# include "../libs/libft.h"
+# include "../libs/includes/libft.h"
 # include "../libs/minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
