@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/02 18:07:34 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:45:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ void	init_window(t_game *game)
 	//game->img = malloc(sizeof(t_img));
 	//if (!game->img)
 	//	return ;
-	game->img = malloc(sizeof(t_img));
-	game->img->mlx_img = NULL;
-	game->img->addr = NULL;
-	game->img->bpp = 0;
-	game->img->line_len = 0;
-	game->img->endian = 0;
 }
 
 
@@ -42,12 +36,17 @@ int	game_frame_loop(t_game *game)
 	//t_game	*game;
 
 	//game = temp_game;
-	if (game->img->mlx_img)
-		mlx_destroy_image(game->mlx_ptr, game->img);
-	game->img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//void	*frame;
+	if (game->img && game->img->mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
+	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	//playermove
-	//castrays
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img, 0, 0);
+	//place_player(game, 0, 0);
+	shoot_rays(game);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
+	//printf("ola\n");
+	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
 }
 
@@ -76,6 +75,8 @@ void	init_game_data(t_game *game)
 
 void	init_player(t_game *game, t_player *player)
 {
+	game->player_in_map_x = 14; //DEBUG
+	game->player_in_map_y = 3; //DEBUG
 	player->player_x = game->player_in_map_x * BLOCK_SIZE + BLOCK_SIZE/2;
 	player->player_y = game->player_in_map_y * BLOCK_SIZE + BLOCK_SIZE/2;
 	player->fov_radian = (FOV * M_PI) / 180;
@@ -96,10 +97,9 @@ t_game	*init_game(void)
 	game->player = (t_player *)ft_calloc(sizeof(t_player), 1);
 	if (!game->player)
 		return (NULL);
-	//game->img = malloc(sizeof(t_img));
-	//if (!game->img)
-	//	return (NULL);
-
+	game->img = (t_img *)ft_calloc(sizeof(t_img), 1);
+	if (!game->img)
+		return (NULL);
 
 	//init_game_data(game);
 	init_player(game, game->player);
@@ -124,7 +124,7 @@ int	main(int ac, char **av)
 	if (!game)
 		return (0);
 	game->map_name = av[1];
-	//read_map(av[1], game); //Read and fill the game->map
+	read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
 	show_map(game);
 	//DEBUG ------------

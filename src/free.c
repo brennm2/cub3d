@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:20:16 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/02 16:50:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:45:52 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	free_all(t_game *game)
 	if (game->img)
 	{
 		if (game->img->mlx_img)
-			mlx_destroy_image(game->mlx_ptr, game->img);
-		//free(game->img);
+			mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+		//free(game->img->mlx_img);
+		free(game->img);
 	}
 	//if (game->img.mlx_img)
 	//	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);

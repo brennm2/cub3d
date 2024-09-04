@@ -5,7 +5,7 @@ NAME = cub3D
 LIBFT = ./libs/libft.a
 MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
 
-CC = cc -g
+CC = cc -g -O3 -ffast-math
 CCFLAGS = -Wall -Werror -Wextra
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
 RM = rm
@@ -22,7 +22,8 @@ SRC = src/main.c \
 	src/map_handler/fill_map.c \
 	src/debug/debug_fuctions.c \
 	src/raycasting/shoot_rays.c \
-	src/raycasting/draw_wall.c
+	src/raycasting/draw_wall.c \
+	src/player/place_player.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)

@@ -14,12 +14,13 @@
 # define SCREEN_WIDTH 1000
 # define SCREEN_HEIGHT 700
 # define BLOCK_SIZE 64
+# define PLAYER_SPEED 5
 
 typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
-	int		fov_radian;
+	double		fov_radian;
 	double	angle;
 }	t_player;
 
@@ -76,9 +77,13 @@ void	show_map(t_game *game);
 
 // SRC/RAYCASTING/SHOOT_RAYS.C
 void	shoot_rays(t_game *game);
+float	normalize_angle(float angle);
 
-//// SRC/RAYCASTING/DRAW_WALL.C
+// SRC/RAYCASTING/DRAW_WALL.C
 void	draw_wall(t_game *game, int ray_count);
+
+// SRC/PLAYER/PLACE_PLAYER.C
+void	place_player(t_game *game, double player_x, double player_y);
 
 
 #endif

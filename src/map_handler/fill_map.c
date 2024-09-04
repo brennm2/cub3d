@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:00:35 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/02 15:40:41 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:11:31 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,5 @@ void	read_map(char *map_name, t_game *game)
 		return ;
 	fill_map (fd, game); // Fill the game->map
 	game->map_w = 25; //#TODO map width (RIGHT)
-	game->player_in_map_x = 14; //DEBUG
-	game->player_in_map_y = 3; //DEBUG
 	close (fd);
 }
