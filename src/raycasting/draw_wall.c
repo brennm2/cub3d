@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/04 15:55:53 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:41:39 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	draw_wall(t_game *game, int ray_count)
 
 	//wall_height = 0;
 	//printf("entrou aqui\n");
-	//game->ray->distance *= cos(normalize_angle(game->ray->ray_angle - game->player->angle)); // fix the fisheye
+	game->ray->distance *= cos(normalize_angle(game->ray->ray_angle - game->player->angle)); // fix the fisheye #TODO maybe
 
 	//if (tan(game->player->fov_radian / 2) != 0)
 	wall_height = (BLOCK_SIZE / game->ray->distance) * ((SCREEN_WIDTH / 2) / tan(game->player->fov_radian / 2)); // get the wall height from the ray casted by the player

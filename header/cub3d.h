@@ -13,8 +13,9 @@
 # define FOV 60
 # define SCREEN_WIDTH 1000
 # define SCREEN_HEIGHT 700
-# define BLOCK_SIZE 64
-# define PLAYER_SPEED 5
+# define BLOCK_SIZE 500
+# define PLAYER_SPEED 50
+# define PLAYER_SENS 0.045
 
 typedef struct s_player
 {
