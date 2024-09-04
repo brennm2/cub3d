@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:33:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/04 12:39:48 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:16:41 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_free_textures(t_game *game)
 	printf("EAST %s", game->map.EAST_PATH);
 	printf("CEILING %s", game->map.CEILING_PATH);
 	printf("FLOOR %s", game->map.FLOOR_PATH);
-	free(game->map.NORTH_PATH); //TODO THESE FREE NEEDS TO BE ADDED LATER WHEN TEH PROGRAM FINISH
+	free(game->map.NORTH_PATH); //TODO THESE FREE NEEDS TO BE ADDED LATER WHEN THE PROGRAM FINISH
 	free(game->map.SOUTH_PATH);
 	free(game->map.WEST_PATH);
 	free(game->map.EAST_PATH);
@@ -187,9 +187,12 @@ void	ft_read_map(t_game *game, char **av)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if(lines > 6)
-			game->map.map[lines - 7] = ft_strdup(line);
-		lines++;
+		if(ft_check_spaces(line))
+		{
+			if(lines > 6)
+				game->map.map[lines - 7] = ft_strdup(line);
+			lines++;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -202,10 +205,45 @@ void print_map(t_game *game) {
 	while (game->map.map[i] != NULL)
 	{
 		printf("%s", game->map.map[i]);
+//		free(game->map.map[i]);
+		i++;
+	}
+//	free(game->map.map);
+}
+
+bool ft_map_valid_chars(t_game *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		j = 0;
+		while(game->map.map[i][j])
+		{
+			if(game->map.map[i][j] != '1' && game->map.map[i][j] != '0' && game->map.map[i][j] != 'N' && game->map.map[i][j] != 'E' && game->map.map[i][j] != 'W' && game->map.map[i][j] != 'S' && game->map.map[i][j] != '\n')
+			{
+				printf("CHAR: %s %i %i\n", game->map.map[i], i, j);
+				return false;
+			}
+			j++;
+		}
+		i++;
+	}
+	return true;
+}
+
+void free_map(t_game *game) {
+	int i = 0;
+	if (game->map.map == NULL)
+		return;
+	while (game->map.map[i] != NULL) {
 		free(game->map.map[i]);
 		i++;
 	}
 	free(game->map.map);
+	game->map.map = NULL;
 }
 
 bool	ft_check_map(t_game *game, char **av)
@@ -225,5 +263,8 @@ bool	ft_check_map(t_game *game, char **av)
 	ft_free_textures(game);
 	ft_read_map(game, av);
 	print_map(game);
+	if (!ft_map_valid_chars(game))
+		return printf("Invalid chars\n"), free_map(game), false;
+	free_map(game);
 	return (true);
 }
