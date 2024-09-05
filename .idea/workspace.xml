@@ -5,83 +5,25 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Cub3d" targetName="re" />
-      <config projectName="Cub3d" targetName="all" />
-      <config projectName="Cub3d" targetName="fclean" />
-      <config projectName="Cub3d" targetName="valgrind" />
-      <config projectName="Cub3d" targetName="norminette" />
-      <config projectName="Cub3d" targetName="update" />
-      <config projectName="Cub3d" targetName="cub3D" />
-      <config projectName="Cub3d" targetName="run" />
+      <config projectName="42_Cub3d" targetName="obj" />
+      <config projectName="42_Cub3d" targetName="all" />
+      <config projectName="42_Cub3d" targetName="re" />
+      <config projectName="42_Cub3d" targetName="fclean" />
+      <config projectName="42_Cub3d" targetName="cub3d" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" NO_GENERATOR="true" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_atoi.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_bzero.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_calloc.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_c.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_d.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_ptr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_s.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_u.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_x.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_is_xup.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_isalnum.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_isalpha.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_isascii.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_isdigit.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_isprint.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_itoa.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstadd_back_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstadd_front_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstclear_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstdelone_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstiter_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstlast_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstmap_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstnew_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_lstsize_bonus.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_memchr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_memcmp.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_memcpy.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_memmove.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_memset.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_printf.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_putchar_fd.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_putendl_fd.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_putnbr_fd.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_putstr_fd.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_split.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strchr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strdup.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_striteri.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strjoin.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strlcat.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strlcpy.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strlen.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strmapi.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strncmp.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strnstr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strrchr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_strtrim.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_substr.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_tolower.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/ft_toupper.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/get_next_line.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/get_next_line.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/get_next_line_utils.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/libft.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_check.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/key_handler.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +38,13 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -106,14 +55,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="Cub3d" />
+              <option name="name" value="42_Cub3d" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="Cub3d" />
+                <option name="name" value="42_Cub3d" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -147,7 +96,9 @@
   "keyToString": {
     "Makefile Target.fclean.executor": "Run",
     "Makefile Target.norminette.executor": "Run",
+    "Native Application.all.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -160,81 +111,37 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CLionExternalConfigurable",
     "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Makefile Target.norminette">
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+  <component name="RunManager" selected="Custom Build Application.Run">
+    <configuration name="Run" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_files/valid/cheese_maze.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
+      <envs>
+        <env name="OS" value="Darwin" />
+      </envs>
       <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cub3D" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="cub3D" CONFIG_NAME="cub3D" version="1">
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" PROGRAM_PARAMS="map_files/valid/cheese_maze.cub" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" RUN_PATH="$PROJECT_DIR$/cub3d" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs>
+        <env name="OS" value="Darwin" />
+      </envs>
       <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="norminette" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="norminette" CONFIG_NAME="norminette" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="run" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="run" CONFIG_NAME="run" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="update" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="update" CONFIG_NAME="update" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="valgrind" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="valgrind" CONFIG_NAME="valgrind" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fclean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="fclean" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="norminette" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="norminette" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Makefile Target.fclean" />
-      <item itemvalue="Makefile Target.norminette" />
-      <item itemvalue="Native Application.all" />
-      <item itemvalue="Native Application.cub3D" />
-      <item itemvalue="Native Application.fclean" />
-      <item itemvalue="Native Application.norminette" />
-      <item itemvalue="Native Application.re" />
-      <item itemvalue="Native Application.run" />
-      <item itemvalue="Native Application.update" />
-      <item itemvalue="Native Application.valgrind" />
+      <item itemvalue="CMake Application.Unnamed" />
+      <item itemvalue="Custom Build Application.Run" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Makefile Target.norminette" />
-        <item itemvalue="Makefile Target.fclean" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -246,6 +153,7 @@
       <updated>1725362348516</updated>
       <workItem from="1725362349560" duration="344000" />
       <workItem from="1725439630928" duration="9444000" />
+      <workItem from="1725534310522" duration="8052000" />
     </task>
     <servers />
   </component>

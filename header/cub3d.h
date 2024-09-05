@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/04 10:38:50 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:29:18 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define	CUB3D_H
 
 # include "../libs/includes/libft.h"
-# include "../libs/minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
+# include "../libs/minilibx-mac/mlx.h"
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
@@ -27,6 +25,31 @@
 # define EAST "EA"
 # define CEILING "C"
 # define FLOOR "F"
+
+//! Minilibx events
+# ifdef __APPLE__
+#  define ESC 53
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+#  define C 8
+#  define V 9
+#  define RIGHT 124
+#  define LEFT 123
+#  define KeyPress 2
+#  define KeyPressMask (1L<<0)
+#  define DestroyNotify 17
+#  define StructureNotifyMask (1L<<17)
+# else
+#  define ESC 65307
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+#  define C 99
+#  define V 118
+# endif
 
 typedef struct s_map
 {
