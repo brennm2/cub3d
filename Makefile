@@ -5,7 +5,7 @@ NAME = cub3D
 LIBFT = ./libs/libft.a
 MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
 
-CC = cc -g -O3 -ffast-math
+CC = cc -g #-O3 -ffast-math
 CCFLAGS = -Wall -Werror -Wextra
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
 RM = rm

@@ -42,6 +42,16 @@ typedef struct s_img
 }			t_img;
 
 
+typedef struct s_texture
+{
+	t_img	*img;
+	int		color;
+	int		h;
+	int		w;
+}	t_texture;
+
+
+
 typedef struct s_game
 {
 	char		**map;
@@ -55,9 +65,11 @@ typedef struct s_game
 	void		*mlx_ptr;
 	void		*win_ptr;
 
+
 	t_ray		*ray;
 	t_player	*player;
 	t_img		*img;
+	t_texture	*texture;
 
 }	t_game;
 

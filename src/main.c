@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/04 17:45:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:29:10 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	init_window(t_game *game)
 {
 	game->mlx_ptr= mlx_init();
 	game->win_ptr= NULL;
+	
+	game->texture = ft_calloc(sizeof(t_texture), 1);
+	game->texture->h = 64;
+	game->texture->w = 64;
+	game->texture->img = ft_calloc(sizeof(t_img), 1);
 	//game->img = malloc(sizeof(t_img));
 	//if (!game->img)
 	//	return ;

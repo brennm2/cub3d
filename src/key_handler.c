@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/04 18:33:54 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:14:14 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@ void	move_player(t_game *game, double move_x, double move_y)
 {
 	int	new_move_x;
 	int new_move_y;
+	int	map_pos_x;
+	int	map_pos_y;
+
 
 	new_move_x = roundf(game->player->player_x + move_x);
 	new_move_y = roundf(game->player->player_y + move_y);
-	game->player->player_x = new_move_x;
-	game->player->player_y = new_move_y;
+	map_pos_x = new_move_x / BLOCK_SIZE;
+	map_pos_y = new_move_y / BLOCK_SIZE;
+	//printf("map after position: %c\n", game->map[map_pos_y][map_pos_x]);
+	//printf("player position\nx:%d\ny:%d\nmap:%c\n",map_pos_x, map_pos_y, game->map[map_pos_y][map_pos_x]);
+	if (game->map[map_pos_y][map_pos_x] != '1')
+	{
+		game->player->player_x = new_move_x;
+		game->player->player_y = new_move_y;
+	}
 }
 void	move_up(t_game *game)
 {
@@ -38,7 +48,7 @@ void	move_down(t_game *game)
 	double	move_y;
 
 	move_x = -cos(game->player->angle) * PLAYER_SPEED;
-	move_y = sin(game->player->angle) * PLAYER_SPEED;
+	move_y = -sin(game->player->angle) * PLAYER_SPEED;
 	move_player(game, move_x, move_y);
 }
 
@@ -80,7 +90,7 @@ void	look_direction(t_game *game, bool is_left)
 		// 	game->player->angle += 2 * M_PI;
 	}
 	
-	printf("angle: %f\n", game->player->angle);
+	//printf("angle: %f\n", game->player->angle);
 	//printf("math: %f\n", 2 * M_PI);
 }
 
@@ -103,7 +113,7 @@ int	key_handler(int key, t_game *game)
 	if (key == XK_Left)
 		look_direction(game, true); //printf("looked left\n");
 	if (key == XK_Right)
-		look_direction(game, false); //printf("looked right\n");
+		look_direction(game, false); //printf("looked right\n");c
 	return (0);
 }
 

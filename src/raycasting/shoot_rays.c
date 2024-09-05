@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/04 14:20:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:25:37 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ float	cal_y_inter(t_game *game, float angle)	// get the vertical intersection
 	}
 	return (sqrt(pow(v_x - game->player->player_x, 2) + pow(v_y - game->player->player_y, 2))); // get the distance
 }
-
 
 void	shoot_rays(t_game *game)
 {
