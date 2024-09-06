@@ -4,13 +4,13 @@ project(cub3d C)
 # Set C flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
 
+# Define paths to libraries
+set(LIBFT_PATH ${CMAKE_SOURCE_DIR}/libs)
+set(MLX_PATH ${CMAKE_SOURCE_DIR}/libs/minilibx-linux) # Use minilibx-linux for Linux
+
 # Include the directories for your libraries
-include_directories(${CMAKE_SOURCE_DIR}/libs/includes)
-include_directories(${CMAKE_SOURCE_DIR}/libs/minilibx-mac)
-
-# Link libraries
-target_link_libraries(cub3d ${CMAKE_SOURCE_DIR}/libs/libft.a ${CMAKE_SOURCE_DIR}/libs/minilibx-mac/libmlx.a)
-
+include_directories(${LIBFT_PATH}/includes)
+include_directories(${MLX_PATH})
 
 # Define sources
 set(SOURCES
@@ -20,16 +20,36 @@ set(SOURCES
         src/map_check.c
 )
 
-# Include directories
-include_directories(${LIBFT_PATH})
-include_directories(${MLX_PATH})
+# Add custom target for libft
+add_custom_target(libft
+        COMMAND make -C ${LIBFT_PATH}
+        WORKING_DIRECTORY ${LIBFT_PATH}
+        COMMENT "Building libft"
+)
 
-# Create executable
+# Add custom target for minilibx (Linux version)
+add_custom_target(mlx
+        COMMAND make -C ${MLX_PATH}
+        WORKING_DIRECTORY ${MLX_PATH}
+        COMMENT "Building minilibx"
+)
+
+# Create the executable target
 add_executable(cub3d ${SOURCES})
 
-# Link directories
-link_directories(${LIBFT_PATH})
-link_directories(${MLX_PATH})
+# Ensure cub3d depends on libft and mlx
+add_dependencies(cub3d libft mlx)
 
-# Link against libft, minilibx, and macOS frameworks
-target_link_libraries(cub3d ${LIBFT_PATH}/libft.a ${MLX_PATH}/libmlx.a "-framework OpenGL" "-framework AppKit" "-lm")
+# Find required OpenGL package
+find_package(OpenGL REQUIRED)
+
+# Link against libft, minilibx, and Linux libraries
+target_link_libraries(cub3d
+        ${LIBFT_PATH}/libft.a
+        ${MLX_PATH}/libmlx.a
+        ${OPENGL_LIBRARIES}
+        -lXext
+        -lX11
+        -lm
+        -lz
+)

@@ -33,7 +33,7 @@ AR      = ar -rcs
 CFLAGS  = -Wall -Wextra -Werror
 MLXFLAGS = -L ./libs/minilibx-linux -lmlx -lXext -lX11 -Imlx_linux
 X11_FLAGS = -L/usr/X11/lib -Lmlx -L/usr/lib
-MLX = minilibx-linux
+MLX = libs/minilibx-linux
 
 
 #· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#

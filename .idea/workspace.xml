@@ -3,13 +3,15 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="42_Cub3d" targetName="obj" />
-      <config projectName="42_Cub3d" targetName="all" />
-      <config projectName="42_Cub3d" targetName="re" />
-      <config projectName="42_Cub3d" targetName="fclean" />
-      <config projectName="42_Cub3d" targetName="cub3d" />
+      <config projectName="cub3d" targetName="cub3d" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -18,12 +20,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
+    <list default="true" id="5fd81570-c81a-4165-8866-5ef8a06e15df" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_get_next_line/ft_get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/ft_get_next_line/ft_get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_files/invalid/duplicated_setting.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map_files/invalid/duplicated_setting.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/key_handler.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_check.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,72 +41,27 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CMakeLists.txt" />
-      </list>
-    </option>
-  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-  </component>
-  <component name="MakefileLocalSettings">
-    <option name="availableProjects">
-      <map>
-        <entry>
-          <key>
-            <ExternalProjectPojo>
-              <option name="name" value="42_Cub3d" />
-              <option name="path" value="$PROJECT_DIR$" />
-            </ExternalProjectPojo>
-          </key>
-          <value>
-            <list>
-              <ExternalProjectPojo>
-                <option name="name" value="42_Cub3d" />
-                <option name="path" value="$PROJECT_DIR$" />
-              </ExternalProjectPojo>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
     <option name="minorVersion" value="3.1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2lYgJ4TlRXDBcPgymvKo8rfoGUM" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2lgvURiz3D6R4nkjkWMbMszkgNt" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Makefile Target.fclean.executor": "Run",
-    "Makefile Target.norminette.executor": "Run",
-    "Native Application.all.executor": "Run",
+    "CMake Application.cub3d.executor": "Valgrind",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -111,93 +74,48 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CLionExternalConfigurable",
-    "structure.view.defaults.are.configured": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Custom Build Application.Run">
-    <configuration name="Run" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_files/valid/cheese_maze.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
-      <envs>
-        <env name="OS" value="Darwin" />
-      </envs>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" PROGRAM_PARAMS="map_files/valid/cheese_maze.cub" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" RUN_PATH="$PROJECT_DIR$/cub3d" EXPLICIT_BUILD_TARGET_NAME="all">
-      <envs>
-        <env name="OS" value="Darwin" />
-      </envs>
+    <configuration name="cub3d" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_files/valid/cheese_maze.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3d" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cub3d" RUN_TARGET_NAME="cub3d">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="CMake Application.Unnamed" />
-      <item itemvalue="Custom Build Application.Run" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="" />
-      <created>1725362348516</created>
+      <changelist id="5fd81570-c81a-4165-8866-5ef8a06e15df" name="Changes" comment="" />
+      <created>1725614549427</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725362348516</updated>
-      <workItem from="1725362349560" duration="344000" />
-      <workItem from="1725439630928" duration="9444000" />
-      <workItem from="1725534310522" duration="8052000" />
+      <updated>1725614549427</updated>
+      <workItem from="1725614550439" duration="19178000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/Bruno" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="Bruno" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/Bruno" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>

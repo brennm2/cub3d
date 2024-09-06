@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:00:56 by bsousa-d          #+#    #+#             */
-/*   Updated: 2023/10/07 14:40:41 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:11:17 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_read_and_join(int fd, char *temp)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*temp[FOPEN_MAX];
+	static char	*temp[BUFFER_SIZE + 1];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);

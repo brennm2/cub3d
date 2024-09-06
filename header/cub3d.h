@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/05 14:29:18 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:17:30 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define	CUB3D_H
 
 # include "../libs/includes/libft.h"
-# include "../libs/minilibx-mac/mlx.h"
+# include "../libs/minilibx-linux/mlx.h"
+# include "X11/X.h"
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
@@ -49,11 +50,23 @@
 #  define D 100
 #  define C 99
 #  define V 118
+#  define RIGHT 65361
+#  define LEFT 65363
 # endif
+
+enum e_state
+{
+	event_ending = -1,
+	args_error = 0,
+	game_over = 1,
+	file_error = 2,
+	map_char_error = 3,
+};
 
 typedef struct s_map
 {
 	char **map;
+	char *first_line;
 	int height;
 	int length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
 	char *NORTH_PATH;
@@ -68,8 +81,8 @@ typedef struct s_game
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
-	char			*map_name;
-	struct s_map	map;
+	int				fd_file;
+	t_map			map;
 }	t_game;
 
 
@@ -79,5 +92,8 @@ void	free_all(t_game *game);
 int		ft_quit_game(t_game *game);
 
 bool ft_check_map(t_game *game, char **av);
+
+void print_map(t_game *game);
+void free_map(t_game *game);
 
 #endif
