@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/05 13:25:37 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:43:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,12 @@ float	cal_h_inter(t_game *game, float angle)
 		h_x += x_step;
 		h_y += y_step;
 	}
+	game->ray->hor_x = h_x;
+	game->ray->hor_y = h_y;
 	return (sqrt(pow(h_x - game->player->player_x, 2) + pow(h_y - game->player->player_y, 2))); // get the distance
 }
 
-float	cal_y_inter(t_game *game, float angle)	// get the vertical intersection
+float	cal_v_inter(t_game *game, float angle)	// get the vertical intersection
 {
 	float	v_x;
 	float	v_y;
@@ -119,6 +121,8 @@ float	cal_y_inter(t_game *game, float angle)	// get the vertical intersection
 		v_x += x_step;
 		v_y += y_step;
 	}
+	game->ray->ver_x = v_x;
+	game->ray->ver_y = v_y;
 	return (sqrt(pow(v_x - game->player->player_x, 2) + pow(v_y - game->player->player_y, 2))); // get the distance
 }
 
@@ -126,17 +130,22 @@ void	shoot_rays(t_game *game)
 {
 	int		ray_count;
 	double	h_inter;
-	double	y_inter;
+	double	v_inter;
+
 
 	ray_count = 0;
 	game->ray->ray_angle = game->player->angle - (game->player->fov_radian / 2); //Calcula o angulo inicial
 	while(ray_count < SCREEN_WIDTH) // enquanto a quantidade de rays for menor que o tamanho da tela
 	{
-		game->ray->hit_wall = false; //reseta a flag de ter acertado a parede
+		game->ray->hit_wall = false; //reseta a flag de ter acertado a parede na horizontal
 		h_inter = cal_h_inter(game, normalize_angle(game->ray->ray_angle));
-		y_inter = cal_y_inter(game, normalize_angle(game->ray->ray_angle));
-		if (y_inter <= h_inter)
-			game->ray->distance = y_inter;
+		v_inter = cal_v_inter(game, normalize_angle(game->ray->ray_angle));
+		
+		game->raydir_y = v_inter;
+		game->raydir_x = h_inter;
+		
+		if (v_inter <= h_inter)
+			game->ray->distance = v_inter;
 		else
 		{
 			game->ray->distance = h_inter;

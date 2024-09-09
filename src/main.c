@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/05 14:29:10 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:41:09 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int	main(int ac, char **av)
 	//DEBUG ------------
 	//}
 	// --read_map func--
-	
+	game->texture->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
+	game->texture->img->addr = mlx_get_data_addr(game->texture->img->mlx_img, &game->texture->img->bpp, &game->texture->img->line_len, &game->texture->img->endian);
 	open_window(game);
 }

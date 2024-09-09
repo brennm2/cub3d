@@ -9,6 +9,7 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <math.h>
+#include <stdint.h>
 
 # define FOV 60
 # define SCREEN_WIDTH 1000
@@ -16,6 +17,8 @@
 # define BLOCK_SIZE 500
 # define PLAYER_SPEED 50
 # define PLAYER_SENS 0.045
+# define TEXTURE_W 64
+# define TEXTURE_H 64
 
 typedef struct s_player
 {
@@ -29,7 +32,13 @@ typedef struct s_ray
 {
 	double	ray_angle;
 	double	distance;
+	double	wall_height;
 	bool	hit_wall;
+
+	float	hor_x;
+	float	hor_y;
+	float	ver_x;
+	float	ver_y;
 }	t_ray;
 
 typedef struct s_img
@@ -58,7 +67,10 @@ typedef struct s_game
 	char		*map_name;
 	int			map_w;
 	int			map_h;
+	int			h;
 
+	double		raydir_x;
+	double		raydir_y;
 	int			player_in_map_x;
 	int			player_in_map_y;
 
