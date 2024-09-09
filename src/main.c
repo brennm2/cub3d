@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/09 13:41:09 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:31:36 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,12 @@ void	display_window(t_game *game)
 
 int	game_frame_loop(t_game *game)
 {
-	//t_game	*game;
-
-	//game = temp_game;
-	//void	*frame;
 	if (game->img && game->img->mlx_img)
 		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
-	//playermove
-	//place_player(game, 0, 0);
 	shoot_rays(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
-	//printf("ola\n");
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
 }
@@ -70,12 +63,12 @@ void	open_window(t_game *game)
 void	init_game_data(t_game *game)
 {
 	(void)game;
-	//game->map_name = NULL;
-	// game->map_h = 0;
-	// game->map_w = 0;
-	// game->player_map_x = 0;
-	// game->player_map_y = 0;
-
+	game->dirx = -1;
+	game->diry = 0;
+	game->plane_x = 0;
+	game->plane_y = 0.66;
+	game->pos_x = 5;
+	game->pos_y = 5;
 }
 
 void	init_player(t_game *game, t_player *player)
@@ -106,9 +99,9 @@ t_game	*init_game(void)
 	if (!game->img)
 		return (NULL);
 
-	//init_game_data(game);
 	init_player(game, game->player);
 	init_window(game);
+	init_game_data(game);
 	return (game);
 }
 
@@ -135,7 +128,11 @@ int	main(int ac, char **av)
 	//DEBUG ------------
 	//}
 	// --read_map func--
-	game->texture->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
-	game->texture->img->addr = mlx_get_data_addr(game->texture->img->mlx_img, &game->texture->img->bpp, &game->texture->img->line_len, &game->texture->img->endian);
+	// game->texture->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);    //mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
+	// game->texture->img->addr = mlx_get_data_addr(game->texture->img->mlx_img, &game->texture->img->bpp, &game->texture->img->line_len, &game->texture->img->endian);
+
+	//game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);    //mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
+	//game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
+	
 	open_window(game);
 }

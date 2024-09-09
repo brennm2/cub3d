@@ -35,10 +35,8 @@ typedef struct s_ray
 	double	wall_height;
 	bool	hit_wall;
 
-	float	hor_x;
-	float	hor_y;
-	float	ver_x;
-	float	ver_y;
+	double	raydir_x;
+	double	raydir_y;
 }	t_ray;
 
 typedef struct s_img
@@ -69,8 +67,12 @@ typedef struct s_game
 	int			map_h;
 	int			h;
 
-	double		raydir_x;
-	double		raydir_y;
+	double		pos_x;
+	double		pos_y;
+	double		dirx;
+	double		diry;
+	double		plane_x;
+	double		plane_y;
 	int			player_in_map_x;
 	int			player_in_map_y;
 
@@ -105,10 +107,14 @@ void	shoot_rays(t_game *game);
 float	normalize_angle(float angle);
 
 // SRC/RAYCASTING/DRAW_WALL.C
-void	draw_wall(t_game *game, int ray_count);
+void	draw_wall(t_game *game, int h_pixel, int l_pixel);
+void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel);
 
 // SRC/PLAYER/PLACE_PLAYER.C
 void	place_player(t_game *game, double player_x, double player_y);
+
+
+void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 
 #endif
