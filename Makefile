@@ -55,7 +55,7 @@ LIBFT_LIB = $(LIBFT)/libft.a
 #· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
 NAME    = cub3d
-_FILES  += main.c key_handler.c free.c map_check.c
+_FILES  += main.c key_handler.c free.c map_check.c init.c
 SRC     = $(addprefix $(SRC_DIR)/, $(_FILES))
 OBJ     = $(addprefix $(OBJ_DIR)/, $(_FILES:%.c=%.o))
 

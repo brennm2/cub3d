@@ -66,7 +66,7 @@ enum e_state
 typedef struct s_map
 {
 	char **map;
-	char *first_line;
+	char *line;
 	int height;
 	int length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
 	char *NORTH_PATH;
@@ -92,6 +92,8 @@ void	free_all(t_game *game);
 int		ft_quit_game(t_game *game);
 
 bool ft_check_map(t_game *game, char **av);
+
+t_game *ft_init_struct(t_game *game, char *file);
 
 void print_map(t_game *game);
 void free_map(t_game *game);

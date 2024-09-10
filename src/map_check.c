@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:33:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/06 16:53:51 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:57:15 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,11 +220,13 @@ bool ft_map_valid_chars(t_game *game)
 	return true;
 }
 
-void free_map(t_game *game) {
+void free_map(t_game *game)
+{
 	int i = 0;
 	if (game->map.map == NULL)
 		return;
-	while (game->map.map[i] != NULL) {
+	while (game->map.map[i] != NULL)
+	{
 		free(game->map.map[i]);
 		i++;
 	}
