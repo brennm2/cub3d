@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 15:11:18 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:19:35 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,10 @@ int	main(int ac, char **av)
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
 	ft_check_map(game, av);
-	printf("Hello\n");
-	init_game(game);
+	//printf("Hello\n");
+	//init_game(game);
 	game->map_name = av[1];
-	read_map(av[1], game); //Read and fill the game->map
+	//read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
 	show_map(game);
 	//DEBUG ------------

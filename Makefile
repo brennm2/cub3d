@@ -19,12 +19,12 @@ NC=\033[0m
 SRC = src/main.c \
 	src/key_handler.c \
 	src/free.c \
-	src/map_check.c \
 	src/map_handler/fill_map.c \
 	src/debug/debug_fuctions.c \
 	src/raycasting/shoot_rays.c \
 	src/raycasting/draw_wall.c \
 	src/player/place_player.c \
+	#src/map_check.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)

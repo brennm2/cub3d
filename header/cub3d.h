@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 15:09:18 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:15:47 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	char		**map;
+	//char		**map;
 	char		*map_name;
 	int			map_w;
 	int			map_h;
@@ -117,9 +117,6 @@ typedef struct s_game
 	t_img		*img;
 	t_texture	**texture;
 
-	void			*mlx_ptr;
-	void			*win_ptr;
-	char			*map_name;
 	struct s_map	map;
 }	t_game;
 
