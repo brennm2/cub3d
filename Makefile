@@ -16,7 +16,7 @@ YELLOW=\033[1;93m
 NC=\033[0m
 
 
-SRC = src/main.c \
+SRC = main.c \
 	src/key_handler.c \
 	src/free.c \
 	src/map_handler/fill_map.c \

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 14:11:59 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:37:31 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ void	shoot_rays(t_game *game)
 				map_y += step_y;
 				game->ray->side = true;
 			}
-			if(game->map[map_x][map_y] == '1')
+			if(game->map.map[map_x][map_y] == '1')
 				wall_hit = true;
 		}
 

@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 15:19:35 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:55:54 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../header/cub3d.h"
+#include	"header/cub3d.h"
 
 void	init_window(t_game *game)
 {
@@ -111,7 +111,7 @@ void	debug_create_texture(t_game *game)
 {
 	//texture 0 = N
 	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "textures/n_wall.xpm", &game->texture[0]->w,
+			game->mlx_ptr, game->map.NORTH_PATH, &game->texture[0]->w,
 				&game->texture[0]->h);
 	game->texture[0]->img->addr = mlx_get_data_addr(
 			game->texture[0]->img->mlx_img, &game->texture[0]->img->bpp,
@@ -120,7 +120,7 @@ void	debug_create_texture(t_game *game)
 	
 	//texture 1 = S
 	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "textures/s_wall.xpm", &game->texture[1]->w,
+			game->mlx_ptr, game->map.SOUTH_PATH, &game->texture[1]->w,
 				&game->texture[1]->h);
 	game->texture[1]->img->addr = mlx_get_data_addr(
 			game->texture[1]->img->mlx_img, &game->texture[1]->img->bpp,
@@ -183,13 +183,13 @@ int	main(int ac, char **av)
 		return (0);
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
-	ft_check_map(game, av);
+	// ft_check_map(game, av);
 	//printf("Hello\n");
 	//init_game(game);
 	game->map_name = av[1];
 	//read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
-	show_map(game);
+	//show_map(game);
 	//DEBUG ------------
 	//}
 	// --read_map func--

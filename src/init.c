@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 14:57:51 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:55:17 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,12 +176,12 @@ static void ft_get_textures(t_game *game)
 		free(game->map.line);
 		game->map.line = get_next_line(game->fd_file);
 	}
-//	printf("%s", game->map.NORTH_PATH);
-//	printf("%s", game->map.SOUTH_PATH);
-//	printf("%s", game->map.EAST_PATH);
-//	printf("%s", game->map.WEST_PATH);
-//	printf("%s", game->map.CEILING_PATH);
-//	printf("%s", game->map.FLOOR_PATH);
+	// printf("%s", game->map.NORTH_PATH);
+	// printf("%s", game->map.SOUTH_PATH);
+	// printf("%s", game->map.EAST_PATH);
+	// printf("%s", game->map.WEST_PATH);
+	// printf("%s", game->map.CEILING_PATH);
+	// printf("%s", game->map.FLOOR_PATH);
 	while(game->map.line != NULL && ft_check_empty_line(game->map.line, 1))
 	{
 		free(game->map.line);
@@ -191,8 +191,8 @@ static void ft_get_textures(t_game *game)
 
 t_game *ft_init_struct(t_game *game, char *file)
 {
-	game->mlx_ptr = NULL;
-	game->win_ptr = NULL;
+	// game->mlx_ptr = NULL;
+	// game->win_ptr = NULL;
 	game->fd_file = open(file, O_RDONLY);
 	game->map.NORTH_PATH = NULL;
 	game->map.SOUTH_PATH = NULL;

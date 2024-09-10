@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 15:15:47 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:38:52 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 typedef struct s_map
 {
 	char **map;
+	char *line;
 	int height;
 	int length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
 	char *NORTH_PATH;
@@ -98,6 +99,7 @@ typedef struct s_game
 	int			map_w;
 	int			map_h;
 	int			h;
+	int			fd_file;
 
 	double		pos_x;
 	double		pos_y;

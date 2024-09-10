@@ -51,6 +51,7 @@ OBJ = ft_isalnum.o \
 	ft_is_xup.o \
 	ft_is_ptr.o \
 	ft_printf.o \
+	ft_strcmp.o\
 	get_next_line.o
 
 
