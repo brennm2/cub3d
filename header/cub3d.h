@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
+/*   Updated: 2024/09/10 15:09:18 by bde-souz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef		CUB3D_H
 # define	CUB3D_H
 
@@ -8,6 +20,26 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
+
+# define NORTH "NO"
+# define SOUTH "SO"
+# define WEST "WE"
+# define EAST "EA"
+# define CEILING "C"
+# define FLOOR "F"
+
+typedef struct s_map
+{
+	char **map;
+	int height;
+	int length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
+	char *NORTH_PATH;
+	char *SOUTH_PATH;
+	char *WEST_PATH;
+	char *CEILING_PATH;
+	char *FLOOR_PATH;
+	char *EAST_PATH;
+} t_map;
 # include <math.h>
 #include <stdint.h>
 
@@ -85,6 +117,10 @@ typedef struct s_game
 	t_img		*img;
 	t_texture	**texture;
 
+	void			*mlx_ptr;
+	void			*win_ptr;
+	char			*map_name;
+	struct s_map	map;
 }	t_game;
 
 
@@ -116,5 +152,7 @@ void	place_player(t_game *game, double player_x, double player_y);
 
 void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
+
+bool ft_check_map(t_game *game, char **av);
 
 #endif
