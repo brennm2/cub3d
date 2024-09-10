@@ -24,6 +24,8 @@ SRC = src/main.c \
 	src/raycasting/shoot_rays.c \
 	src/raycasting/draw_wall.c \
 	src/player/place_player.c \
+	src/init.c \
+	src/map_check.c
 	#src/map_check.c
 
 OBJ_DIR = obj

@@ -130,16 +130,55 @@ void	debug_create_texture(t_game *game)
 	
 }
 
+static bool is_cub_file(char *argv)
+{
+	char *dot_position;
+
+	dot_position = ft_strrchr(argv, '.');
+	if (dot_position)
+		if (ft_strcmp(dot_position, ".cub") == 0)
+			if (dot_position > argv && *(dot_position - 1) != '/')
+				return true;
+	printf("Error: File not valid!\n");
+	exit(1);
+}
+
+static void ft_check_args(int ac)
+{
+	if (ac != 2)
+	{
+		if (ac > 2)
+			printf("Error: Too Many Arguments!\n");
+		if (ac < 2)
+			printf("Error: Not Enough Arguments!\n");
+		exit(1);
+	}
+}
+
+static void file_exist(char *file)
+{
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	if(fd < 0)
+	{
+		printf("Error: File does not exist!\n");
+		exit(1);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	int	fd;
-	
-	(void)fd;
-	(void)ac;
-	(void)av;
-	game = NULL;
+
+	ft_check_args(ac);
+	is_cub_file(av[1]);
+	file_exist(av[1]);
+	game = malloc(sizeof (t_game));
+	if(game == NULL)
+		return 1;
 	game = init_game();
+	ft_init_struct(game, av[1]);
 	if (!game)
 		return (0);
 	//if(ac == 2 && syntax_error(av[1]))

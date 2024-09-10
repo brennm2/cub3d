@@ -152,4 +152,6 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 bool ft_check_map(t_game *game, char **av);
 
+t_game *ft_init_struct(t_game *game, char *file);
+
 #endif
