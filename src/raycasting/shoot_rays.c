@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/09 19:01:42 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:11:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,17 +142,24 @@ void	shoot_rays(t_game *game)
 
 		double	raydist_x;
 		double	raydist_y;
-		double	deltadist_x = sqrt(1 + (game->ray->raydir_y * game->ray->raydir_y) /
-		(game->ray->raydir_x * game->ray->raydir_x));
-		double	deltadist_y = sqrt(1 + (game->ray->raydir_x * game->ray->raydir_x) /
-			(game->ray->raydir_y * game->ray->raydir_y));
+		double	deltadist_x;
+		double	deltadist_y;
+
+		if (game->ray->raydir_x == 0)
+			deltadist_x = 1e30;
+		else
+			deltadist_x = fabs(1 / game->ray->raydir_x);
+		if (game->ray->raydir_y == 0)
+			deltadist_y = 1e30;
+		else
+			deltadist_y = fabs(1 / game->ray->raydir_y);
+
 		
 		int	step_x;
 		int	step_y;
 
 		bool	wall_hit = false;
-		bool	side = false;
-		
+
 
 		//calculate step and initial sideDist
 		if(game->ray->raydir_x < 0)
@@ -183,26 +190,27 @@ void	shoot_rays(t_game *game)
 			{
 				raydist_x += deltadist_x;
 				map_x += step_x;
-				side = false;
+				game->ray->side = false;
 			}
 			else
 			{
 				raydist_y += deltadist_y;
 				map_y += step_y;
-				side = true;
+				game->ray->side = true;
 			}
 			if(game->map[map_x][map_y] == '1')
 				wall_hit = true;
 		}
 
 		//fisheye effect
-		if (side == false)
+		if (game->ray->side == false)
 			game->ray->distance = (raydist_x - deltadist_x);
 		else
 			game->ray->distance = (raydist_y - deltadist_y);
 		
 		//Calculate lineHeight
 		int line_height = (int)(SCREEN_HEIGHT / game->ray->distance);
+		game->ray->line_height = line_height;
 		
 		//calculate h_pixel and l_pixel
 		int	h_pixel = -line_height / 2 + SCREEN_HEIGHT / 2;
@@ -215,7 +223,7 @@ void	shoot_rays(t_game *game)
 
 
 		//tentativa de por algo na tela
-		draw_wall(game, h_pixel, l_pixel);
+		draw_wall(game, h_pixel, l_pixel, x);
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
 		x++;
 	}

@@ -14,8 +14,8 @@
 # define FOV 60
 # define SCREEN_WIDTH 1000
 # define SCREEN_HEIGHT 700
-# define BLOCK_SIZE 500
-# define PLAYER_SPEED 50
+# define BLOCK_SIZE 64
+# define PLAYER_SPEED 0.2
 # define PLAYER_SENS 0.045
 # define TEXTURE_W 64
 # define TEXTURE_H 64
@@ -24,16 +24,17 @@ typedef struct s_player
 {
 	int		player_x;
 	int		player_y;
-	double		fov_radian;
-	double	angle;
+	//double		fov_radian;
+	//double	angle;
 }	t_player;
 
 typedef struct s_ray
 {
 	double	ray_angle;
 	double	distance;
-	double	wall_height;
+	int		line_height;
 	bool	hit_wall;
+	bool	side;
 
 	double	raydir_x;
 	double	raydir_y;
@@ -52,7 +53,6 @@ typedef struct s_img
 typedef struct s_texture
 {
 	t_img	*img;
-	int		color;
 	int		h;
 	int		w;
 }	t_texture;
@@ -83,7 +83,7 @@ typedef struct s_game
 	t_ray		*ray;
 	t_player	*player;
 	t_img		*img;
-	t_texture	*texture;
+	t_texture	**texture;
 
 }	t_game;
 
@@ -107,7 +107,7 @@ void	shoot_rays(t_game *game);
 float	normalize_angle(float angle);
 
 // SRC/RAYCASTING/DRAW_WALL.C
-void	draw_wall(t_game *game, int h_pixel, int l_pixel);
+void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x);
 void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel);
 
 // SRC/PLAYER/PLACE_PLAYER.C

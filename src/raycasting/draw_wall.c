@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/09 18:39:04 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:43:02 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 // 		better_mlx_pixel_put(&game->img, ray_count, i++, 0x89CFF3FF); // ceiling
 // }
 
-// int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel)
-// {
-// 	int	color;
+int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index)
+{
+	int	color;
 	
-// 	color = *(unsigned int *)(game->texture->img->addr + (higher_pixel *
-// 		game->texture->img->line_len + lower_pixel * (game->texture->img->bpp / 8)));
-// 	return (color);
-// }
+	color = *(unsigned int *)(game->texture[t_index]->img->addr + (higher_pixel *
+		game->texture[t_index]->img->line_len + lower_pixel
+			* (game->texture[t_index]->img->bpp / 8)));
+	return (color);
+}
 
 // int	select_color(t_game *game, int tex_y, double tex_pos)
 // {
@@ -90,28 +91,6 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 // 	// }
 // }
 
-// int	reverse_bytes(int c)
-// {
-// 	unsigned int	b;
-
-// 	b = 0;
-// 	b |= (c & 0xFF) << 24;
-// 	b |= (c & 0xFF00) << 8;
-// 	b |= (c & 0xFF0000) >> 8;
-// 	b |= (c & 0xFF000000) >> 24;
-// 	return (b);
-// }
-
-// double	get_x_o(t_game *game)
-// {
-// 	double	x_o;
-
-// 	if (game->ray->hit_wall == 1)
-// 		x_o = (int)fmodf((game->ray->hor_x * (TEXTURE_W / BLOCK_SIZE)), TEXTURE_W);
-// 	else
-// 		x_o = (int)fmodf((game->ray->ver_y * (TEXTURE_W / BLOCK_SIZE)), TEXTURE_W);
-// 	return (x_o);
-// }
 
 // void	paint_wall(t_game *game, int ray_count, int higher_pixel, int lower_pixel)
 // {
@@ -152,6 +131,77 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 // 	}
 // }
 
+int get_texture_color(t_game *game, int tex_y)
+{
+	//get wall_x
+	double wall_x;
+	if (game->ray->side == false)
+		wall_x = game->pos_y + game->ray->distance * game->ray->raydir_y;
+	else
+		wall_x = game->pos_x + game->ray->distance * game->ray->raydir_x;
+	wall_x -= floor(wall_x);
+
+	//get texture coordinate
+	int tex_x = wall_x * (double)TEXTURE_W;
+	if (game->ray->side == false && game->ray->raydir_x > 0)
+		tex_x = TEXTURE_W - tex_x - 1;
+	if (game->ray->side == true && game->ray->raydir_y < 0)
+		tex_x = TEXTURE_W - tex_x - 1;
+	
+	if (game->ray->side == true)
+	{
+		if (game->ray->raydir_y > 0) // Norte
+			return (get_pixel_color(game, tex_y, tex_x, 0));
+		else // Sul
+			return (get_pixel_color(game, tex_y, tex_x, 1));
+	}
+	else
+		return (0);
+	//return get_pixel_color(game, tex_y, tex_x, )
+	// return (get_pixel_color(game, tex_y, tex_x, ));
+}
+
+void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
+{
+	int	color;
+	double	step = 1.0 * TEXTURE_H / game->ray->line_height;
+	double	texpos = (h_pixel - SCREEN_HEIGHT / 2 + game->ray->line_height / 2) * step;
+	
+	while(h_pixel < l_pixel)
+	{
+		int	tex_y = (int)texpos & (TEXTURE_H - 1);
+		texpos += step;
+		color = get_texture_color(game, tex_y);
+		if (game->ray->side == true)
+		{
+			if (game->ray->raydir_y > 0) // Norte
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+			else // Sul
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+		}
+		else
+		{
+			if (game->ray->raydir_x > 0)
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+			else
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+		}
+		h_pixel++;
+	}
+}
+
+void	draw_floor_ceiling(t_game *game, int 	ray_count, int h_pixel, int l_pixel)
+{
+	int		i;
+
+	i = l_pixel;
+	while (i < SCREEN_HEIGHT)
+		better_mlx_pixel_put(&game->img, ray_count, i++, 0xB99470FF); // floor
+	i = 0;
+	while (i < h_pixel)
+		better_mlx_pixel_put(&game->img, ray_count, i++, 0x89CFF3FF); // ceiling
+}
+
 
 // void	draw_wall(t_game *game, int ray_count)
 // {
@@ -172,24 +222,3 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 // 	render_top_botton(game, ray_count, higher_pixel, lower_pixel);
 // }
 
-
-void	draw_wall(t_game *game, int h_pixel, int l_pixel)
-{
-	while(h_pixel < l_pixel)
-	{
-		better_mlx_pixel_put(&game->img, l_pixel, h_pixel, 0xB5B5B5FF);
-		h_pixel++;
-	}
-}
-
-void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
-{
-	int		i;
-
-	i = l_pixel;
-	while (i < SCREEN_HEIGHT)
-		better_mlx_pixel_put(&game->img, ray_count, i++, 0xB99470FF); // floor
-	i = 0;
-	while (i < h_pixel)
-		better_mlx_pixel_put(&game->img, ray_count, i++, 0x89CFF3FF); // ceiling
-}

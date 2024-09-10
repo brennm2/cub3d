@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/09 18:31:36 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:02:25 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	init_window(t_game *game)
 {
 	game->mlx_ptr= mlx_init();
 	game->win_ptr= NULL;
-	
-	game->texture = ft_calloc(sizeof(t_texture), 1);
-	game->texture->h = 64;
-	game->texture->w = 64;
-	game->texture->img = ft_calloc(sizeof(t_img), 1);
+	game->texture = ft_calloc(sizeof(t_texture), 2);
+  	for (int i = 0; i < 2; i++) {
+        game->texture[i] = ft_calloc(1, sizeof(t_texture));
+        game->texture[i]->h = 64;
+        game->texture[i]->w = 64;
+        game->texture[i]->img = ft_calloc(1, sizeof(t_img));
+    }
 	//game->img = malloc(sizeof(t_img));
 	//if (!game->img)
 	//	return ;
@@ -67,8 +69,8 @@ void	init_game_data(t_game *game)
 	game->diry = 0;
 	game->plane_x = 0;
 	game->plane_y = 0.66;
-	game->pos_x = 5;
-	game->pos_y = 5;
+	game->pos_x = 7;
+	game->pos_y = 2;
 }
 
 void	init_player(t_game *game, t_player *player)
@@ -77,8 +79,8 @@ void	init_player(t_game *game, t_player *player)
 	game->player_in_map_y = 3; //DEBUG
 	player->player_x = game->player_in_map_x * BLOCK_SIZE + BLOCK_SIZE/2;
 	player->player_y = game->player_in_map_y * BLOCK_SIZE + BLOCK_SIZE/2;
-	player->fov_radian = (FOV * M_PI) / 180;
-	player->angle = M_PI;
+	//player->fov_radian = (FOV * M_PI) / 180;
+	//player->angle = M_PI;
 }
 
 t_game	*init_game(void)
@@ -105,7 +107,28 @@ t_game	*init_game(void)
 	return (game);
 }
 
+void	debug_create_texture(t_game *game)
+{
+	//texture 0 = N
+	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
+			game->mlx_ptr, "textures/n_wall.xpm", &game->texture[0]->w,
+				&game->texture[0]->h);
+	game->texture[0]->img->addr = mlx_get_data_addr(
+			game->texture[0]->img->mlx_img, &game->texture[0]->img->bpp,
+				&game->texture[0]->img->line_len,
+					&game->texture[0]->img->endian);
+	
+	//texture 1 = S
+	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
+			game->mlx_ptr, "textures/s_wall.xpm", &game->texture[1]->w,
+				&game->texture[1]->h);
+	game->texture[1]->img->addr = mlx_get_data_addr(
+			game->texture[1]->img->mlx_img, &game->texture[1]->img->bpp,
+				&game->texture[1]->img->line_len,
+					&game->texture[1]->img->endian);
 
+	
+}
 
 int	main(int ac, char **av)
 {
@@ -116,8 +139,6 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	game = NULL;
-	//if(ac == 2 && syntax_error(av[1]))
-	//{
 	game = init_game();
 	if (!game)
 		return (0);
@@ -128,11 +149,6 @@ int	main(int ac, char **av)
 	//DEBUG ------------
 	//}
 	// --read_map func--
-	// game->texture->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);    //mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
-	// game->texture->img->addr = mlx_get_data_addr(game->texture->img->mlx_img, &game->texture->img->bpp, &game->texture->img->line_len, &game->texture->img->endian);
-
-	//game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);    //mlx_xpm_file_to_image(game->mlx_ptr, "w_wall.xpm", &game->texture->w, &game->texture->h);
-	//game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
-	
+	debug_create_texture(game);
 	open_window(game);
 }
