@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 14:43:02 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:34:03 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,17 +186,22 @@ void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
 			else
 				better_mlx_pixel_put(&game->img, x, h_pixel, color);
 		}
-		h_pixel++;
+ 		h_pixel++;
 	}
 }
 
-void	draw_floor_ceiling(t_game *game, int 	ray_count, int h_pixel, int l_pixel)
+void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 {
 	int		i;
+	
+	// if (ray_count < 0 || ray_count >= SCREEN_WIDTH)
+    //     return;
 
 	i = l_pixel;
 	while (i < SCREEN_HEIGHT)
+	{
 		better_mlx_pixel_put(&game->img, ray_count, i++, 0xB99470FF); // floor
+	}
 	i = 0;
 	while (i < h_pixel)
 		better_mlx_pixel_put(&game->img, ray_count, i++, 0x89CFF3FF); // ceiling

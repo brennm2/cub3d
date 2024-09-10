@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 15:37:31 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:30:46 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void	shoot_rays(t_game *game)
 		int map_x = (int)game->pos_x;
 		int	map_y = (int)game->pos_y;
 
-
+		//printf("map_x = %f, ", game->pos_x);
+		//printf("map_y = %f\n", game->pos_y);
 		double	raydist_x;
 		double	raydist_y;
 		double	deltadist_x;

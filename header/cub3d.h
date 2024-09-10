@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 15:38:52 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:36:56 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
+# include <math.h>
+# include <stdint.h>
 
 # define NORTH "NO"
 # define SOUTH "SO"
@@ -41,8 +43,6 @@ typedef struct s_map
 	char *FLOOR_PATH;
 	char *EAST_PATH;
 } t_map;
-# include <math.h>
-#include <stdint.h>
 
 # define FOV 60
 # define SCREEN_WIDTH 1000
@@ -94,7 +94,7 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	//char		**map;
+	char		**map2;
 	char		*map_name;
 	int			map_w;
 	int			map_h;

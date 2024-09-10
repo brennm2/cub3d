@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:33:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 14:57:15 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:38:39 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_free_textures(t_game *game)
 	free(game->map.EAST_PATH);
 	free(game->map.CEILING_PATH);
 	free(game->map.FLOOR_PATH);
-//	free(game->map.map);
+	free(game->map.map);
 }
 
 unsigned int	ft_get_map_size(char **av)
@@ -105,57 +105,57 @@ void	read_textures(t_game *game, char **av)
 	close(fd);
 }
 
-//char	*remove_all_spaces(char *str)
-//{
-//	int		i;
-//	int		j;
-//	char	*result;
-//
-//	i = 0;
-//	j = 0;
-//	result = (char *)malloc(ft_strlen(str) + 1);
-//	if (!result)
-//		return (NULL);
-//	while (str[i] != ' ' && !ft_isalpha(str[i]))
-//		i++;
-//	while (ft_isalpha(str[i]))
-//		i++;
-//	while (str[i])
-//	{
-//		if (str[i] != ' ')
-//			result[j++] = str[i];
-//		i++;
-//	}
-//	result[j] = '\0';
-//	str = ft_strdup(result);
-//	free(result);
-//	return (str);
-//}
+char	*remove_all_spaces(char *str)
+{
+	int		i;
+	int		j;
+	char	*result;
 
-//void	ft_get_textures(t_game *game)
-//{
-//	int	i;
-//	int	len;
-//
-//	i = 0;
-//	while (game->map.map[i])
-//	{
-//		len = ft_strlen(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], NORTH, len) != NULL)
-//			game->map.NORTH_PATH = remove_all_spaces(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], SOUTH, len) != NULL)
-//			game->map.SOUTH_PATH = remove_all_spaces(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], EAST, len) != NULL)
-//			game->map.EAST_PATH = remove_all_spaces(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], WEST, len) != NULL)
-//			game->map.WEST_PATH = remove_all_spaces(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], CEILING, len) != NULL)
-//			game->map.CEILING_PATH = remove_all_spaces(game->map.map[i]);
-//		if (ft_strnstr(game->map.map[i], FLOOR, len) != NULL)
-//			game->map.FLOOR_PATH = remove_all_spaces(game->map.map[i]);
-//		i++;
-//	}
-//}
+	i = 0;
+	j = 0;
+	result = (char *)malloc(ft_strlen(str) + 1);
+	if (!result)
+		return (NULL);
+	while (str[i] != ' ' && !ft_isalpha(str[i]))
+		i++;
+	while (ft_isalpha(str[i]))
+		i++;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			result[j++] = str[i];
+		i++;
+	}
+	result[j] = '\0';
+	str = ft_strdup(result);
+	free(result);
+	return (str);
+}
+
+void	ft_get_textures(t_game *game)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		len = ft_strlen(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], NORTH, len) != NULL)
+			game->map.NORTH_PATH = remove_all_spaces(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], SOUTH, len) != NULL)
+			game->map.SOUTH_PATH = remove_all_spaces(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], EAST, len) != NULL)
+			game->map.EAST_PATH = remove_all_spaces(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], WEST, len) != NULL)
+			game->map.WEST_PATH = remove_all_spaces(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], CEILING, len) != NULL)
+			game->map.CEILING_PATH = remove_all_spaces(game->map.map[i]);
+		if (ft_strnstr(game->map.map[i], FLOOR, len) != NULL)
+			game->map.FLOOR_PATH = remove_all_spaces(game->map.map[i]);
+		i++;
+	}
+}
 
 void	ft_read_map(t_game *game, char **av)
 {
@@ -191,10 +191,10 @@ void print_map(t_game *game) {
 	while (game->map.map[i] != NULL)
 	{
 		printf("%s", game->map.map[i]);
-//		free(game->map.map[i]);
+		free(game->map.map[i]);
 		i++;
 	}
-//	free(game->map.map);
+	free(game->map.map);
 }
 
 bool ft_map_valid_chars(t_game *game)
@@ -245,7 +245,7 @@ bool	ft_check_map(t_game *game, char **av)
 	if (!game->map.map)
 		return (false);
 	read_textures(game, av);
-//	ft_get_textures(game);
+	ft_get_textures(game);
 	ft_free_textures(game);
 	ft_read_map(game, av);
 	print_map(game);

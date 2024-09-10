@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 15:55:17 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:59:33 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,5 +204,6 @@ t_game *ft_init_struct(t_game *game, char *file)
 	game->map.map = NULL;
 	ft_get_textures(game);
 	ft_get_map(game);
+	close(game->fd_file);
 	return game;
 }

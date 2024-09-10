@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 15:55:54 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:42:23 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ void	init_window(t_game *game)
 	game->mlx_ptr= mlx_init();
 	game->win_ptr= NULL;
 	game->texture = ft_calloc(sizeof(t_texture), 2);
-  	for (int i = 0; i < 2; i++) {
+  	for (int i = 0; i < 2; i++)
+	{
         game->texture[i] = ft_calloc(1, sizeof(t_texture));
         game->texture[i]->h = 64;
         game->texture[i]->w = 64;
         game->texture[i]->img = ft_calloc(1, sizeof(t_img));
     }
-	//game->img = malloc(sizeof(t_img));
-	//if (!game->img)
-	//	return ;
 }
 
 
@@ -64,13 +62,12 @@ void	open_window(t_game *game)
 
 void	init_game_data(t_game *game)
 {
-	(void)game;
 	game->dirx = -1;
 	game->diry = 0;
 	game->plane_x = 0;
 	game->plane_y = 0.66;
-	game->pos_x = 7;
-	game->pos_y = 2;
+	game->pos_x = 2+0.5;
+	game->pos_y = 2+0.5;
 }
 
 void	init_player(t_game *game, t_player *player)
@@ -97,7 +94,7 @@ t_game	*init_game(void)
 	game->player = (t_player *)ft_calloc(sizeof(t_player), 1);
 	if (!game->player)
 		return (NULL);
-	game->img = (t_img *)ft_calloc(sizeof(t_img), 1);
+	game->img = ft_calloc(sizeof(t_img), 1);
 	if (!game->img)
 		return (NULL);
 
@@ -110,9 +107,11 @@ t_game	*init_game(void)
 void	debug_create_texture(t_game *game)
 {
 	//texture 0 = N
+	//printf("%s\n", game->map.NORTH_PATH);
 	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, game->map.NORTH_PATH, &game->texture[0]->w,
+			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[0]->w,
 				&game->texture[0]->h);
+	
 	game->texture[0]->img->addr = mlx_get_data_addr(
 			game->texture[0]->img->mlx_img, &game->texture[0]->img->bpp,
 				&game->texture[0]->img->line_len,
@@ -120,7 +119,7 @@ void	debug_create_texture(t_game *game)
 	
 	//texture 1 = S
 	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, game->map.SOUTH_PATH, &game->texture[1]->w,
+			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[1]->w,
 				&game->texture[1]->h);
 	game->texture[1]->img->addr = mlx_get_data_addr(
 			game->texture[1]->img->mlx_img, &game->texture[1]->img->bpp,
@@ -174,22 +173,23 @@ int	main(int ac, char **av)
 	ft_check_args(ac);
 	is_cub_file(av[1]);
 	file_exist(av[1]);
-	game = malloc(sizeof (t_game));
-	if(game == NULL)
-		return 1;
+	// game = malloc(sizeof (t_game));
+	// if(game == NULL)
+	// 	return 1;
+	game = NULL;
 	game = init_game();
 	ft_init_struct(game, av[1]);
 	if (!game)
 		return (0);
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
-	// ft_check_map(game, av);
+	//ft_check_map(game, av);
 	//printf("Hello\n");
 	//init_game(game);
-	game->map_name = av[1];
+	// game->map_name = av[1];
 	//read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
-	//show_map(game);
+	show_map(game);
 	//DEBUG ------------
 	//}
 	// --read_map func--
