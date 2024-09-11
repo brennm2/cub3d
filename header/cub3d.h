@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:56 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:18:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_ray
 
 	double	raydir_x;
 	double	raydir_y;
+	int		l_pixel_ray;
+	int		h_pixel_ray;
 }	t_ray;
 
 typedef struct s_img
@@ -94,7 +96,7 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	char		**map2;
+	//char		**map2;
 	char		*map_name;
 	int			map_w;
 	int			map_h;
@@ -133,6 +135,9 @@ int		ft_quit_game(t_game *game);
 void	read_map(char *map_name, t_game *game);
 void	fill_map(int fd, t_game *game);
 
+
+// SRC/TEXTURE_HANDLER/CREATE_TEXTURE
+void	create_texture(t_game *game);
 
 // SRC/DEBUG/DEBUG_FUNCIONS.C
 void	show_map(t_game *game);

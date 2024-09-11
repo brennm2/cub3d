@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 18:30:46 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:58:58 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,10 +220,18 @@ void	shoot_rays(t_game *game)
 			h_pixel = 0;
 		if (l_pixel >= SCREEN_HEIGHT)
 			l_pixel = SCREEN_HEIGHT - 1;
-		
+		static int flag = 0;
+		if (game->ray->distance > 3 && flag == 0)
+		{
+			flag = 1;
+			printf("%f\n",game->ray->distance);
+			game->ray->l_pixel_ray = l_pixel;
+			game->ray->h_pixel_ray = h_pixel;
+		}
 
 
 		//tentativa de por algo na tela
+		//flag = 0;
 		draw_wall(game, h_pixel, l_pixel, x);
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
 		x++;

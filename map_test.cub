@@ -1,10 +1,10 @@
-NO ./sprites/north_wall.xpm
-SO ./sprites/south_wall.xpm
-WE ./sprites/west_wall.xpm
-EA ./sprites/east_wall.xpm
+NO sprites/north_wall.xpm
+SO sprites/south_wall.xpm
+WE sprites/west_wall.xpm
+EA sprites/east_wall.xpm
 
-F 255,0,255
-C 0,255,0
+F 0,0,0
+C 0,0,0
 
 1111111111
 1000100001

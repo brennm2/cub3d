@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 18:42:23 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:15:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_window(t_game *game)
 {
 	game->mlx_ptr= mlx_init();
 	game->win_ptr= NULL;
-	game->texture = ft_calloc(sizeof(t_texture), 2);
-  	for (int i = 0; i < 2; i++)
+	game->texture = ft_calloc(sizeof(t_texture), 4);
+  	for (int i = 0; i < 4; i++)
 	{
         game->texture[i] = ft_calloc(1, sizeof(t_texture));
         game->texture[i]->h = 64;
@@ -62,12 +62,12 @@ void	open_window(t_game *game)
 
 void	init_game_data(t_game *game)
 {
-	game->dirx = -1;
-	game->diry = 0;
-	game->plane_x = 0;
-	game->plane_y = 0.66;
+	game->dirx = 0;
+	game->diry = 1;
+	game->plane_x = 0.66;
+	game->plane_y = 0;
 	game->pos_x = 2+0.5;
-	game->pos_y = 2+0.5;
+	game->pos_y = 4+0.5;
 }
 
 void	init_player(t_game *game, t_player *player)
@@ -104,30 +104,6 @@ t_game	*init_game(void)
 	return (game);
 }
 
-void	debug_create_texture(t_game *game)
-{
-	//texture 0 = N
-	//printf("%s\n", game->map.NORTH_PATH);
-	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[0]->w,
-				&game->texture[0]->h);
-	
-	game->texture[0]->img->addr = mlx_get_data_addr(
-			game->texture[0]->img->mlx_img, &game->texture[0]->img->bpp,
-				&game->texture[0]->img->line_len,
-					&game->texture[0]->img->endian);
-	
-	//texture 1 = S
-	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[1]->w,
-				&game->texture[1]->h);
-	game->texture[1]->img->addr = mlx_get_data_addr(
-			game->texture[1]->img->mlx_img, &game->texture[1]->img->bpp,
-				&game->texture[1]->img->line_len,
-					&game->texture[1]->img->endian);
-
-	
-}
 
 static bool is_cub_file(char *argv)
 {
@@ -189,10 +165,10 @@ int	main(int ac, char **av)
 	// game->map_name = av[1];
 	//read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
-	show_map(game);
+	//show_map(game);
 	//DEBUG ------------
 	//}
 	// --read_map func--
-	debug_create_texture(game);
+	create_texture(game);
 	open_window(game);
 }

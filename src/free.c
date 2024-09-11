@@ -6,26 +6,12 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:20:16 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 15:17:38 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:31:09 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../header/cub3d.h"
 
-// void	free_map(char **map, t_game *game)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	if (!map[0])
-// 	{
-// 		free (game->map.map);
-// 		return ;
-// 	}
-// 	while (++i < game->map_h)
-// 		free(game->map[i]);
-// 	free(game->map);
-// }
 
 void	free_all(t_game *game)
 {
@@ -43,6 +29,18 @@ void	free_all(t_game *game)
 			mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 		//free(game->img->mlx_img);
 		free(game->img);
+	}
+	if (game->texture)
+	{
+		int i = 0;
+		while (game->texture[i])
+		{
+			mlx_destroy_image(game->mlx_ptr, game->texture[i]->img->mlx_img);
+			free(game->texture[i]->img);
+			free(game->texture[i]);
+			i++;
+		}
+		free(game->texture);
 	}
 	//if (game->img.mlx_img)
 	//	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
