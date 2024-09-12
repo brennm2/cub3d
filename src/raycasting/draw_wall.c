@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/11 18:55:57 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:55:08 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,9 +237,8 @@ int darken_rgb_color2 (int color, double factor, int i)
 
 int	get_fog(t_game *game, int color)
 {
-	double	distance = 3; //distancia do raio, isso implica na forca do fog
-	int		times = 0;
-
+	double	distance = 1.5; //distancia do raio, isso implica na forca do fog
+	int times = 0;
 	while (distance < game->ray->distance)
 	{
 		//color = darken_rgb_color(color, 0.9);
@@ -312,21 +311,51 @@ unsigned long	convert_rgb(char *color)
 }
 
 
-
-
-int	get_fog_floor(t_game *game, int color)
+int darken_rgb_color3 (int color, double factor, int i)
 {
-	if (game->ray->distance > 3)
-			color = (color >> 1) & 8355711;
-	if (game->ray->distance > 3.2)
-			color = (color >> 1) & 8355711;
-	if (game->ray->distance > 3.4)
-			color = (color >> 1) & 8355711;
-	if (game->ray->distance > 3.6)
-			color = (color >> 1) & 8355711;
-	if (game->ray->distance > 3.8)
-			color = (color >> 1) & 8355711;
+	int r, g, b;
 
+	if (factor < 0 || factor > 1)
+		return color; // Factor should be between 0 and 1
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
+	for (double j = 0; j < i; j += 0.1)
+	{
+		r = (int)(r * factor);
+		g = (int)(g * factor);
+		b = (int)(b * factor);
+	}
+	return (r << 16) | (g << 8) | b;
+}
+
+int	get_fog_floor(t_game *game, int color, int i, int l_pixel)
+{
+	double		distance = game->ray->l_pixel_ray - i; //distancia do raio, isso implica na forca do fog
+	double		times = 14;
+
+	while (distance < l_pixel && times >=0)
+	{
+		distance += 40; //quantidade de step do fog
+		times--; // vezes que ele rodou no while
+	}
+	// if (times > 2)
+	// 	color = darken_rgb_color3(color, 0.9, times * 5);
+	// else
+	color = darken_rgb_color3(color, 0.9, times);
+	return (color);
+}
+
+int get_fog_ceiling(t_game *game, int color, int i, int h_pixel)
+{
+	double		distance = game->ray->h_pixel_ray - i;
+	double		times = 0;
+	while (distance < h_pixel && times <= 14)
+	{
+		distance += 40; //quantidade de step do fog
+		times++; // vezes que ele rodou no while
+	}
+	color = darken_rgb_color3(color, 0.9, times);
 	return (color);
 }
 
@@ -338,34 +367,31 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 	unsigned long	ceiling_rgb;
 	unsigned long	ceiling_rgb_set;
 
-	//int times = 0;
-
+	//(void)times;
 	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
 	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
 	i = l_pixel;
 	while (i < SCREEN_HEIGHT)
 	{
 		floor_rgb = floor_rgb_set;
-		if (i < game->ray->l_pixel_ray)
-		{
-			//floor_rgb = get_fog_floor(game, floor_rgb);
-			floor_rgb = get_fog(game, floor_rgb);
-			better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb); // floor
-		}
-		else
+		// if (i < game->ray->l_pixel_ray)
+		// {
+		// 	floor_rgb = get_fog_floor(game, floor_rgb, i, l_pixel);
+		// 	better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb); // floor
+		// }
+		// else
 			better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb_set);
 	}
 	i = 0;
 	while (i < h_pixel)
 	{
 		ceiling_rgb = ceiling_rgb_set;
-		if (i > game->ray->h_pixel_ray)
-		{
-			//ceiling_rgb = get_fog_floor(game, ceiling_rgb);
-			ceiling_rgb = get_fog(game, ceiling_rgb);
-			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb);
-		}
-		else
+		// if (i > game->ray->h_pixel_ray)
+		// {
+		// 	ceiling_rgb = get_fog_ceiling(game, ceiling_rgb, i, h_pixel);
+		// 	better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb);
+		// }
+		// else
 			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb_set); // ceiling
 	}
 }

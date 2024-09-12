@@ -6,125 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/11 18:58:58 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:49:31 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../../header/cub3d.h"
-
-// int	inter_check(float angle, float *inter, float *step, int is_horizon)	// check the intersection
-// {
-// 	if (is_horizon)
-// 	{
-// 		if (angle > 0 && angle < M_PI)
-// 		{
-// 			*inter += BLOCK_SIZE;
-// 			return (-1);
-// 		}
-// 		*step *= -1;
-// 	}
-// 	else
-// 	{
-// 		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2))
-// 		{
-// 			*inter += BLOCK_SIZE;
-// 			return (-1);
-// 		}
-// 		*step *= -1;
-// 	}
-// 	return (1);
-// }
-
-// int	unit_circle(float angle, char c)	// check the unit circle
-// {
-// 	if (c == 'x')
-// 	{
-// 		if (angle > 0 && angle < M_PI)
-// 			return (1);
-// 	}
-// 	else if (c == 'y')
-// 	{
-// 		if (angle > (M_PI / 2) && angle < (3 * M_PI) / 2)
-// 			return (1);
-// 	}
-// 	return (0);
-// }
-
-// int	wall_hit(float x, float y, t_game *game)	// check the wall hit
-// {
-// 	int		x_m;
-// 	int		y_m;
-
-// 	if (x < 0 || y < 0)
-// 		return (0);
-// 	x_m = floor (x / BLOCK_SIZE); // get the x position in the map
-// 	y_m = floor (y / BLOCK_SIZE); // get the y position in the map
-// 	if ((y_m >= game->map_h || x_m >= game->map_w))
-// 		return (0);
-// 	if (game->map[y_m] && x_m <= (int)ft_strlen(game->map[y_m]))
-// 		if (game->map[y_m][x_m] == '1')
-// 			return (0);
-// 	return (1);
-// }
-
-// float	normalize_angle(float angle)
-// {
-// 	if (angle < 0)
-// 		angle += (2 * M_PI);
-// 	if (angle > (2 * M_PI))
-// 		angle -= (2 * M_PI);
-// 	return (angle);
-// }
-
-// float	cal_h_inter(t_game *game, float angle)
-// {
-// 	float	h_x;
-// 	float	h_y;
-// 	float	x_step;
-// 	float	y_step;
-// 	int		pixel;
-
-// 	y_step = BLOCK_SIZE;
-// 	x_step = BLOCK_SIZE / tan(angle);
-// 	h_y = floor(game->player->player_y / BLOCK_SIZE) * BLOCK_SIZE;
-// 	pixel = inter_check(angle, &h_y, &y_step, 1);
-// 	h_x = game->player->player_x + (h_y - game->player->player_y) / tan(angle);
-// 	if ((unit_circle(angle, 'y') && x_step > 0) || (!unit_circle(angle, 'y') && x_step < 0)) // check x_step value
-// 		x_step *= -1;
-// 	while (wall_hit(h_x, h_y - pixel, game)) // check the wall hit whit the pixel value
-// 	{
-// 		h_x += x_step;
-// 		h_y += y_step;
-// 	}
-// 	game->ray->hor_x = h_x;
-// 	game->ray->hor_y = h_y;
-// 	return (sqrt(pow(h_x - game->player->player_x, 2) + pow(h_y - game->player->player_y, 2))); // get the distance
-// }
-
-// float	cal_v_inter(t_game *game, float angle)	// get the vertical intersection
-// {
-// 	float	v_x;
-// 	float	v_y;
-// 	float	x_step;
-// 	float	y_step;
-// 	int		pixel;
-
-// 	x_step = BLOCK_SIZE;
-// 	y_step = BLOCK_SIZE * tan(angle);
-// 	v_x = floor(game->player->player_x / BLOCK_SIZE) * BLOCK_SIZE;
-// 	pixel = inter_check(angle, &v_x, &x_step, 0); // check the intersection and get the pixel value
-// 	v_y = game->player->player_y + (v_x - game->player->player_x) * tan(angle);
-// 	if ((unit_circle(angle, 'x') && y_step < 0) || (!unit_circle(angle, 'x') && y_step > 0)) // check y_step value
-// 		y_step *= -1;
-// 	while (wall_hit(v_x - pixel, v_y, game)) // check the wall hit whit the pixel value
-// 	{
-// 		v_x += x_step;
-// 		v_y += y_step;
-// 	}
-// 	game->ray->ver_x = v_x;
-// 	game->ray->ver_y = v_y;
-// 	return (sqrt(pow(v_x - game->player->player_x, 2) + pow(v_y - game->player->player_y, 2))); // get the distance
-// }
 
 void	shoot_rays(t_game *game)
 {
@@ -139,8 +25,6 @@ void	shoot_rays(t_game *game)
 		int map_x = (int)game->pos_x;
 		int	map_y = (int)game->pos_y;
 
-		//printf("map_x = %f, ", game->pos_x);
-		//printf("map_y = %f\n", game->pos_y);
 		double	raydist_x;
 		double	raydist_y;
 		double	deltadist_x;
@@ -221,7 +105,7 @@ void	shoot_rays(t_game *game)
 		if (l_pixel >= SCREEN_HEIGHT)
 			l_pixel = SCREEN_HEIGHT - 1;
 		static int flag = 0;
-		if (game->ray->distance > 3 && flag == 0)
+		if (game->ray->distance > 1.5 && flag == 0)
 		{
 			flag = 1;
 			printf("%f\n",game->ray->distance);
@@ -229,9 +113,6 @@ void	shoot_rays(t_game *game)
 			game->ray->h_pixel_ray = h_pixel;
 		}
 
-
-		//tentativa de por algo na tela
-		//flag = 0;
 		draw_wall(game, h_pixel, l_pixel, x);
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
 		x++;

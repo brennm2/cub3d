@@ -3,8 +3,8 @@ SO sprites/south_wall.xpm
 WE sprites/west_wall.xpm
 EA sprites/east_wall.xpm
 
-F 0,0,0
-C 0,0,0
+F 255,0,0
+C 255,0,0
 
 1111111111
 1000100001
