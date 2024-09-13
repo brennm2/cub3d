@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 11:30:05 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:46:29 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <sys/time.h>
 # include <math.h>
 # include <stdint.h>
+
+//Debug
+#include <time.h>
 
 # define NORTH "NO"
 # define SOUTH "SO"
@@ -84,8 +87,8 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int		player_x;
-	int		player_y;
+	double		player_x;
+	double		player_y;
 	//double		fov_radian;
 	//double	angle;
 }	t_player;
@@ -133,8 +136,8 @@ typedef struct s_game
 	int			fd_file;
 	
 	
-	double		pos_x;
-	double		pos_y;
+	clock_t 		debug_time; //time of current frame
+	clock_t 		debug_old_time ; //time of previous frame
 	double		dirx;
 	double		diry;
 	double		plane_x;

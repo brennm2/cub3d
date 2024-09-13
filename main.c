@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 11:25:22 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:47:06 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "header/cub3d.h"
 
 void	init_window(t_game *game)
 {
@@ -42,6 +42,15 @@ int	game_frame_loop(t_game *game)
 	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
+
+	// Calcula FPS
+	game->debug_old_time = game->debug_time;
+	game->debug_time = clock();
+	clock_t frametime = game->debug_time - game->debug_old_time;
+	double fps = CLOCKS_PER_SEC / (double)frametime;
+	printf("FPS: %.2f\n", fps);
+	//printf("frametime: %ld\n", frametime);
+	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
@@ -61,12 +70,15 @@ void	open_window(t_game *game)
 
 void	init_game_data(t_game *game)
 {
-	game->dirx = 0;
-	game->diry = 1;
-	game->plane_x = 0.66;
-	game->plane_y = 0;
-	game->pos_x = 2+0.5;
-	game->pos_y = 4+0.5;
+	(void)game;
+	game->debug_old_time = 0;
+	game->debug_time = 0;
+	// game->dirx = 0;
+	// game->diry = 1;
+	// game->plane_x = 0.66;
+	// game->plane_y = 0;
+	//game->pos_x = 2+0.5;
+	//game->pos_y = 4+0.5;
 }
 
 void	init_player(t_game *game, t_player player)

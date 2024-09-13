@@ -6,7 +6,7 @@ LIBFT = ./libs/libft.a
 MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
 
 CC = cc -g -O3 -ffast-math
-CCFLAGS = -Wall -Werror -Wextra
+CCFLAGS = #-Wall -Werror -Wextra
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
 RM = rm
 RMFLAGS= -f
@@ -16,7 +16,7 @@ YELLOW=\033[1;93m
 NC=\033[0m
 
 
-SRC = src/main.c \
+SRC = main.c \
 	src/key_handler.c \
 	src/free.c \
 	src/fill_map.c \

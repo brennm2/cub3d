@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/12 18:49:31 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:49:35 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	shoot_rays(t_game *game)
 		game->ray->raydir_x = game->dirx + game->plane_x * camera_x;
 		game->ray->raydir_y = game->diry + game->plane_y * camera_x;
 	
-		int map_x = (int)game->pos_x;
-		int	map_y = (int)game->pos_y;
+		int map_x = (int)game->player.player_x;
+		int	map_y = (int)game->player.player_y;
 
 		double	raydist_x;
 		double	raydist_y;
@@ -38,34 +38,30 @@ void	shoot_rays(t_game *game)
 			deltadist_y = 1e30;
 		else
 			deltadist_y = fabs(1 / game->ray->raydir_y);
-
-		
 		int	step_x;
 		int	step_y;
 
 		bool	wall_hit = false;
-
-
 		//calculate step and initial sideDist
 		if(game->ray->raydir_x < 0)
 		{
 			step_x = -1;
-			raydist_x = (game->pos_x - map_x) * deltadist_x;
+			raydist_x = (game->player.player_x - map_x) * deltadist_x;
 		}
 		else
 		{
 			step_x = 1;
-			raydist_x = (map_x + 1.0 - game->pos_x) * deltadist_x;
+			raydist_x = (map_x + 1.0 - game->player.player_x) * deltadist_x;
 		}
 		if (game->ray->raydir_y < 0)
 		{
 			step_y = -1;
-			raydist_y = (game->pos_y - map_y) * deltadist_y;
+			raydist_y = (game->player.player_y - map_y) * deltadist_y;
 		}
 		else
 		{
 			step_y = 1;
-			raydist_y = (map_y + 1.0 - game->pos_y) * deltadist_y;
+			raydist_y = (map_y + 1.0 - game->player.player_y) * deltadist_y;
 		}
 
 		//DDA
@@ -105,16 +101,16 @@ void	shoot_rays(t_game *game)
 		if (l_pixel >= SCREEN_HEIGHT)
 			l_pixel = SCREEN_HEIGHT - 1;
 		static int flag = 0;
-		if (game->ray->distance > 1.5 && flag == 0)
+		if (game->ray->distance > 1.5)
 		{
 			flag = 1;
-			printf("%f\n",game->ray->distance);
+			//printf("%f\n",game->ray->distance);
 			game->ray->l_pixel_ray = l_pixel;
 			game->ray->h_pixel_ray = h_pixel;
 		}
 
-		draw_wall(game, h_pixel, l_pixel, x);
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
+		//draw_wall(game, h_pixel, l_pixel, x);
 		x++;
 	}
 
