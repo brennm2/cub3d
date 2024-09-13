@@ -3,6 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="42_Cub3d" targetName="all" />
@@ -22,19 +25,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/header/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_test.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map_test.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/debug/debug_fuctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug_fuctions.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_atoi.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_bzero.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_calloc.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_c.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_d.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_ptr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_s.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_u.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_x.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_is_xup.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_isalnum.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_isalpha.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_isascii.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_isdigit.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_isprint.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_itoa.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstadd_back_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstadd_front_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstclear_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstdelone_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstiter_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstlast_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstmap_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstnew_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_lstsize_bonus.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_memchr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_memcmp.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_memcpy.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_memmove.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_memset.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_printf.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_putchar_fd.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_putendl_fd.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_putnbr_fd.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_putstr_fd.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_split.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strchr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strcmp.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strdup.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_striteri.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strjoin.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strlcat.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strlcpy.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strlen.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strmapi.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strncmp.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strnstr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strrchr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_strtrim.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_substr.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_tolower.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/ft_toupper.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/get_next_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/get_next_line.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/get_next_line_utils.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/libft.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/font.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/font.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/font.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/font.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/libmlx.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_init_loop.m" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_init_loop.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_init_loop.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_init_loop.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_int.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_int.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_int_str_to_wordtab.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_int_str_to_wordtab.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_int_str_to_wordtab.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_int_str_to_wordtab.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_mouse.m" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_mouse.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_mouse.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_mouse.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_new_image.m" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_new_image.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_new_image.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_new_image.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_new_window.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_new_window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_new_window.m" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_new_window.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_new_window.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_new_window.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_opengl.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_opengl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_opengl.m" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_opengl.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_png.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_png.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_png.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_png.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_png.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_png.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_rgb.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_rgb.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_shaders.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_shaders.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_shaders.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_shaders.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_xpm.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_xpm.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx-mac/mlx_xpm.o" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/mlx_xpm.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug_fuctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug_fuctions.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draw_wall.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/draw_wall.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fill_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/fill_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/key_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_handler/fill_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/fill_map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/place_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/place_player.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raycasting/draw_wall.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/draw_wall.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raycasting/shoot_rays.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/shoot_rays.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_check.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/place_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/place_player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shoot_rays.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/shoot_rays.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/texture_handler/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/texture_handler/create_texture.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +133,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -90,28 +180,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Native Application.all.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/bsousa-d/Desktop/Cub3d",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Native Application.all.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bsousa-d/Desktop/Cub3d&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/texture_handler" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/libs" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.all">
@@ -174,16 +267,51 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="" />
-      <created>1725362348516</created>
+      <changelist id="5fd81570-c81a-4165-8866-5ef8a06e15df" name="Changes" comment="" />
+      <created>1725614549427</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725362348516</updated>
-      <workItem from="1725362349560" duration="344000" />
+      <updated>1725614549427</updated>
+      <workItem from="1725614550439" duration="19248000" />
+      <workItem from="1725959831136" duration="15996000" />
+      <workItem from="1725980302170" duration="213000" />
+      <workItem from="1725980526067" duration="3938000" />
+      <workItem from="1725984821609" duration="1195000" />
+      <workItem from="1726218217144" duration="18236000" />
     </task>
+    <task id="LOCAL-00001" summary="Early parser done">
+      <option name="closed" value="true" />
+      <created>1725976973943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725976973943</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Early parser done" />
+    <MESSAGE value="Fixing merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing merge" />
   </component>
 </project>

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../header/cub3d.h"
+#include	"../includes/cub3d.h"
 
 void	move_player(t_game *game, double move_x, double move_y)
 {

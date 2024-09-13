@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../header/cub3d.h"
+#include	"../includes/cub3d.h"
 
 
 void	free_all(t_game *game)

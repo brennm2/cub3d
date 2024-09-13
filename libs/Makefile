@@ -1,87 +1,111 @@
-NAME = libft.a
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        COLORS                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
-AR = ar
-ARFLAGS = rcs
+RESET	= \033[0m
+BLACK 	= \033[1;30m
+RED 	= \033[1;31m
+GREEN 	= \033[1;32m
+YELLOW 	= \033[1;33m
+BLUE	= \033[1;34m
+PURPLE 	= \033[1;35m
+CYAN 	= \033[1;36m
+WHITE 	= \033[1;37m
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                       COMMANDS                                            ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
 CC = cc
-CCFLAGS = -Wall -Werror -Wextra
+RM = rm -rf
+AR = ar -rcs
 
-RM = rm
-RMFLAGS= -f
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                         FLAGS                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
-OBJ = ft_isalnum.o \
-	ft_isalpha.o \
-	ft_isascii.o \
-	ft_isdigit.o \
-	ft_isprint.o \
-	ft_memset.o \
-	ft_strchr.o \
-	ft_strlcat.o \
-	ft_strlcpy.o \
-	ft_strlen.o \
-	ft_strncmp.o \
-	ft_strrchr.o \
-	ft_tolower.o \
-	ft_toupper.o \
-	ft_bzero.o \
-	ft_memcpy.o \
-	ft_memmove.o \
-	ft_memchr.o \
-	ft_memcmp.o \
-	ft_strnstr.o \
-	ft_atoi.o	\
-	ft_strdup.o \
-	ft_calloc.o	\
-	ft_putchar_fd.o \
-	ft_putstr_fd.o \
-	ft_putendl_fd.o \
-	ft_putnbr_fd.o \
-	ft_substr.o \
-	ft_strjoin.o \
-	ft_strtrim.o \
-	ft_split.o \
-	ft_strmapi.o \
-	ft_striteri.o \
-	ft_itoa.o \
-	ft_is_c.o \
-	ft_is_d.o \
-	ft_is_s.o \
-	ft_is_u.o \
-	ft_is_x.o \
-	ft_is_xup.o \
-	ft_is_ptr.o \
-	ft_printf.o \
-	ft_strcmp.o\
-	get_next_line.o
+CFLAGS	= -Wall -Wextra -Werror
+MK		= --no-print-directory
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        FOLDERS                                            ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+
+DEPS			= includes 
+SRCS			= .
+_SUBFOLDERS		= checks convert memory print str get_next_line linked_lists fprintf
+VPATH			= srcs $(addprefix $(SRCS)/ft_, $(_SUBFOLDERS))
+OBJ_DIR			= bin
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        FILES                                              ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
 
+NAME	= 	libft.a
 
-OBJ_BONUS = ft_lstnew_bonus.o \
-	ft_lstadd_front_bonus.o \
-	ft_lstlast_bonus.o \
-	ft_lstsize_bonus.o \
-	ft_lstadd_back_bonus.o \
-	ft_lstdelone_bonus.o \
-	ft_lstclear_bonus.o \
-	ft_lstiter_bonus.o \
-	ft_lstmap_bonus.o
+_FILES += 	isalnum isalpha isascii isdigit isprint
+
+_FILES += 	atoi itoa tolower toupper
+
+_FILES += 	bzero calloc memchr memcmp memcpy memmove memset
+
+_FILES += 	print_char print_decimal print_hexadecimal print_percent print_pointer print_string \
+			print_unsigned_decimal printf putchar_fd putendl_fd putnbr_fd putstr_fd
+
+_FILES +=	fprintf fprinthexa fprinthexa_upp fprintpointer fput_unsi_nbr fputchar fputnbr fputstr
+
+_FILES += 	split strchr strcmp strdup striteri strjoin strlcat strlcpy strlen strmapi strncmp strnstr \
+			strrchr strtrim substr
+
+_FILES +=	get_next_line get_next_line_utils
+
+_FILES += lst_add_back lst_add_front lst_clear lst_delone lst_iter lst_last lst_map lst_new lst_size
+
+OBJS			= $(_FILES:%=ft_%.o)
+TARGET			= $(addprefix $(OBJ_DIR)/, $(OBJS))
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                         RULES                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $(OBJ)
+$(NAME): $(OBJ_DIR) $(TARGET)
+	$(AR) $(NAME) $(TARGET)
+	
+$(OBJ_DIR)/%.o : $(SRCS)/%.c 
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(DEPS)
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -o $@ -c $<
+$(OBJ_DIR) :
+	mkdir -p $(OBJ_DIR)
 
-clean:
-	$(RM) $(RMFLAGS) $(OBJ) $(OBJ_BONUS)
+clean:	
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME)
+	$(RM) $(NAME)
 
-bonus: $(OBJ) $(OBJ_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(OBJ_BONUS)
+re: fclean
+	$(MAKE) all
 
-re: fclean all
+norm:
+	echo "\n\t$(BLUE)_/=\\_/=\\_/=\\_ *.h FILES _/=\\_/=\\_/=\\_$(RESET)\n"
+	norminette -R CheckDefine $(shell find . -type f -name "*.h")
+	echo "\n\t$(BLUE)_/=\\_/=\\_/=\\_ *.c FILES _/=\\_/=\\_/=\\_$(RESET)\n"
+	norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
+
+.SILENT:

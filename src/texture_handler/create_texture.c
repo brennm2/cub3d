@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../header/cub3d.h"
+#include    "../../includes/cub3d.h"
 
 void	create_texture(t_game *game)
 {

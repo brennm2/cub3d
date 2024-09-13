@@ -1,90 +1,102 @@
-MAKEFLAGS += -s
+OS = $(shell uname)
 
-NAME = cub3D
+# Colors
+RESET   = \033[0m
+BLACK   = \033[1;30m
+RED     = \033[1;31m
+GREEN   = \033[1;32m
+YELLOW  = \033[1;33m
+BLUE    = \033[1;34m
+PURPLE  = \033[1;35m
+CYAN    = \033[1;36m
+WHITE   = \033[1;37m
 
-LIBFT = ./libs/libft.a
-MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
-
+# Commands
 CC = cc -g -O3 -ffast-math
-CCFLAGS = -Wall -Werror -Wextra
-MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
-RM = rm
-RMFLAGS= -f
-GREEN=\033[0;32m
-RED=\033[0;31m
-YELLOW=\033[1;93m
-NC=\033[0m
+RM = rm -rf
+AR = ar -rcs
 
+# Folders
+INC_FOLDER = includes
+SRC_FOLDER = src
+OBJ_FOLDER = objects
+LIBFT = ./libs
+LIBFT_MAKE = $(MAKE) -s -C $(LIBFT)  # Use -s to suppress output
+LIBS = -L./libs -lft
+MLX = ./libs/minilibx-linux
 
-SRC = src/main.c \
-	src/key_handler.c \
-	src/free.c \
-	src/fill_map.c \
-	src/debug_fuctions.c \
-	src/shoot_rays.c \
-	src/draw_wall.c \
-	src/place_player.c \
-	src/init.c \
-	src/map_check.c \
-	src/texture_handler/create_texture.c\
-	#src/map_check.c
+# Flags
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -I $(INC_FOLDER)
+MAKEFLAGS = --no-print-directory
+MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -lXext -lX11
+LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
 
-OBJ_DIR = obj
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+# Conditional for macOS
+ifeq ($(OS), Darwin)
+    MLX = mlx_macos
+    MLXFLAGS = -L ./$(MLX) -lmlx -framework OpenGL -framework AppKit -lm
+endif
 
+# Files
+MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays
+MANDATORY_FILES += texture_handler/create_texture
+
+OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
+MAIN_OBJ = $(OBJ_FOLDER)/main.o
+NAME = cub3d
+
+# Rules
 all: $(NAME)
 
-$(LIBFT):
-		$(MAKE) -C ./libs/
+$(NAME): $(OBJ_FOLDER) $(OBJS) $(MAIN_OBJ)
+	#@echo "[$(CYAN)Compiling MLX$(RESET)] $(GREEN)$(MLX)$(RESET)"
+	@clear
+	@./Asccii/creating.sh
+	$(MAKE) -s -C $(MLX) > /dev/null 2>&1
+	#@echo "[$(CYAN)Compiling libft$(RESET)] $(GREEN)$(LIBFT)$(RESET)"
+	$(MAKE) -s -C $(LIBFT) > /dev/null 2>&1
+	#@echo "[$(CYAN)Linking$(RESET)] $(GREEN)$(NAME)$(RESET)"
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LDFLAGS) -o $(NAME)
+	#@echo "$(GREEN)Build complete!$(RESET)"
+	@clear
+	@./Asccii/completed.sh
 
-$(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(@D)
-	$(CC) $(CCFLAGS) -c $< -o $@
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
+	@mkdir -p $(dir $@)  # Ensure the directory exists
+	#@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$<$(RESET)"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
-	$(CC) $(CCFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME) -lreadline
+$(OBJ_FOLDER)/main.o: main.c
+	@mkdir -p $(OBJ_FOLDER)  # Ensure the directory exists
+	#@echo "[$(CYAN)Compiling main.c$(RESET)] $(GREEN)$(OBJ_FOLDER)/main.o$(RESET)"
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c main.c -o $(OBJ_FOLDER)/main.o
 
-
-	@echo "\n${YELLOW}--------------------------"
-	@echo "${YELLOW}| ${GREEN}All files are compiled ${YELLOW}|"
-	@echo "${YELLOW}--------------------------${NC}\n"
-
+re: fclean
+	@$(MAKE) all
 
 clean:
-	$(RM) $(RMFLAGS) $(OBJ) $(LIBFT)
-	$(MAKE) -C ./libs/ clean
-	$(RM) $(RMFLAGS) -r $(OBJ_DIR)
+	@$(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus
+	@clear
+	@./Asccii/object.sh
 
-	@echo "\n${YELLOW}-----------------------------"
-	@echo "${YELLOW}| ${GREEN}Cleaned all ${RED}program${GREEN} files ${YELLOW}|"
-	@echo "${YELLOW}-----------------------------${NC}\n"
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME) $(OBJ) $(LIBFT) $(OBJ_DIR)
-	$(MAKE) -C ./libs/ fclean
+	#@echo "[$(RED)Removing$(RESET)] $(GREEN)LIBFT$(RESET)"
+	@$(MAKE) clean -s -C $(LIBFT) > /dev/null 2>&1
+	#@echo "[$(RED)Removing$(RESET)] $(GREEN)MLX$(RESET)"
+	@$(MAKE) clean -s -C $(MLX) > /dev/null 2>&1
+	#@echo "[$(RED)Removing$(RESET)] $(GREEN)CUB3D$(RESET)"
+	@$(RM) $(NAME)
 
-	@echo "\n${YELLOW}--------------------------------"
-	@echo "${YELLOW}| ${RED}ALL files ${GREEN}have been cleaned! ${YELLOW}|"
-	@echo "${YELLOW}--------------------------------${NC}\n"
+# Custom Rules
+$(OBJ_FOLDER):
+	mkdir -p $(OBJ_FOLDER)
 
-$(MINILIBX):
-	$(MAKE) -C ./libs/minilibx-linux
+norm:
+	@echo "\n\t$(BLUE)Checking norm for *.h files...$(RESET)\n"
+	@norminette -R CheckDefine $(shell find . -type f -name "*.h")
+	@echo "\n\t$(BLUE)Checking norm for *.c files...$(RESET)\n"
+	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
 
-norminette:
-	@norminette | grep -v "line too long" | grep -v "Comment is invalid in this scope" | grep -v "libs"
-
-valgrind:
-	@make re
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./cub3d
-run:
-	@make
-	@./cub3D
-
-update:
-	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
-	@tar -xzf minilibx-linux.tgz -C libs
-	@rm minilibx-linux.tgz
-
-re: fclean all
-
-
+.SILENT:

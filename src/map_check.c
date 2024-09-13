@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../includes/cub3d.h"
 
 bool	ft_check_spaces(char *line)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../includes/cub3d.h"
 #include <assert.h>
 
 bool has_valid_chars(const char *str, const char *valid_chars) //TODO ADD TO LIBFT
