@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 11:24:50 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:32:48 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,30 @@ static void ft_get_textures(t_game *game)
 	}
 }
 
+void	set_player_direction(t_game *game, char c)
+{
+	if(c == 'N')
+	{
+		game->dirx = -1;
+		game->plane_y = 0.66;
+	}
+	else if(c == 'S')
+	{
+		game->dirx = 1;
+		game->plane_y = -0.66;
+	}
+	else if(c == 'E')
+	{
+		game->diry = 1;
+		game->plane_x = 0.66;
+	}
+	else if(c == 'W')
+	{
+		game->diry = -1;
+		game->plane_x = -0.66;
+	}
+}
+
 void ft_get_player_pos(t_game *game)
 {
 	int i;
@@ -234,8 +258,10 @@ void ft_get_player_pos(t_game *game)
 		{
 			if(game->map.map[i][j] == 'N' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
 			{
-				game->player.player_x = i;
-				game->player.player_y = j;
+				game->player.player_x = i + 0.5;
+				game->player.player_y = j + 0.5;
+				set_player_direction(game, game->map.map[i][j]);
+				game->map.map[i][j] = '0';
 				return;
 			}
 			j++;
@@ -264,6 +290,9 @@ t_game *ft_init_structs(char *file)
 	game->map.map = NULL;
 	ft_get_textures(game);
 	ft_get_map(game);
+	//duplica o mapa & flood fill
+	// if (flood fill passar)
+	// else (exit clean)
 	ft_get_player_pos(game);
 	game->ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
 	if (game->ray == NULL)

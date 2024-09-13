@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/12 18:55:08 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:50:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,6 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 	//mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
 }
 
-// void	render_top_botton(t_game *game, int ray_count, int h_pixel, int l_pixel)
-// {
-// 	int		i;
-
-// 	i = l_pixel;
-// 	while (i < SCREEN_HEIGHT)
-// 		better_mlx_pixel_put(&game->img, ray_count, i++, 0xB99470FF); // floor
-// 	i = 0;
-// 	while (i < h_pixel)
-// 		better_mlx_pixel_put(&game->img, ray_count, i++, 0x89CFF3FF); // ceiling
-// }
-
 int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index)
 {
 	int	color;
@@ -42,103 +30,14 @@ int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index
 	return (color);
 }
 
-// int	select_color(t_game *game, int tex_y, double tex_pos)
-// {
-// 	double	wallx;
-// 	int		tex_x;
-	
-// 	//game->ray->ray_angle = normalize_angle(game->ray->ray_angle);
-
-
-// 	//if (game->ray->ray_angle > 0 && game->ray->ray_angle < M_PI)
-// 	if(game->ray->hit_wall == true)
-// 		wallx = game->player->player_x + game->ray->distance + game->ray->hor_x; //rayDirY;
-// 	else
-// 		wallx = game->player->player_y + game->ray->distance + game->ray->ver_y; // rayDirX;
-// 	wallx -=floor(wallx);
-// 	tex_x = (int)(wallx * TEXTURE_W);
-// 	if (game->ray->hit_wall == false && game->ray->ver_y > 0)
-// 		tex_x = TEXTURE_W - tex_x - 1;
-// 	if (game->ray->hit_wall == true && game->ray->hor_y < 0)
-// 		tex_x = TEXTURE_W - tex_x - 1;
-// 	tex_y = (int)tex_pos & (TEXTURE_H - 1);
-// 	//printf("y: %d\n", tex_y);
-
-
-
-// 	return (get_pixel_color(game, tex_y, tex_x));
-
-// 	// if(game->ray->hit_wall == false) //if ray hit the wall
-// 	// {
-// 	// 	if (game->ray->ray_angle > M_PI / 2
-// 	// 		&& game->ray->ray_angle < 3 * (M_PI / 2)) // Find the "midle" of the cube
-// 	// 	{
-// 	// 		// game->texture->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "textures/w_wall.xpm", &game->texture->w, &game->texture->h);
-// 	// 		// game->texture->img->addr = mlx_get_data_addr(game->texture->img->mlx_img, &game->texture->img->bpp, &game->texture->img->line_len, &game->texture->img->endian);
-			
-// 	// 		//return (0xB5B5B5FF); // west wall
-// 	// 		return (get_pixel_color(game, tex_x, tex_y));
-// 	// 	}
-// 	// 	else
-// 	// 		return (get_pixel_color(game, tex_x, tex_y)); // east wall
-// 	// }
-// 	// else
-// 	// {
-// 	// 	if (game->ray->ray_angle > 0 && game->ray->ray_angle < M_PI)
-// 	// 		return (get_pixel_color(game, tex_x, tex_y)); // south wall
-// 	// 	else
-// 	// 		return (get_pixel_color(game, tex_x, tex_y)); // north wall
-// 	// }
-// }
-
-
-// void	paint_wall(t_game *game, int ray_count, int higher_pixel, int lower_pixel)
-// {
-// 	int		color;
-// 	double	step;
-// 	int		tex_y;
-
-// 	//uint32_t		*arr;
-// 	double			x_o;
-// 	double			tex_pos; // y_0;
-// 	//uint32_t		*arr;
-// 	//double			factor;
-
-// 	//arr = game->texture->img->line_len;
-// 	tex_y = 0;
-	
-// 	//color = *(unsigned int *)(game->img->addr + (higher_pixel *
-// 	//	game->img->line_len + lower_pixel * (game->img->bpp / 8)));
-	
-	
-// 	step = 1.0 * TEXTURE_H / game->ray->wall_height;
-
-// 	tex_pos = (higher_pixel - (SCREEN_WIDTH / 2) + (game->ray->wall_height / 2)) * step;
-// 	x_o = get_x_o(game);
-
-// 	if (tex_pos < 0)
-// 		tex_pos = 0;
-	
-// 	//double tex_pos = (higher_pixel - SCREEN_HEIGHT / 2 + game->ray->wall_height / 2)* step; // h?
-// 	while(higher_pixel < lower_pixel)
-// 	{
-// 		color = select_color(game, tex_y, tex_pos);
-// 		// better_mlx_pixel_put(&game->img, ray_count, higher_pixel, reverse_bytes \
-// 		// (arr[(int)tex_pos * TEXTURE_W + (int)x_o]));
-// 		better_mlx_pixel_put(&game->img, ray_count, higher_pixel, color);
-// 		tex_pos += step;
-// 		higher_pixel++;
-// 	}
-// }
-
 int get_texture_color(t_game *game, int tex_y)
 {
 	//get wall_x
 	double wall_x;
 	if (game->ray->side == false)
-		wall_x = game->pos_y + game->ray->distance * game->ray->raydir_y;
+		wall_x = game->player.player_y + game->ray->distance * game->ray->raydir_y;
 	else
-		wall_x = game->pos_x + game->ray->distance * game->ray->raydir_x;
+		wall_x = game->player.player_x + game->ray->distance * game->ray->raydir_x;
 	wall_x -= floor(wall_x);
 
 	//get texture coordinate
@@ -239,6 +138,9 @@ int	get_fog(t_game *game, int color)
 {
 	double	distance = 1.5; //distancia do raio, isso implica na forca do fog
 	int times = 0;
+	//printf("distance: %f\n", game->ray->distance);
+	if (game->ray->distance > 4.3)
+		return (0);
 	while (distance < game->ray->distance)
 	{
 		//color = darken_rgb_color(color, 0.9);
@@ -320,7 +222,7 @@ int darken_rgb_color3 (int color, double factor, int i)
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
-	for (double j = 0; j < i; j += 0.1)
+	for (int j = 0; j < i; j++)
 	{
 		r = (int)(r * factor);
 		g = (int)(g * factor);
@@ -329,33 +231,41 @@ int darken_rgb_color3 (int color, double factor, int i)
 	return (r << 16) | (g << 8) | b;
 }
 
-int	get_fog_floor(t_game *game, int color, int i, int l_pixel)
-{
-	double		distance = game->ray->l_pixel_ray - i; //distancia do raio, isso implica na forca do fog
-	double		times = 14;
 
-	while (distance < l_pixel && times >=0)
+
+int get_fog_ceiling(t_game *game, int color, int i, int h_pixel)
+{
+	//double		distance = (SCREEN_HEIGHT / 2) / 2;
+	int		times = 20;
+	(void)i;
+	(void)h_pixel;
+	(void)game;
+	while (i < SCREEN_HEIGHT / 2)
 	{
-		distance += 40; //quantidade de step do fog
-		times--; // vezes que ele rodou no while
+		i += 10;
+		times--;
 	}
-	// if (times > 2)
-	// 	color = darken_rgb_color3(color, 0.9, times * 5);
-	// else
+	//times = times - distance;
+	//times = ft_min(1, times);
 	color = darken_rgb_color3(color, 0.9, times);
 	return (color);
 }
 
-int get_fog_ceiling(t_game *game, int color, int i, int h_pixel)
+int	get_fog_floor(t_game *game, int color, int i, int l_pixel)
 {
-	double		distance = game->ray->h_pixel_ray - i;
-	double		times = 0;
-	while (distance < h_pixel && times <= 14)
+	//double		distance = SCREEN_HEIGHT / 2; //distancia do raio, isso implica na forca do fog
+	int		times = 0;
+
+	(void)game;
+	(void)i;
+	(void)l_pixel;
+	int stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2));
+	while (i < stop)
 	{
-		distance += 40; //quantidade de step do fog
+		i += 10; //quantidade de step do fog
 		times++; // vezes que ele rodou no while
 	}
-	color = darken_rgb_color3(color, 0.9, times);
+	color = darken_rgb_color3(color, 0.9, times * 1);
 	return (color);
 }
 
@@ -367,31 +277,37 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 	unsigned long	ceiling_rgb;
 	unsigned long	ceiling_rgb_set;
 
+	(void)l_pixel;
+	(void)h_pixel;
+
 	//(void)times;
 	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
 	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
-	i = l_pixel;
-	while (i < SCREEN_HEIGHT)
-	{
-		floor_rgb = floor_rgb_set;
-		// if (i < game->ray->l_pixel_ray)
-		// {
-		// 	floor_rgb = get_fog_floor(game, floor_rgb, i, l_pixel);
-		// 	better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb); // floor
-		// }
-		// else
-			better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb_set);
-	}
 	i = 0;
-	while (i < h_pixel)
+	while (i < SCREEN_HEIGHT / 2) //Ceiling
 	{
 		ceiling_rgb = ceiling_rgb_set;
-		// if (i > game->ray->h_pixel_ray)
-		// {
-		// 	ceiling_rgb = get_fog_ceiling(game, ceiling_rgb, i, h_pixel);
-		// 	better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb);
-		// }
-		// else
-			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb_set); // ceiling
+		if (i >= (SCREEN_HEIGHT / 2) / 2)
+		{
+			ceiling_rgb = get_fog_ceiling(game, ceiling_rgb, i, h_pixel);
+			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb);
+		}
+		else
+			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb_set);
+	}
+	i = SCREEN_HEIGHT / 2;
+	int stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
+	while (i < SCREEN_HEIGHT) // floor
+	{
+		floor_rgb = floor_rgb_set;
+		if (i < ((SCREEN_HEIGHT / 2) + stop) / 2)
+			better_mlx_pixel_put(&game->img, ray_count, i++, 0);
+		if (i < stop)
+		{
+			floor_rgb = get_fog_floor(game, floor_rgb, i, h_pixel);
+			better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb);
+		}
+		else
+		better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb_set); // ceiling
 	}
 }
