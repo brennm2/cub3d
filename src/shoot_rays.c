@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 16:56:37 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:01:38 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,45 +110,7 @@ void	shoot_rays(t_game *game)
 		}
 
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
-		//draw_wall(game, h_pixel, l_pixel, x);
+		draw_wall(game, h_pixel, l_pixel, x);
 		x++;
 	}
-
-
-
-
-
-
-
-
-
-
-	
-	// int		ray_count;
-	// double	h_inter;
-	// double	v_inter;
-
-
-	// ray_count = 0;
-	// game->ray->ray_angle = game->player->angle - (game->player->fov_radian / 2); //Calcula o angulo inicial
-	// while(ray_count < SCREEN_WIDTH) // enquanto a quantidade de rays for menor que o tamanho da tela
-	// {
-	// 	game->ray->hit_wall = false; //reseta a flag de ter acertado a parede na horizontal
-	// 	h_inter = cal_h_inter(game, normalize_angle(game->ray->ray_angle));
-	// 	v_inter = cal_v_inter(game, normalize_angle(game->ray->ray_angle));
-		
-	// 	game->raydir_y = v_inter;
-	// 	game->raydir_x = h_inter;
-		
-	// 	if (v_inter <= h_inter)
-	// 		game->ray->distance = v_inter;
-	// 	else
-	// 	{
-	// 		game->ray->distance = h_inter;
-	// 		game->ray->hit_wall = true;
-	// 	}
-	// 	draw_wall(game, ray_count);
-	// 	ray_count++; //aumenta 1 na quantidade de rays
-	// 	game->ray->ray_angle += (game->player->fov_radian / SCREEN_WIDTH); // pega o proximo angulo
-	// }
 }
