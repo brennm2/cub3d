@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 16:50:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:51:02 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,25 +98,8 @@ int	darken_color(int color, unsigned char amount)
 	return (out);
 }
 
-int darken_rgb_color(int color, double factor)
-{
-    int r, g, b;
 
-    if (factor < 0 || factor > 1)
-        return color; // Factor should be between 0 and 1
-
-    r = (color >> 16) & 0xFF;
-    g = (color >> 8) & 0xFF;
-    b = color & 0xFF;
-
-    r = (int)(r * factor);
-    g = (int)(g * factor);
-    b = (int)(b * factor);
-
-    return (r << 16) | (g << 8) | b;
-}
-
-int darken_rgb_color2 (int color, double factor, int i)
+int darken_rgb_color (int color, double factor, int i)
 {
 	int r, g, b;
 
@@ -138,17 +121,14 @@ int	get_fog(t_game *game, int color)
 {
 	double	distance = 1.5; //distancia do raio, isso implica na forca do fog
 	int times = 0;
-	//printf("distance: %f\n", game->ray->distance);
 	if (game->ray->distance > 4.3)
 		return (0);
 	while (distance < game->ray->distance)
 	{
-		//color = darken_rgb_color(color, 0.9);
 		distance += 0.1; //quantidade de step do fog
 		times++; // vezes que ele rodou no while
 	}
-	
-	color = darken_rgb_color2(color, 0.9, times);
+	color = darken_rgb_color(color, 0.9, times);
 	return (color);
 }
 
@@ -215,14 +195,18 @@ unsigned long	convert_rgb(char *color)
 
 int darken_rgb_color3 (int color, double factor, int i)
 {
-	int r, g, b;
-
+	int r;
+	int g;
+	int b;
+	int j;
+	
+	j = 0;
 	if (factor < 0 || factor > 1)
-		return color; // Factor should be between 0 and 1
+		return color;
 	r = (color >> 16) & 0xFF;
 	g = (color >> 8) & 0xFF;
 	b = color & 0xFF;
-	for (int j = 0; j < i; j++)
+	while (j++ < i)
 	{
 		r = (int)(r * factor);
 		g = (int)(g * factor);
@@ -231,83 +215,84 @@ int darken_rgb_color3 (int color, double factor, int i)
 	return (r << 16) | (g << 8) | b;
 }
 
-
-
-int get_fog_ceiling(t_game *game, int color, int i, int h_pixel)
+int get_fog_ceiling(int color, int i)
 {
-	//double		distance = (SCREEN_HEIGHT / 2) / 2;
-	int		times = 20;
-	(void)i;
-	(void)h_pixel;
-	(void)game;
-	while (i < SCREEN_HEIGHT / 2)
+	int		times = 18;
+	while (i < (SCREEN_HEIGHT / 2) - 110)
 	{
 		i += 10;
 		times--;
 	}
-	//times = times - distance;
-	//times = ft_min(1, times);
 	color = darken_rgb_color3(color, 0.9, times);
 	return (color);
 }
 
-int	get_fog_floor(t_game *game, int color, int i, int l_pixel)
+int	get_fog_floor(int color, int i)
 {
-	//double		distance = SCREEN_HEIGHT / 2; //distancia do raio, isso implica na forca do fog
 	int		times = 0;
-
-	(void)game;
-	(void)i;
-	(void)l_pixel;
 	int stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2));
-	while (i < stop)
+	while (i < stop + 50 && times <= 18)
 	{
 		i += 10; //quantidade de step do fog
 		times++; // vezes que ele rodou no while
 	}
-	color = darken_rgb_color3(color, 0.9, times * 1);
+	color = darken_rgb_color3(color, 0.9, times);
 	return (color);
+}
+void	draw_ceiling(t_game *game, int x, int ray_count)
+{
+	unsigned long	ceiling_rgb;
+	unsigned long	ceiling_rgb_set;
+
+	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
+	
+	int stop = (SCREEN_HEIGHT / 2) - ((SCREEN_HEIGHT / 2) / 2);
+	while (x < SCREEN_HEIGHT / 2) //Ceiling
+	{
+		ceiling_rgb = ceiling_rgb_set;
+		if (x > ((SCREEN_HEIGHT / 2) + stop) / 2)
+		 	better_mlx_pixel_put(&game->img, ray_count, x++, 0);
+		else if (x >= ((SCREEN_HEIGHT / 2) / 2) - 100)
+		{
+			ceiling_rgb = get_fog_ceiling(ceiling_rgb, x);
+			better_mlx_pixel_put(&game->img, ray_count, x++, ceiling_rgb);
+		}
+		else
+			better_mlx_pixel_put(&game->img, ray_count, x++, ceiling_rgb_set);
+	}
+}
+
+void	draw_floor(t_game *game, int x, int ray_count)
+{
+	unsigned long	floor_rgb_set;
+	unsigned long	floor_rgb;
+	int				stop;
+
+	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
+	stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
+	while (x < SCREEN_HEIGHT)
+	{
+		floor_rgb = floor_rgb_set;
+		if (x < ((SCREEN_HEIGHT / 2) + stop) / 2)
+		 	better_mlx_pixel_put(&game->img, ray_count, x++, 0);
+		else if (x < stop + 50)
+		{
+			floor_rgb = get_fog_floor(floor_rgb, x);
+			better_mlx_pixel_put(&game->img, ray_count, x++, floor_rgb);
+		}
+		else
+		better_mlx_pixel_put(&game->img, ray_count, x++, floor_rgb_set); // ceiling
+	}
 }
 
 void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 {
-	int		i;
-	unsigned long	floor_rgb_set;
-	unsigned long	floor_rgb;
-	unsigned long	ceiling_rgb;
-	unsigned long	ceiling_rgb_set;
+	int		x;
+	x = 0;
 
-	(void)l_pixel;
 	(void)h_pixel;
-
-	//(void)times;
-	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
-	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
-	i = 0;
-	while (i < SCREEN_HEIGHT / 2) //Ceiling
-	{
-		ceiling_rgb = ceiling_rgb_set;
-		if (i >= (SCREEN_HEIGHT / 2) / 2)
-		{
-			ceiling_rgb = get_fog_ceiling(game, ceiling_rgb, i, h_pixel);
-			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb);
-		}
-		else
-			better_mlx_pixel_put(&game->img, ray_count, i++, ceiling_rgb_set);
-	}
-	i = SCREEN_HEIGHT / 2;
-	int stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
-	while (i < SCREEN_HEIGHT) // floor
-	{
-		floor_rgb = floor_rgb_set;
-		if (i < ((SCREEN_HEIGHT / 2) + stop) / 2)
-			better_mlx_pixel_put(&game->img, ray_count, i++, 0);
-		if (i < stop)
-		{
-			floor_rgb = get_fog_floor(game, floor_rgb, i, h_pixel);
-			better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb);
-		}
-		else
-		better_mlx_pixel_put(&game->img, ray_count, i++, floor_rgb_set); // ceiling
-	}
+	(void)l_pixel;
+	draw_ceiling(game, x, ray_count);
+	x = SCREEN_HEIGHT / 2;
+	draw_floor(game, x, ray_count);
 }
