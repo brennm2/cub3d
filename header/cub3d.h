@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 11:17:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:30:05 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define	CUB3D_H
 
 # include "../libs/libft.h"
-// # include "../libs/minilibx-linux/mlx.h"
-# include "../minilibx-mac/mlx.h"
-// # include <X11/X.h>
-// # include <X11/keysym.h>
+# include "../libs/minilibx-linux/mlx.h"
+// # include "../minilibx-mac/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
@@ -55,8 +55,8 @@
 #  define D 100
 #  define C 99
 #  define V 118
-#  define RIGHT 65361
-#  define LEFT 65363
+#  define RIGHT 65363
+#  define LEFT 65361
 # endif
 
 typedef struct s_map

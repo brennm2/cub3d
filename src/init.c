@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 11:08:44 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:24:50 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,8 +236,6 @@ void ft_get_player_pos(t_game *game)
 			{
 				game->player.player_x = i;
 				game->player.player_y = j;
-				printf("%i\n", game->player.player_x);
-				printf("%i\n", game->player.player_y);
 				return;
 			}
 			j++;

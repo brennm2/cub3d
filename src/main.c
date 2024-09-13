@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 11:19:28 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:25:22 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,16 +140,17 @@ int	main(int ac, char **av)
 	// game = malloc(sizeof (t_game));
 	// if(game == NULL)
 	// 	return 1;
-	game = NULL;
-	game = init_game();
-	ft_init_struct(game, av[1]);
-	if (!game)
-		return (0);
+	// game = NULL;
+	// game = init_game();
+	game = ft_init_structs(av[1]);
+	init_player(game, game->player);
+	init_window(game);
+	init_game_data(game);
 	//if(ac == 2 && syntax_error(av[1]))
 	//{
 	//ft_check_map(game, av);
 	//printf("Hello\n");
-	//init_game(game);
+	// init_game(game);
 	// game->map_name = av[1];
 	//read_map(av[1], game); //Read and fill the game->map
 	//DEBUG --------------
