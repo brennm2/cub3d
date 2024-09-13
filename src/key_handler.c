@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/11 14:07:56 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:18:12 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_player(t_game *game, double move_x, double move_y)
 	// map_pos_y = new_move_y / BLOCK_SIZE;
 	//printf("map after position: %c\n", game->map[map_pos_y][map_pos_x]);
 	//printf("player position\nx:%d\ny:%d\nmap:%c\n",map_pos_x, map_pos_y, game->map[map_pos_y][map_pos_x]);
-	if (game->map2[(int)new_move_y][(int)new_move_x] != '1')
+	if (game->map.map[(int)new_move_y][(int)new_move_x] != '1')
 	{
 		game->pos_x = new_move_x;
 		game->pos_y = new_move_y;
@@ -40,9 +40,9 @@ void	move_up(t_game *game)
 
 	//game->pos_x += 1;
 
-	if(game->map2[(int)(game->pos_x + game->dirx * PLAYER_SPEED)][(int)(game->pos_y)] == '0')
+	if(game->map.map[(int)(game->pos_x + game->dirx * PLAYER_SPEED)][(int)(game->pos_y)] == '0')
 		game->pos_x += game->dirx * PLAYER_SPEED;
-	if(game->map2[(int)(game->pos_x)][(int)(game->pos_y + game->diry * PLAYER_SPEED)] == '0')
+	if(game->map.map[(int)(game->pos_x)][(int)(game->pos_y + game->diry * PLAYER_SPEED)] == '0')
 		game->pos_y += game->diry * PLAYER_SPEED;
 
 	// move_x = cos(game->player->angle) * PLAYER_SPEED;
@@ -57,9 +57,9 @@ void	move_down(t_game *game)
 	// double	move_x;
 	// double	move_y;
 
-	if(game->map2[(int)(game->pos_x - game->dirx * PLAYER_SPEED)][(int)(game->pos_y)] == '0')
+	if(game->map.map[(int)(game->pos_x - game->dirx * PLAYER_SPEED)][(int)(game->pos_y)] == '0')
 		game->pos_x -= game->dirx * PLAYER_SPEED;
-	if(game->map2[(int)(game->pos_x)][(int)(game->pos_y - game->diry * PLAYER_SPEED)] == '0')
+	if(game->map.map[(int)(game->pos_x)][(int)(game->pos_y - game->diry * PLAYER_SPEED)] == '0')
 		game->pos_y -= game->diry * PLAYER_SPEED;
 
 	// move_x = -cos(game->player->angle) * PLAYER_SPEED;
@@ -67,40 +67,47 @@ void	move_down(t_game *game)
 	// move_player(game, move_x, move_y);
 }
 
-void	move_left(t_game *game)
+void	move_right(t_game *game)
 {
 	double move_x;
- 	double move_y ;
+    double move_y;
 
-	move_x = sin(game->diry) * PLAYER_SPEED; //cos(game->dirx) * PLAYER_SPEED;
-	move_y = -cos(game->dirx) * PLAYER_SPEED; //sin(game->diry) * PLAYER_SPEED;
+    move_x = game->diry * PLAYER_SPEED;
+    move_y = -game->dirx * PLAYER_SPEED;
 
-	if (game->map2[(int)(game->pos_x - move_x)][(int)(game->pos_y)] == '0')
-		game->pos_x -= move_x;
-	if (game->map2[(int)(game->pos_x)][(int)(game->pos_y + move_y)] == '0')
-		game->pos_y += move_y;
+    if (game->map.map[(int)(game->pos_x + move_x)][(int)(game->pos_y)] == '0')
+        game->pos_x += move_x;
+    if (game->map.map[(int)(game->pos_x)][(int)(game->pos_y + move_y)] == '0')
+        game->pos_y += move_y;
+	// double move_x;
+ 	// double move_y ;
+
+	// move_x = sin(game->diry) * PLAYER_SPEED; //cos(game->dirx) * PLAYER_SPEED;
+	// move_y = -cos(game->dirx) * PLAYER_SPEED; //sin(game->diry) * PLAYER_SPEED;
+
+	// if (game->map.map[(int)(game->pos_x - move_x)][(int)(game->pos_y)] == '0')
+	// 	game->pos_x -= move_x;
+	// if (game->map.map[(int)(game->pos_x)][(int)(game->pos_y + move_y)] == '0')
+	// 	game->pos_y += move_y;
 
 	// move_x = sin(game->player->angle) * PLAYER_SPEED;
 	// move_y = -cos(game->player->angle) * PLAYER_SPEED;
 	// move_player(game, move_x, move_y);
 }
 
-void	move_right(t_game *game)
+void	move_left(t_game *game)
 {
-	double move_x;
- 	double move_y ;
 
-	move_x = -sin(game->diry) * PLAYER_SPEED;
-	move_y = cos(game->dirx) * PLAYER_SPEED;
+	 double move_x;
+    double move_y;
 
-	if (game->map2[(int)(game->pos_x + move_x)][(int)(game->pos_y)] == '0')
-		game->pos_x += move_x;
-	if (game->map2[(int)(game->pos_x)][(int)(game->pos_y + move_y)] == '0')
-		game->pos_y += move_y;
+    move_x = -game->diry * PLAYER_SPEED;
+    move_y = game->dirx * PLAYER_SPEED;
 
-	// move_y = cos(game->player->angle) * PLAYER_SPEED;
-	// move_x = -sin(game->player->angle) * PLAYER_SPEED;
-	// move_player(game, move_x, move_y);
+    if (game->map.map[(int)(game->pos_x + move_x)][(int)(game->pos_y)] == '0')
+        game->pos_x += move_x;
+    if (game->map.map[(int)(game->pos_x)][(int)(game->pos_y + move_y)] == '0')
+        game->pos_y += move_y;
 }
 
 void	look_direction(t_game *game, bool is_left)

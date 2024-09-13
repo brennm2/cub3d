@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 08:59:16 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:17:27 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct s_map
 } t_map;
 
 # define FOV 60
-# define SCREEN_WIDTH 1000
-# define SCREEN_HEIGHT 700
+# define SCREEN_WIDTH 1500
+# define SCREEN_HEIGHT 1000
 # define BLOCK_SIZE 64
 # define PLAYER_SPEED 0.2
 # define PLAYER_SENS 0.045
@@ -100,6 +100,8 @@ typedef struct s_ray
 
 	double	raydir_x;
 	double	raydir_y;
+	int		l_pixel_ray;
+	int		h_pixel_ray;
 }	t_ray;
 
 typedef struct s_img
@@ -123,13 +125,14 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	char		**map2;
+	//char		**map2;
 	char		*map_name;
 	int			map_w;
 	int			map_h;
 	int			h;
 	int			fd_file;
-
+	
+	
 	double		pos_x;
 	double		pos_y;
 	double		dirx;
@@ -162,6 +165,9 @@ int		ft_quit_game(t_game *game);
 void	read_map(char *map_name, t_game *game);
 void	fill_map(int fd, t_game *game);
 
+
+// SRC/TEXTURE_HANDLER/CREATE_TEXTURE
+void	create_texture(t_game *game);
 
 // SRC/DEBUG/DEBUG_FUNCIONS.C
 void	show_map(t_game *game);

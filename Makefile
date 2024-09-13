@@ -1,49 +1,34 @@
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
-#·                                                                                           ·#
-#·                                        COLORS                                             ·#
-#·                                                                                           ·#
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+MAKEFLAGS += -s
 
-RESET   = \033[0m
-BLACK   = \033[1;30m
-RED     = \033[1;31m
-GREEN   = \033[1;32m
-YELLOW  = \033[1;33m
-BLUE    = \033[1;34m
-PURPLE  = \033[1;35m
-CYAN    = \033[1;36m
-WHITE   = \033[1;37m
+NAME = cub3D
 
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
-#·                                                                                           ·#
-#·                                       COMMANDS                                            ·#
-#·                                                                                           ·#
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+LIBFT = ./libs/libft.a
+MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
 
-CC      = cc
-RM      = rm -rf
-AR      = ar -rcs
-
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
-#·                                                                                           ·#
-#·                                         FLAGS                                             ·#
-#·                                                                                           ·#
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
-
-CFLAGS  = -Wall -Wextra -Werror
-MLXFLAGS = -L ./libs/minilibx-linux -lmlx -lXext -lX11 -Imlx_linux
-X11_FLAGS = -L/usr/X11/lib -Lmlx -L/usr/lib
-MLX = libs/minilibx-linux
+CC = cc -g -O3 -ffast-math
+CCFLAGS = -Wall -Werror -Wextra
+MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
+RM = rm
+RMFLAGS= -f
+GREEN=\033[0;32m
+RED=\033[0;31m
+YELLOW=\033[1;93m
+NC=\033[0m
 
 
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
-#·                                                                                           ·#
-#·                                        FOLDERS                                            ·#
-#·                                                                                           ·#
-#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+SRC = main.c \
+	src/key_handler.c \
+	src/free.c \
+	src/map_handler/fill_map.c \
+	src/debug/debug_fuctions.c \
+	src/raycasting/shoot_rays.c \
+	src/raycasting/draw_wall.c \
+	src/player/place_player.c \
+	src/init.c \
+	src/map_check.c \
+	src/texture_handler/create_texture.c\
+	#src/map_check.c
 
-SRC_DIR = src
-SRC_DIR_BONUS = src_bonus
 OBJ_DIR = obj
 LIBFT   = libs
 LIBFT_LIB = $(LIBFT)/libft.a
