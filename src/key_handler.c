@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 17:37:28 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:07:56 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	look_direction(t_game *game, bool is_left)
 int	key_handler(int key, t_game *game)
 {
 	(void)game;
-	if (key == XK_Escape)
+	if (key == ESC)
 	{
 		ft_printf("\n'ESC' pressed, game closed...\nThanks for playing!\n");
 		ft_quit_game(game);
@@ -145,9 +145,9 @@ int	key_handler(int key, t_game *game)
 		move_left(game); //printf("moveleft\n");//test_move_left(game);
 	if (key == 'd')
 		move_right(game); //printf("moveright\n");//test_move_right(game);
-	if (key == XK_Left)
+	if (key == LEFT)
 		look_direction(game, true); //printf("looked left\n");
-	if (key == XK_Right)
+	if (key == RIGHT)
 		look_direction(game, false); //printf("looked right\n");c
 	return (0);
 }

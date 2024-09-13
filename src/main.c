@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/10 18:42:23 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:11:47 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"header/cub3d.h"
+#include "../header/cub3d.h"
 
 void	init_window(t_game *game)
 {
@@ -25,7 +25,6 @@ void	init_window(t_game *game)
         game->texture[i]->img = ft_calloc(1, sizeof(t_img));
     }
 }
-
 
 void	display_window(t_game *game)
 {
@@ -70,39 +69,17 @@ void	init_game_data(t_game *game)
 	game->pos_y = 2+0.5;
 }
 
-void	init_player(t_game *game, t_player *player)
+void	init_player(t_game *game, t_player player)
 {
 	game->player_in_map_x = 14; //DEBUG
 	game->player_in_map_y = 3; //DEBUG
-	player->player_x = game->player_in_map_x * BLOCK_SIZE + BLOCK_SIZE/2;
-	player->player_y = game->player_in_map_y * BLOCK_SIZE + BLOCK_SIZE/2;
+	(void)player;
+	// player->player_x = game->player_in_map_x * BLOCK_SIZE + BLOCK_SIZE/2;
+	// player->player_y = game->player_in_map_y * BLOCK_SIZE + BLOCK_SIZE/2;
 	//player->fov_radian = (FOV * M_PI) / 180;
 	//player->angle = M_PI;
 }
 
-t_game	*init_game(void)
-{
-	t_game	*game;
-
-	game = (t_game *)ft_calloc(sizeof(t_game), 1);
-	//game = malloc(sizeof(t_game));
-	if (!game)
-		return (NULL);
-	game->ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
-	if (!game->ray)
-		return (NULL);
-	game->player = (t_player *)ft_calloc(sizeof(t_player), 1);
-	if (!game->player)
-		return (NULL);
-	game->img = ft_calloc(sizeof(t_img), 1);
-	if (!game->img)
-		return (NULL);
-
-	init_player(game, game->player);
-	init_window(game);
-	init_game_data(game);
-	return (game);
-}
 
 void	debug_create_texture(t_game *game)
 {
@@ -119,7 +96,7 @@ void	debug_create_texture(t_game *game)
 	
 	//texture 1 = S
 	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[1]->w,
+			game->mlx_ptr, "sprites/south_wall.xpm", &game->texture[1]->w,
 				&game->texture[1]->h);
 	game->texture[1]->img->addr = mlx_get_data_addr(
 			game->texture[1]->img->mlx_img, &game->texture[1]->img->bpp,
@@ -166,6 +143,17 @@ static void file_exist(char *file)
 	}
 }
 
+// t_game	*init_game(void)
+// {
+// 	t_game	*game;
+//
+//
+// 	init_player(game, game->player);
+// 	init_window(game);
+// 	init_game_data(game);
+// 	return (game);
+// }
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -173,26 +161,10 @@ int	main(int ac, char **av)
 	ft_check_args(ac);
 	is_cub_file(av[1]);
 	file_exist(av[1]);
-	// game = malloc(sizeof (t_game));
-	// if(game == NULL)
-	// 	return 1;
-	game = NULL;
-	game = init_game();
-	ft_init_struct(game, av[1]);
-	if (!game)
-		return (0);
-	//if(ac == 2 && syntax_error(av[1]))
-	//{
-	//ft_check_map(game, av);
-	//printf("Hello\n");
-	//init_game(game);
-	// game->map_name = av[1];
-	//read_map(av[1], game); //Read and fill the game->map
-	//DEBUG --------------
-	show_map(game);
-	//DEBUG ------------
-	//}
-	// --read_map func--
+	game = ft_init_structs(av[1]);
+	init_player(game, game->player);
+	init_window(game);
+	init_game_data(game);
 	debug_create_texture(game);
 	open_window(game);
 }

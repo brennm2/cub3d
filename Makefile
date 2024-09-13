@@ -1,90 +1,113 @@
-MAKEFLAGS += -s
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        COLORS                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
-NAME = cub3D
+RESET   = \033[0m
+BLACK   = \033[1;30m
+RED     = \033[1;31m
+GREEN   = \033[1;32m
+YELLOW  = \033[1;33m
+BLUE    = \033[1;34m
+PURPLE  = \033[1;35m
+CYAN    = \033[1;36m
+WHITE   = \033[1;37m
 
-LIBFT = ./libs/libft.a
-MINILIBX = ./libs/minilibx-linux/libmlx_Linux.a
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                       COMMANDS                                            ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
-CC = cc -g #-O3 -ffast-math
-CCFLAGS = -Wall -Werror -Wextra
-MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
-RM = rm
-RMFLAGS= -f
-GREEN=\033[0;32m
-RED=\033[0;31m
-YELLOW=\033[1;93m
-NC=\033[0m
+CC      = cc
+RM      = rm -rf
+AR      = ar -rcs
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                         FLAGS                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+
+CFLAGS  = -Wall -Wextra -Werror
+MLXFLAGS = -L ./libs/minilibx-linux -lmlx -lXext -lX11 -Imlx_linux
+X11_FLAGS = -L/usr/X11/lib -Lmlx -L/usr/lib
+MLX = libs/minilibx-linux
 
 
-SRC = main.c \
-	src/key_handler.c \
-	src/free.c \
-	src/map_handler/fill_map.c \
-	src/debug/debug_fuctions.c \
-	src/raycasting/shoot_rays.c \
-	src/raycasting/draw_wall.c \
-	src/player/place_player.c \
-	src/init.c \
-	src/map_check.c
-	#src/map_check.c
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        FOLDERS                                            ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
+SRC_DIR = src
+SRC_DIR_BONUS = src_bonus
 OBJ_DIR = obj
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+LIBFT   = libs
+LIBFT_LIB = $(LIBFT)/libft.a
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                        FILES                                              ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+
+NAME    = cub3d
+
+_FILES  += debug_fuctions.c draw_wall.c fill_map.c shoot_rays.c free.c init.c key_handler.c main.c map_check.c place_player.c
+SRC     = $(addprefix $(SRC_DIR)/, $(_FILES))
+OBJ     = $(addprefix $(OBJ_DIR)/, $(_FILES:%.c=%.o))
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                     CONDITIONALS                                          ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+
+ifeq ($(OS), Darwin)
+	MLX = minilibx-mac
+	MLXFLAGS = -L ./$(MLX) -lmlx -framework OpenGL -framework AppKit -lm
+endif
+
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
+#·                                                                                           ·#
+#·                                         RULES                                             ·#
+#·                                                                                           ·#
+#· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·#
 
 all: $(NAME)
 
-$(LIBFT):
-		$(MAKE) -C ./libs/
-
-$(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(@D)
-	$(CC) $(CCFLAGS) -c $< -o $@
-
-$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
-	$(CC) $(CCFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME) -lreadline
+$(NAME): $(OBJ) $(LIBFT_LIB)
+	@make -C $(MLX) > /dev/null 2>&1
+	@echo "[$(CYAN)Linking$(RESET)] $(GREEN)$(NAME)$(RESET)"
+	@$(CC) -L $(MLX) $(CFLAGS) $^ -o $@ $(MLXFLAGS)
+	@echo "$(GREEN)Done.$(RESET)"
 
 
-	@echo "\n${YELLOW}--------------------------"
-	@echo "${YELLOW}| ${GREEN}All files are compiled ${YELLOW}|"
-	@echo "${YELLOW}--------------------------${NC}\n"
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(LIBFT_LIB):
+	@$(MAKE) -C $(LIBFT)
 
 clean:
-	$(RM) $(RMFLAGS) $(OBJ) $(LIBFT)
-	$(MAKE) -C ./libs/ clean
-	$(RM) $(RMFLAGS) -r $(OBJ_DIR)
-
-	@echo "\n${YELLOW}-----------------------------"
-	@echo "${YELLOW}| ${GREEN}Cleaned all ${RED}program${GREEN} files ${YELLOW}|"
-	@echo "${YELLOW}-----------------------------${NC}\n"
+	@$(MAKE) -C $(LIBFT) clean
+	@echo "[$(RED)Deleted$(RESET)] $(GREEN)$(OBJ_DIR)/*.o$(RESET)"
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME) $(OBJ) $(LIBFT) $(OBJ_DIR)
-	$(MAKE) -C ./libs/ fclean
-
-	@echo "\n${YELLOW}--------------------------------"
-	@echo "${YELLOW}| ${RED}ALL files ${GREEN}have been cleaned! ${YELLOW}|"
-	@echo "${YELLOW}--------------------------------${NC}\n"
-
-$(MINILIBX):
-	$(MAKE) -C ./libs/minilibx-linux
-
-norminette:
-	@norminette | grep -v "line too long" | grep -v "Comment is invalid in this scope" | grep -v "libs"
-
-valgrind:
-	@make re
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./cub3d
-run:
-	@make
-	@./cub3D
-
-update:
-	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
-	@tar -xzf minilibx-linux.tgz -C libs
-	@rm minilibx-linux.tgz
+	@$(MAKE) -C $(LIBFT) fclean
+	@echo "[$(RED)Deleted$(RESET)] $(GREEN)$(NAME)$(RESET)"
+	@$(RM) $(NAME)
 
 re: fclean all
 
-
-
+.PHONY: all clean fclean re
+.SILENT:

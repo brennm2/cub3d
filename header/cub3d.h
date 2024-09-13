@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:56 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 08:59:16 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define	CUB3D_H
 
 # include "../libs/libft.h"
-# include "../libs/minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
+// # include "../libs/minilibx-linux/mlx.h"
+# include "../minilibx-mac/mlx.h"
+// # include <X11/X.h>
+// # include <X11/keysym.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
@@ -29,6 +30,34 @@
 # define EAST "EA"
 # define CEILING "C"
 # define FLOOR "F"
+
+
+//! Minilibx events
+# ifdef __APPLE__
+#  define ESC 53
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+#  define C 8
+#  define V 9
+#  define RIGHT 124
+#  define LEFT 123
+#  define KeyPress 2
+#  define KeyPressMask (1L<<0)
+#  define DestroyNotify 17
+#  define StructureNotifyMask (1L<<17)
+# else
+#  define ESC 65307
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+#  define C 99
+#  define V 118
+#  define RIGHT 65361
+#  define LEFT 65363
+# endif
 
 typedef struct s_map
 {
@@ -115,7 +144,7 @@ typedef struct s_game
 
 
 	t_ray		*ray;
-	t_player	*player;
+	t_player	player;
 	t_img		*img;
 	t_texture	**texture;
 
@@ -154,6 +183,6 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 bool ft_check_map(t_game *game, char **av);
 
-t_game *ft_init_struct(t_game *game, char *file);
+t_game *ft_init_structs(char *file);
 
 #endif

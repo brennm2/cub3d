@@ -48,12 +48,12 @@ void	free_all(t_game *game)
 	//	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
 	if (game->mlx_ptr)
 	{
-		mlx_destroy_display(game->mlx_ptr);
+		// mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
 	if(game->ray)
 		free(game->ray);
-	if(game->player)
-		free(game->player);
+	// if(game->player)
+	// 	free(game->player);
 	free (game);
 }

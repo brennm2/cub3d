@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../header/cub3d.h"
+#include "../header/cub3d.h"
 
 void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
 {

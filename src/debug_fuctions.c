@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../header/cub3d.h"
+#include "../header/cub3d.h"
 
 void	show_map(t_game *game)
 {

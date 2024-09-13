@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../header/cub3d.h"
+#include "../header/cub3d.h"
 
 // int	inter_check(float angle, float *inter, float *step, int is_horizon)	// check the intersection
 // {

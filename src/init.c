@@ -6,12 +6,38 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:59:33 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:08:44 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3d.h"
 #include <assert.h>
+
+bool has_valid_chars(const char *str, const char *valid_chars) //TODO ADD TO LIBFT
+{
+	int i, j;
+	bool is_valid;
+
+	i = 0;
+	while (str[i])
+	{
+		is_valid = false;
+		j = 0;
+		while (valid_chars[j])
+		{
+			if (str[i] == valid_chars[j])
+			{
+				is_valid = true;
+				break;
+			}
+			j++;
+		}
+		if (!is_valid)
+			return false;
+		i++;
+	}
+	return true;
+}
 
 static void ft_extend_map(t_game *game)
 {
@@ -66,6 +92,11 @@ static void ft_get_map(t_game *game)
 	{
 		if(!ft_check_empty_line(game->map.line, 2))
 		{
+			if (!has_valid_chars(game->map.line, "10NSWE\n"))
+			{
+				printf("Invalid char!\n");
+				exit(1); //TODO change to funtion to print, free and exit
+			}
 			game->map.map[game->map.height] = ft_strdup(game->map.line);
 			game->map.height++;
 			game->map.map[game->map.height] =  NULL;
@@ -74,9 +105,10 @@ static void ft_get_map(t_game *game)
 		free(game->map.line);
 		game->map.line = get_next_line(game->fd_file);
 	}
+	close(game->fd_file);
 }
 
-static bool ft_all_textures_set(t_game *game)
+static bool ft_all_textures_set(t_game const *game)
 {
 	if (game->map.NORTH_PATH != NULL && game->map.SOUTH_PATH != NULL
 		&& game->map.WEST_PATH != NULL && game->map.EAST_PATH != NULL
@@ -96,7 +128,7 @@ static char	*remove_all_spaces(char *str)
 	i = 0;
 	j = 0;
 	result = (char *) malloc(ft_strlen(str) + 1);
-	if (!result)
+	if (result == NULL)
 		return (NULL);
 	while (str[i] != ' ' && !ft_isalpha(str[i]))
 		i++;
@@ -189,8 +221,38 @@ static void ft_get_textures(t_game *game)
 	}
 }
 
-t_game *ft_init_struct(t_game *game, char *file)
+void ft_get_player_pos(t_game *game)
 {
+	int i;
+	int j;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		j = 0;
+		while(game->map.map[i][j])
+		{
+			if(game->map.map[i][j] == 'N' || game->map.map[i][j] == 'S' || game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
+			{
+				game->player.player_x = i;
+				game->player.player_y = j;
+				printf("%i\n", game->player.player_x);
+				printf("%i\n", game->player.player_y);
+				return;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+t_game *ft_init_structs(char *file)
+{
+	t_game *game;
+
+	game = (t_game *)ft_calloc(sizeof(t_game), 1);
+	if (game == NULL)
+		return (NULL); // TODO put function to print and free memory
 	// game->mlx_ptr = NULL;
 	// game->win_ptr = NULL;
 	game->fd_file = open(file, O_RDONLY);
@@ -204,6 +266,12 @@ t_game *ft_init_struct(t_game *game, char *file)
 	game->map.map = NULL;
 	ft_get_textures(game);
 	ft_get_map(game);
-	close(game->fd_file);
+	ft_get_player_pos(game);
+	game->ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
+	if (game->ray == NULL)
+		return (NULL);
+	game->img = ft_calloc(sizeof(t_img), 1);
+	if (game->img == NULL)
+		return (NULL);
 	return game;
 }
