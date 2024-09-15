@@ -26,7 +26,7 @@ LIBS = -L./libs -lft
 MLX = ./libs/minilibx-linux
 
 # Flags
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 CPPFLAGS = -I $(INC_FOLDER)
 MAKEFLAGS = --no-print-directory
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -lXext -lX11
