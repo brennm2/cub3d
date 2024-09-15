@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/15 18:22:47 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/15 18:55:37 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	shoot_rays(t_game *game)
 		// 	game->ray->l_pixel_ray = l_pixel;
 		// 	game->ray->h_pixel_ray = h_pixel;
 		// }
-
 		draw_floor_ceiling(game, x, h_pixel, l_pixel);
 		draw_wall(game, h_pixel, l_pixel, x);
 		x++;
