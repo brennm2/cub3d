@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/15 16:10:48 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/15 18:43:35 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ static inline int	get_fog(t_game *game, int color)
 	double	distance;
 	int		times;
 
-	if (game->ray->distance > 4.3)
+	if (game->ray->distance > 4.2)
 		return (0);
 	times = 0;
-	distance = 1.5; //distancia do raio, isso implica na forca do fog
+	distance = 1; //distancia do raio, isso implica na forca do fog
 	while (distance < game->ray->distance)
 	{
-		distance += 0.1; //quantidade de step do fog
+		distance += 0.15; //quantidade de step do fog
 		times++; // vezes que ele rodou no while
 	}
 	color = darken_rgb_color3(color, 0.9, times);
@@ -106,10 +106,11 @@ void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
 	int		color;
 	double	step = 1.0 * TEXTURE_H / game->ray->line_height;
 	double	texpos = (h_pixel - SCREEN_HEIGHT / 2 + game->ray->line_height / 2) * step;
+	int	tex_y;
 	
 	while(h_pixel++ < l_pixel)
 	{
-		int	tex_y = (int)texpos & (TEXTURE_H - 1);
+		tex_y= (int)texpos & (TEXTURE_H - 1);
 		texpos += step;
 		color = get_texture_color(game, tex_y);
 		color = get_fog(game, color);
@@ -182,7 +183,7 @@ int	get_fog_floor(int color, int i)
 	color = darken_rgb_color3(color, 0.9, times);
 	return (color);
 }
-void	draw_ceiling(t_game *game, int x, int ray_count)
+void	draw_ceiling(t_game *game, int x, int ray_count, int h_pixel)
 {
 	unsigned long	ceiling_rgb;
 	unsigned long	ceiling_rgb_set;
@@ -192,6 +193,8 @@ void	draw_ceiling(t_game *game, int x, int ray_count)
 	int stop = (SCREEN_HEIGHT / 2) - ((SCREEN_HEIGHT / 2) / 2);
 	while (x < SCREEN_HEIGHT / 2) //Ceiling
 	{
+		if (x == h_pixel)
+			return ;
 		ceiling_rgb = ceiling_rgb_set;
 		if (x > ((SCREEN_HEIGHT / 2) + stop) / 2)
 		 	better_mlx_pixel_put(&game->img, ray_count, x++, 0);
@@ -205,7 +208,7 @@ void	draw_ceiling(t_game *game, int x, int ray_count)
 	}
 }
 
-void	draw_floor(t_game *game, int x, int ray_count)
+void	draw_floor(t_game *game, int x, int ray_count, int l_pixel)
 {
 	unsigned long	floor_rgb_set;
 	unsigned long	floor_rgb;
@@ -215,8 +218,10 @@ void	draw_floor(t_game *game, int x, int ray_count)
 	stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
 	while (x < SCREEN_HEIGHT)
 	{
+		while (x < l_pixel)
+			x++ ;
 		floor_rgb = floor_rgb_set;
-		if (x < ((SCREEN_HEIGHT / 2) + stop) / 2)
+		if (x < (((SCREEN_HEIGHT / 2) + stop) / 2))
 		 	better_mlx_pixel_put(&game->img, ray_count, x++, 0);
 		else if (x < stop + 50)
 		{
@@ -233,9 +238,7 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 	int		x;
 
 	x = 0;
-	(void)h_pixel;
-	(void)l_pixel;
-	draw_ceiling(game, x, ray_count);
+	draw_ceiling(game, x, ray_count, h_pixel);
 	x = SCREEN_HEIGHT / 2;
-	draw_floor(game, x, ray_count);
+	draw_floor(game, x, ray_count, l_pixel);
 }
