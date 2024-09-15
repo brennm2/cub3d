@@ -12,7 +12,7 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -O3 -ffast-math
+CC = cc -g -Ofast -ffast-math -finline-functions -funroll-all-loops -march=native -fprefetch-loop-arrays -flto
 RM = rm -rf
 AR = ar -rcs
 

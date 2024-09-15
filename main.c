@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 17:00:13 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/15 15:55:50 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@ int	game_frame_loop(t_game *game)
 	game->debug_time = clock();
 	clock_t frametime = game->debug_time - game->debug_old_time;
 	double fps = CLOCKS_PER_SEC / (double)frametime;
-	printf("FPS: %.2f\n", fps);
+	if (fps >= 36)
+		printf("\033[0;32mFPS: %.2f\033[0;37m\n", fps);
+	else if (fps <= 34)
+		printf("\033[0;31mFPS: %.2f\033[0;37m\n", fps);
+	else
+		printf("FPS: %.2f\n", fps);
 	//printf("frametime: %ld\n", frametime);
 	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);

@@ -6,21 +6,20 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 18:51:02 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/15 16:10:48 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes//cub3d.h"
+#include "../includes/cub3d.h"
 
-void	better_mlx_pixel_put(t_img **img, int x, int y, int color)	// put the pixel
+void	better_mlx_pixel_put(t_img **img, int x, int y, int color)
 {
 	char	*dst;
 	dst = (*img)->addr + (y * (*img)->line_len + x * ((*img)->bpp / 8));
 	*(unsigned int*)dst = color;
-	//mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
 }
 
-int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index)
+static inline int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index)
 {
 	int	color;
 	
@@ -32,21 +31,18 @@ int	get_pixel_color(t_game *game, int higher_pixel, int lower_pixel, int t_index
 
 int get_texture_color(t_game *game, int tex_y)
 {
-	//get wall_x
 	double wall_x;
+
 	if (game->ray->side == false)
 		wall_x = game->player.player_y + game->ray->distance * game->ray->raydir_y;
 	else
 		wall_x = game->player.player_x + game->ray->distance * game->ray->raydir_x;
 	wall_x -= floor(wall_x);
-
-	//get texture coordinate
 	int tex_x = wall_x * (double)TEXTURE_W;
 	if (game->ray->side == false && game->ray->raydir_x > 0)
 		tex_x = TEXTURE_W - tex_x - 1;
 	if (game->ray->side == true && game->ray->raydir_y < 0)
 		tex_x = TEXTURE_W - tex_x - 1;
-	
 	if (game->ray->side == true)
 	{
 		if (game->ray->raydir_y > 0) //West (esquerda)
@@ -61,144 +57,15 @@ int get_texture_color(t_game *game, int tex_y)
 		else //Sul
 			return (get_pixel_color(game, tex_y, tex_x, 1));
 	}
-		return (0);
+	return (0);
 }
 
-unsigned char	ft_min(unsigned char a, unsigned char b)
-{
-	if (a > b)
-		return (b);
-	return (a);
-}
-
-unsigned char	ft_max(unsigned char a, unsigned char b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int	darken_color(int color, unsigned char amount)
-{
-	int	i;
-	int	out;
-	unsigned char	shade[4];
-
-	i = -1;
-	out = 0;
-	while (++i < 4)
-	{
-		shade[i] = (color >> (i * 8)) & 0x0000FF;
-		if (shade[i] / amount - 1 > 0)
-			shade[i] -= shade[i] / amount - 1;
-		else
-			shade[i] -= ft_min(1, shade[i]);
-	}
-	out = shade[0] | shade[1] << 8 | shade[2] << 16 | shade[3] << 24;
-	return (out);
-}
-
-
-int darken_rgb_color (int color, double factor, int i)
-{
-	int r, g, b;
-
-	if (factor < 0 || factor > 1)
-		return color; // Factor should be between 0 and 1
-	r = (color >> 16) & 0xFF;
-	g = (color >> 8) & 0xFF;
-	b = color & 0xFF;
-	for (int j = 0; j < i; j++)
-	{
-		r = (int)(r * factor);
-		g = (int)(g * factor);
-		b = (int)(b * factor);
-	}
-	return (r << 16) | (g << 8) | b;
-}
-
-int	get_fog(t_game *game, int color)
-{
-	double	distance = 1.5; //distancia do raio, isso implica na forca do fog
-	int times = 0;
-	if (game->ray->distance > 4.3)
-		return (0);
-	while (distance < game->ray->distance)
-	{
-		distance += 0.1; //quantidade de step do fog
-		times++; // vezes que ele rodou no while
-	}
-	color = darken_rgb_color(color, 0.9, times);
-	return (color);
-}
-
-void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
-{
-	int	color;
-	double	step = 1.0 * TEXTURE_H / game->ray->line_height;
-	double	texpos = (h_pixel - SCREEN_HEIGHT / 2 + game->ray->line_height / 2) * step;
-	
-	while(h_pixel < l_pixel)
-	{
-		int	tex_y = (int)texpos & (TEXTURE_H - 1);
-		texpos += step;
-		color = get_texture_color(game, tex_y);
-		color = get_fog(game, color);
-		// if(game->ray->side == 0)
-		// 	color = (color >> 1) & 8355711;
-		if (game->ray->side == true)
-		{
-			if (game->ray->raydir_y > 0) // Norte
-				better_mlx_pixel_put(&game->img, x, h_pixel, color);
-			else // Sul
-				better_mlx_pixel_put(&game->img, x, h_pixel, color);
-		}
-		else
-		{
-			if (game->ray->raydir_x > 0)
-				better_mlx_pixel_put(&game->img, x, h_pixel, color);
-			else
-				better_mlx_pixel_put(&game->img, x, h_pixel, color);
-		}
- 		h_pixel++;
-	}
-}
-
-unsigned long	convert_rgb(char *color)
+static inline int darken_rgb_color3 (int color, double factor, int i)
 {
 	int	r;
 	int	g;
 	int	b;
-	char **temp_color;
-	int i;
-
-	i = 0;
-	temp_color = ft_split(color, ',');
-	if (temp_color)
-	{
-		if(temp_color[0] && temp_color[1] && temp_color[2])
-		{
-			r = ft_atoi(temp_color[0]);
-			g = ft_atoi(temp_color[1]);
-			b = ft_atoi(temp_color[2]);
-		}
-		else
-			ft_printf("Error with convert_rgb!\n");
-		while(temp_color[i])
-			free(temp_color[i++]);
-		free(temp_color);
-		return (r<<16) | (g<<8) | b;
-	}
-	return (0);
-}
-
-
-int darken_rgb_color3 (int color, double factor, int i)
-{
-	int r;
-	int g;
-	int b;
-	int j;
+	int	j;
 	
 	j = 0;
 	if (factor < 0 || factor > 1)
@@ -213,6 +80,82 @@ int darken_rgb_color3 (int color, double factor, int i)
 		b = (int)(b * factor);
 	}
 	return (r << 16) | (g << 8) | b;
+}
+
+static inline int	get_fog(t_game *game, int color)
+{
+	double	distance;
+	int		times;
+
+	if (game->ray->distance > 4.3)
+		return (0);
+	times = 0;
+	distance = 1.5; //distancia do raio, isso implica na forca do fog
+	while (distance < game->ray->distance)
+	{
+		distance += 0.1; //quantidade de step do fog
+		times++; // vezes que ele rodou no while
+	}
+	color = darken_rgb_color3(color, 0.9, times);
+	return (color);
+}
+
+
+void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
+{
+	int		color;
+	double	step = 1.0 * TEXTURE_H / game->ray->line_height;
+	double	texpos = (h_pixel - SCREEN_HEIGHT / 2 + game->ray->line_height / 2) * step;
+	
+	while(h_pixel++ < l_pixel)
+	{
+		int	tex_y = (int)texpos & (TEXTURE_H - 1);
+		texpos += step;
+		color = get_texture_color(game, tex_y);
+		color = get_fog(game, color);
+		if (game->ray->side == true)
+		{
+			if (game->ray->raydir_y > 0) // Norte
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+			else // Sul
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+		}
+		else
+		{
+			if (game->ray->raydir_x > 0)
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+			else
+				better_mlx_pixel_put(&game->img, x, h_pixel, color);
+		}
+	}
+}
+
+unsigned long	convert_rgb(char *color)
+{
+	int		r;
+	int		g;
+	int		b;
+	char	**temp_color;
+	int i;
+
+	i = 0;
+	temp_color = ft_split(color, ',');
+	if (temp_color)
+	{
+		if(temp_color[0] && temp_color[1] && temp_color[2])
+		{
+			r = ft_atoi(temp_color[0]);
+			g = ft_atoi(temp_color[1]);
+			b = ft_atoi(temp_color[2]);
+		}
+		else
+			return (ft_printf("Error with convert_rgb!\n"));
+		while(temp_color[i])
+			free(temp_color[i++]);
+		free(temp_color);
+		return (r<<16) | (g<<8) | b;
+	}
+	return (0);
 }
 
 int get_fog_ceiling(int color, int i)
@@ -288,8 +231,8 @@ void	draw_floor(t_game *game, int x, int ray_count)
 void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel)
 {
 	int		x;
-	x = 0;
 
+	x = 0;
 	(void)h_pixel;
 	(void)l_pixel;
 	draw_ceiling(game, x, ray_count);
