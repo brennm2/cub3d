@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/15 17:49:06 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:56:56 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,18 @@ typedef struct s_map
 # define TEXTURE_W 64
 # define TEXTURE_H 64
 
+typedef enum s_tdir
+{
+	north_t,
+	south_t,
+	west_t,
+	east_t,
+}		t_tdir;
+
 typedef struct s_player
 {
 	double		player_x;
 	double		player_y;
-	//double		fov_radian;
-	//double	angle;
 }	t_player;
 
 typedef struct s_ray
@@ -98,13 +104,22 @@ typedef struct s_ray
 	double	ray_angle;
 	double	distance;
 	int		line_height;
-	bool	hit_wall;
+	bool	wall_hit;
 	bool	side;
 
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
 	double	raydir_x;
 	double	raydir_y;
-	int		l_pixel_ray;
-	int		h_pixel_ray;
+	double	raydist_x;
+	double	raydist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	
+	int		l_pixel;
+	int		h_pixel;
 }	t_ray;
 
 typedef struct s_img
@@ -128,16 +143,13 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	//char		**map2;
 	char		*map_name;
 	int			map_w;
 	int			map_h;
 	int			h;
 	int			fd_file;
 	
-	
-	clock_t 		debug_time; //time of current frame
-	clock_t 		debug_old_time ; //time of previous frame
+
 	double		dirx;
 	double		diry;
 	double		plane_x;
@@ -174,6 +186,7 @@ void	create_texture(t_game *game);
 
 // SRC/DEBUG/DEBUG_FUNCIONS.C
 void	show_map(t_game *game);
+void	show_fps_debug(void);
 
 // SRC/RAYCASTING/SHOOT_RAYS.C
 void	shoot_rays(t_game *game);
@@ -186,6 +199,17 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel);
 // SRC/PLAYER/PLACE_PLAYER.C
 void	place_player(t_game *game, double player_x, double player_y);
 
+
+// SRC/FOG_CREATOR.C
+int	darken_rgb_color3 (int color, double factor, int i);
+int	get_fog(t_game *game, int color);
+int			get_fog_ceiling(int color, int i);
+int			get_fog_floor(int color, int i);
+
+// SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
+int				get_texture_color(t_game *game, int tex_y);
+unsigned long	convert_rgb(char *color);
+void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 

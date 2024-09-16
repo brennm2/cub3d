@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/15 18:09:33 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/16 12:02:27 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,7 @@ int	game_frame_loop(t_game *game)
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
 	// Calcula FPS
-	game->debug_old_time = game->debug_time;
-	game->debug_time = clock();
-	clock_t frametime = game->debug_time - game->debug_old_time;
-	double fps = CLOCKS_PER_SEC / (double)frametime;
-	if (fps >= 36)
-		printf("\033[0;32mFPS: %.2f\033[0;37m\n", fps);
-	else if (fps <= 34)
-		printf("\033[0;31mFPS: %.2f\033[0;37m\n", fps);
-	else
-		printf("FPS: %.2f\n", fps);
-	//printf("frametime: %ld\n", frametime);
+	show_fps_debug();
 	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
