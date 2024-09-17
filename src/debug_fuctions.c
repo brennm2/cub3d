@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:46:29 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 11:06:11 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:13:21 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,30 @@ void	show_map(t_game *game)
 	}
 }
 
-void show_fps_debug(void)
+void show_fps_debug(t_game *game)
 {
-	static clock_t	old_time = 0;
-	clock_t			time;
-	clock_t			frametime;
-	double			fps;
+	// static clock_t	old_time = 0;
+	// clock_t			time;
+	// clock_t			frametime;
+	// double			fps;
 
-	//old_time = 0; // Usar static para manter o valor entre chamadas
-	time = clock();
-	frametime = time - old_time;
-	old_time = time; // Atualizar old_time após calcular frametime
+	game->fps->time = clock();
+	game->fps->frametime = game->fps->time - game->fps->old_time;
+	game->fps->old_time = game->fps->time; // Atualizar old_time após calcular frametime
 
-	if (frametime > 0)
-		fps = CLOCKS_PER_SEC / (double)frametime;
+	if (game->fps->frametime > 0)
+		game->fps->fps = CLOCKS_PER_SEC / (double)game->fps->frametime;
 	else
-		fps = 0.0; // Evitar divisão por zero
-	if (fps >= 36)
-		printf("\033[0;32mFPS: %.2f\033[0;37m\n", fps);
-	else if (fps <= 34)
-		printf("\033[0;31mFPS: %.2f\033[0;37m\n", fps);
-	else
-		printf("FPS: %.2f\n", fps);
+		game->fps->fps = 0.0; // Evitar divisão por zero
+	game->fps->temp_fps += game->fps->fps;
+
+	if (game->fps->temp_fps > 60)
+		game->fps->temp_fps = 0;
+	//printf("temp: %f\n", game->fps->temp_fps);
+	// if (game->fps->fps >= 36)
+	// 	printf("\033[0;32mFPS: %.2f\033[0;37m\n", game->fps->fps);
+	// else if (game->fps->fps <= 34)
+	// 	printf("\033[0;31mFPS: %.2f\033[0;37m\n", game->fps->fps);
+	// else
+	// 	printf("FPS: %.2f\n", game->fps->fps);
 }

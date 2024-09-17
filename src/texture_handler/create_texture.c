@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 13:50:22 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:25:05 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,49 @@ int	create_west_texture(t_game *game)
 	}
 	return (0);
 }
+
+int	create_door_texture (t_game *game)
+{
+	game->texture[4]->img->mlx_img = mlx_xpm_file_to_image(
+		game->mlx_ptr, "sprites/door.xpm", &game->texture[4]->w,
+			&game->texture[4]->h);
+	if (!game->texture[4]->img->mlx_img)
+	{
+		printf("\nNo texture created (DOOR)\n\n");
+		return (1);
+	}
+	game->texture[4]->img->addr = mlx_get_data_addr(
+			game->texture[4]->img->mlx_img, &game->texture[4]->img->bpp,
+				&game->texture[4]->img->line_len,
+					&game->texture[4]->img->endian);
+	if (!game->texture[4]->img->addr)
+	{
+		printf("\nNo texture addr created(DOOR)\n\n");
+		return (1);
+	}
+
+
+		game->texture[5]->img->mlx_img = mlx_xpm_file_to_image(
+		game->mlx_ptr, "sprites/door_mid.xpm", &game->texture[5]->w,
+			&game->texture[5]->h);
+	if (!game->texture[5]->img->mlx_img)
+	{
+		printf("\nNo texture created (MID_DOOR)\n\n");
+		return (1);
+	}
+	game->texture[5]->img->addr = mlx_get_data_addr(
+			game->texture[5]->img->mlx_img, &game->texture[5]->img->bpp,
+				&game->texture[5]->img->line_len,
+					&game->texture[5]->img->endian);
+	if (!game->texture[5]->img->addr)
+	{
+		printf("\nNo texture addr created(MID_DOOR)\n\n");
+		return (1);
+	}
+	return (0);
+}
+
+
 void	create_texture(t_game *game)
 {
 	if (create_north_texture(game) == 1)
@@ -113,4 +156,7 @@ void	create_texture(t_game *game)
 	if (create_west_texture(game) == 1)
 		return ;
 		//#TODO free_all func
+	
+
+	create_door_texture(game);
 }

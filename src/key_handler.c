@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 12:35:31 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:43:24 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,52 @@ void	look_direction(t_game *game, bool is_left)
 	}
 }
 
+void	door_animation(t_game *game, int new_x, int new_y)
+{
+	(void)new_x;
+	game->new_x = new_x;
+	game->new_y = new_y;
+	if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D')
+	{
+		game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
+		game->ray->is_mid_door = true;
+		
+	}
+	else if (game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
+	{
+		game->ray->is_mid_door = false;
+		game->map.map[(int)game->player.player_x][(int)new_y] = 'D';
+	}
+	ft_printf("open door X\n");
+
+	// if (game->map.map[(int)new_x][(int)game->player.player_y] == 'D')
+	// 	game->map.map[(int)game->player.player_x][(int)new_y] = 'd';
+	// else if (game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
+	// 	game->map.map[(int)game->player.player_x][(int)new_y] = 'D';
+	//ft_printf("open door Y\n");
+}
+
+void	door_handler(t_game *game)
+{
+	double new_x;
+	double new_y;
+
+	new_x = game->player.player_x + game->dirx * (PLAYER_SPEED * 5);
+	new_y = game->player.player_y + game->diry * (PLAYER_SPEED * 5);
+	if (game->map.map[(int)new_x][(int)game->player.player_y] == 'D' \
+		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
+	{
+
+	}
+	if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D' \
+		|| game->map.map[(int)game->player.player_x][(int)new_y] == 'd' ||
+		game->map.map[(int)game->player.player_x][(int)new_y] == 'i')
+	{
+		door_animation(game, new_x, new_y);
+	}
+	show_map(game);
+}
+
 int	key_handler(int key, t_game *game)
 {
 	(void)game;
@@ -113,6 +159,8 @@ int	key_handler(int key, t_game *game)
 		look_direction(game, true);
 	if (key == RIGHT)
 		look_direction(game, false);
+	if (key == 'r')
+		door_handler(game);
 	return (0);
 }
 

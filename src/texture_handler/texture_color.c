@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 18:58:38 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:59:09 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,41 @@ static inline int	get_pixel_color(t_game *game, int higher_pixel,
 
 int	find_right_side(t_game *game, int tex_y, int tex_x)
 {
-	if (game->ray->side == true)
+	if (game->ray->is_door == true)
+	{
+		static int temp_fps = 0;
+		if (game->ray->is_mid_door == true)
+		{
+			if (temp_fps < 10000000)
+			{
+				//printf("ola\n");
+				temp_fps += 1;
+				return (get_pixel_color(game, tex_y, tex_x, door_mid));
+			}
+			else
+			{
+				temp_fps = 0;
+				//#TODO mudar para 'd' somente os 'i'
+				if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i')
+					game->map.map[(int)game->player.player_x][(int)game->new_y] = 'd';
+			}
+		}
+		else
+		{
+			return (get_pixel_color(game, tex_y, tex_x, door));
+		}
+
+		// if (temp_fps < 1200)
+		// {
+		// 	temp_fps += game->fps->fps;
+		// 	return (get_pixel_color(game, tex_y, tex_x, door_mid));
+		// }
+		// else
+		// 	return (get_pixel_color(game, tex_y, tex_x, door));
+		// printf("test\n");
+
+	}
+	else if (game->ray->side == true && game->ray->is_door == false)
 	{
 		if (game->ray->raydir_y > 0)
 			return (get_pixel_color(game, tex_y, tex_x, west_t));
@@ -39,6 +73,7 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 		else
 			return (get_pixel_color(game, tex_y, tex_x, south_t));
 	}
+	return (0);
 }
 
 int	get_texture_color(t_game *game, int tex_y)

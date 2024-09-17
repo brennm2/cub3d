@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 13:32:48 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:52:44 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void ft_get_map(t_game *game)
 	{
 		if(!ft_check_empty_line(game->map.line, 2))
 		{
-			if (!has_valid_chars(game->map.line, "10NSWE\n"))
+			if (!has_valid_chars(game->map.line, "10NSWED\n"))
 			{
 				printf("Invalid char!\n");
 				exit(1); //TODO change to funtion to print, free and exit

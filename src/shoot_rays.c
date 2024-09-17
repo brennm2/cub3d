@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 11:06:32 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:30:24 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	calculate_lines(t_game *game)
 void	dda(t_game *game)
 {
 	bool	wall_hit;
-
+	//bool	is_door;
+	
+	//is_door = false;
 	wall_hit = false;
 	while (wall_hit == false)
 	{
@@ -65,7 +67,29 @@ void	dda(t_game *game)
 			game->ray->side = true;
 		}
 		if (game->map.map[game->ray->map_x][game->ray->map_y] == '1')
+		{
 			wall_hit = true;
+			game->ray->is_door = false;
+			//game->ray->is_mid_door = false;
+		}
+		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'D')
+		{
+			wall_hit = true;
+			game->ray->is_door = true;
+		}
+		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'i')
+		{
+			wall_hit = true;
+			game->ray->is_mid_door = true;
+			game->ray->is_door = true;
+		}
+		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'd')
+		{
+			//wall_hit = true;
+			game->ray->is_mid_door = true;
+			game->ray->is_door = true;
+		}
+		
 	}
 	if (game->ray->side == false)
 		game->ray->distance = (game->ray->raydist_x - game->ray->deltadist_x);

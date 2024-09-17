@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/16 18:56:56 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:26:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,19 @@ typedef enum s_tdir
 	south_t,
 	west_t,
 	east_t,
+	door,
+	door_mid,
 }		t_tdir;
+
+typedef struct s_fps
+{
+	clock_t	old_time;
+	clock_t	time;
+	clock_t	frametime;
+	double	fps;
+	double	temp_fps;
+}	t_fps;
+
 
 typedef struct s_player
 {
@@ -106,6 +118,8 @@ typedef struct s_ray
 	int		line_height;
 	bool	wall_hit;
 	bool	side;
+	bool	is_door;
+	bool	is_mid_door;
 
 	int		map_x;
 	int		map_y;
@@ -117,6 +131,7 @@ typedef struct s_ray
 	double	raydist_y;
 	double	deltadist_x;
 	double	deltadist_y;
+
 	
 	int		l_pixel;
 	int		h_pixel;
@@ -149,7 +164,8 @@ typedef struct s_game
 	int			h;
 	int			fd_file;
 	
-
+	int			new_x;
+	int			new_y;
 	double		dirx;
 	double		diry;
 	double		plane_x;
@@ -165,6 +181,7 @@ typedef struct s_game
 	t_player	player;
 	t_img		*img;
 	t_texture	**texture;
+	t_fps		*fps;
 
 	struct s_map	map;
 }	t_game;
@@ -186,7 +203,7 @@ void	create_texture(t_game *game);
 
 // SRC/DEBUG/DEBUG_FUNCIONS.C
 void	show_map(t_game *game);
-void	show_fps_debug(void);
+void	show_fps_debug(t_game *game);
 
 // SRC/RAYCASTING/SHOOT_RAYS.C
 void	shoot_rays(t_game *game);

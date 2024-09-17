@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 12:02:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:27:27 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	init_window(t_game *game)
 	game->mlx_ptr= mlx_init();
 	game->win_ptr= NULL;
 	game->texture = ft_calloc(sizeof(t_texture), 4);
-  	for (int i = 0; i < 4; i++)
+	game->fps = ft_calloc(sizeof(t_fps), 1);
+  	for (int i = 0; i < 6; i++)
 	{
         game->texture[i] = ft_calloc(1, sizeof(t_texture));
         game->texture[i]->h = 64;
@@ -43,7 +44,7 @@ int	game_frame_loop(t_game *game)
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
 	// Calcula FPS
-	show_fps_debug();
+	show_fps_debug(game);
 	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
