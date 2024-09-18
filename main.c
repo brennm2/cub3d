@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 14:27:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:27:10 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,25 @@ void	display_window(t_game *game)
 		return ;
 }
 
+void	minimap(t_game *game)
+{
+	int y = 0;
+	int x = 0;
+	
+	while (y < 500)
+	{
+		while (x < 500)
+		{
+			better_mlx_pixel_put(&game->img, x++, y, 500);
+			if ((x % 10) == 0)
+				break;
+		}
+		y+= 1;
+		x += 10;
+	}
+
+}
+
 int	game_frame_loop(t_game *game)
 {
 	if (game->img && game->img->mlx_img)
@@ -46,6 +65,7 @@ int	game_frame_loop(t_game *game)
 	// Calcula FPS
 	show_fps_debug(game);
 	//-------------
+	minimap(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
@@ -60,6 +80,7 @@ void	open_window(t_game *game)
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_handler, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
+	//mlx_mouse_hook(vars.win, mouse_hook, &vars);
 	mlx_loop(game->mlx_ptr);
 }
 

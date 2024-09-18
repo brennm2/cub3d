@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:46:29 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 17:13:21 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:04:34 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ void	show_map(t_game *game)
 
 void show_fps_debug(t_game *game)
 {
-	// static clock_t	old_time = 0;
-	// clock_t			time;
-	// clock_t			frametime;
-	// double			fps;
-
 	game->fps->time = clock();
 	game->fps->frametime = game->fps->time - game->fps->old_time;
 	game->fps->old_time = game->fps->time; // Atualizar old_time após calcular frametime

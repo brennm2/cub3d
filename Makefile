@@ -12,7 +12,7 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g #-Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
 RM = rm -rf
 AR = ar -rcs
 

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 18:43:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:45:01 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	move_up(t_game *game)
 
 	new_x = game->player.player_x + game->dirx * PLAYER_SPEED;
 	new_y = game->player.player_y + game->diry * PLAYER_SPEED;
-	if (game->map.map[(int)new_x][(int)game->player.player_y] == '0')
+	if (game->map.map[(int)new_x][(int)game->player.player_y] == '0' \
+		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
 		game->player.player_x = new_x;
-	if (game->map.map[(int)game->player.player_x][(int)new_y] == '0')
+	if (game->map.map[(int)game->player.player_x][(int)new_y] == '0' \
+		|| game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
 		game->player.player_y = new_y;
 }
 
@@ -32,9 +34,11 @@ void	move_down(t_game *game)
 
 	new_x = game->player.player_x - game->dirx * PLAYER_SPEED;
 	new_y = game->player.player_y - game->diry * PLAYER_SPEED;
-	if (game->map.map[(int)new_x][(int)game->player.player_y] == '0')
+	if (game->map.map[(int)new_x][(int)game->player.player_y] == '0' \
+		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
 		game->player.player_x = new_x;
-	if (game->map.map[(int)game->player.player_x][(int)new_y] == '0')
+	if (game->map.map[(int)game->player.player_x][(int)new_y] == '0' \
+		|| game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
 		game->player.player_y = new_y;
 }
 
@@ -46,10 +50,14 @@ void	move_right(t_game *game)
 	new_x = game->diry * PLAYER_SPEED;
 	new_y = -game->dirx * PLAYER_SPEED;
 	if (game->map.map[(int)(game->player.player_x + new_x)]
-		[(int)(game->player.player_y)] == '0')
+		[(int)(game->player.player_y)] == '0' \
+		|| game->map.map[(int)(game->player.player_x + new_x)]
+		[(int)(game->player.player_y)] == 'd')
 		game->player.player_x += new_x;
 	if (game->map.map[(int)(game->player.player_x)]
-		[(int)(game->player.player_y + new_y)] == '0')
+		[(int)(game->player.player_y + new_y)] == '0' \
+		|| game->map.map[(int)(game->player.player_x)]
+		[(int)(game->player.player_y + new_y)] == 'd')
 		game->player.player_y += new_y;
 }
 
@@ -63,10 +71,14 @@ void	move_left(t_game *game)
 	new_y = game->dirx * PLAYER_SPEED;
 
 	if (game->map.map[(int)(game->player.player_x + new_x)]
-		[(int)(game->player.player_y)] == '0')
+		[(int)(game->player.player_y)] == '0' \
+		|| game->map.map[(int)(game->player.player_x + new_x)]
+		[(int)(game->player.player_y)] == 'd')
 		game->player.player_x += new_x;
 	if (game->map.map[(int)(game->player.player_x)]
-		[(int)(game->player.player_y + new_y)] == '0')
+		[(int)(game->player.player_y + new_y)] == '0' \
+		|| game->map.map[(int)(game->player.player_x)]
+		[(int)(game->player.player_y + new_y)] == 'd')
 		game->player.player_y += new_y;
 }
 
@@ -95,27 +107,22 @@ void	look_direction(t_game *game, bool is_left)
 
 void	door_animation(t_game *game, int new_x, int new_y)
 {
-	(void)new_x;
 	game->new_x = new_x;
 	game->new_y = new_y;
 	if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D')
 	{
 		game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
 		game->ray->is_mid_door = true;
+		game->ray->door_is_closing = false;
 		
 	}
 	else if (game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
 	{
-		game->ray->is_mid_door = false;
-		game->map.map[(int)game->player.player_x][(int)new_y] = 'D';
+		game->ray->is_mid_door = true;
+		game->ray->door_is_closing = true;
+		game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
 	}
 	ft_printf("open door X\n");
-
-	// if (game->map.map[(int)new_x][(int)game->player.player_y] == 'D')
-	// 	game->map.map[(int)game->player.player_x][(int)new_y] = 'd';
-	// else if (game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
-	// 	game->map.map[(int)game->player.player_x][(int)new_y] = 'D';
-	//ft_printf("open door Y\n");
 }
 
 void	door_handler(t_game *game)
@@ -136,7 +143,7 @@ void	door_handler(t_game *game)
 	{
 		door_animation(game, new_x, new_y);
 	}
-	show_map(game);
+	//show_map(game);
 }
 
 int	key_handler(int key, t_game *game)

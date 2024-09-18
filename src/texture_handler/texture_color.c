@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 18:59:09 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:44:39 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,29 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 		static int temp_fps = 0;
 		if (game->ray->is_mid_door == true)
 		{
-			if (temp_fps < 10000000)
+			if (temp_fps < 100000000)
 			{
-				//printf("ola\n");
 				temp_fps += 1;
 				return (get_pixel_color(game, tex_y, tex_x, door_mid));
 			}
 			else
 			{
 				temp_fps = 0;
-				//#TODO mudar para 'd' somente os 'i'
-				if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i')
+				if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
+					&& game->ray->door_is_closing == false)
 					game->map.map[(int)game->player.player_x][(int)game->new_y] = 'd';
+				else if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
+					&& game->ray->door_is_closing == true)
+				{
+					game->ray->door_is_closing = false;
+					game->ray->is_mid_door = false;
+					game->map.map[(int)game->player.player_x][(int)game->new_y] = 'D';
+				}
+					
 			}
 		}
 		else
-		{
 			return (get_pixel_color(game, tex_y, tex_x, door));
-		}
-
-		// if (temp_fps < 1200)
-		// {
-		// 	temp_fps += game->fps->fps;
-		// 	return (get_pixel_color(game, tex_y, tex_x, door_mid));
-		// }
-		// else
-		// 	return (get_pixel_color(game, tex_y, tex_x, door));
-		// printf("test\n");
-
 	}
 	else if (game->ray->side == true && game->ray->is_door == false)
 	{

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/17 17:26:59 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:15:24 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_ray
 	bool	side;
 	bool	is_door;
 	bool	is_mid_door;
+	bool	door_is_closing;
 
 	int		map_x;
 	int		map_y;
