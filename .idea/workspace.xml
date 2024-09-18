@@ -23,166 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/proof.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fog_creator.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/texture_handler/texture_color.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/library.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/library.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libs/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/minilibx-mac/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/libs/minilibx-mac/libmlx.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/broken_xpm.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/color_invalid_rgb.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/color_missing.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/color_missing_ceiling_rgb.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/color_missing_floor_rgb.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/color_none.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/duplicated_setting.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/empty.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/file_letter_end.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/filetype_missing" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/filetype_wrong.buc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/invalid_4_color.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/invalid_map.ber" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/invalid_map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/invalid_map_char.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map0.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map1.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map10.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map11.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map12.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map13.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map14.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map15.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map16.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map17.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map18.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map19.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map3.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map4.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map5.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map6.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map7.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map8.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map9.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_first.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_middle.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_missing.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_only.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_too_long.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/map_too_small.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/new_testCralos.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-litle.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-no-0.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-no-2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-no-4.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-rgb-0.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-rgb-1.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-rgb-2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-rgb-3.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-rgb-4.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-spawn-0.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/others/map-spawn-2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/player_multiple.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/player_none.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/player_on_edge.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/subject_map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/test_map_hole.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_dir.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_dir2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_duplicates.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_forbidden.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_invalid.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_missing.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_multiple_words.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_none.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_not_xpm.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/textures_value_missing.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/triangle_open.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/ultimate.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wall_hole_east.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wall_hole_north.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wall_hole_south.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wall_hole_west.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wall_none.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong11.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong12.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong13.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong14.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong15.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong16.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong17.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong18.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong19.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong20.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong21.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong22.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong23.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong24.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong25.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong26.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong27.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong28.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong29.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong3.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong30.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong31.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong32.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong33.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong34.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong35.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong36.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong37.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong38.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong39.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong5.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong6.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong8.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong9.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/wrong_setting.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/invalid/xpm_wrong_size.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/cheese_maze 1.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/cheese_maze.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/creepy.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/dungeon.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/inner_walls.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/inner_walls_multi_sections.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/library.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map1.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map3.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map4.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map5.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/map_whitespace_left.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/matrix.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/prova.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right1.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right2.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right3.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right4.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right5.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right6.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/right7.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/sad_face.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/square_map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/subject_map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_map.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_map_hole.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_pos_bottom.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_pos_left.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_pos_right.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_pos_top.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_textures.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/test_whitespace.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/triangle.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/triangle_multi.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/triangle_multi_open.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_files/valid/works.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_test.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map_test.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/key_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_check.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug_fuctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug_fuctions.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draw_wall.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/draw_wall.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shoot_rays.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/shoot_rays.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/texture_handler/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/texture_handler/create_texture.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,11 +62,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/includes/cub3d.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/includes/cub3d.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/debug_fuctions.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/draw_wall.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/fill_map.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/init_game/file.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/shoot_rays.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/src/texture_handler/create_texture.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/src/texture_handler/create_texture.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -2176,7 +2035,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "/home/bsousa-d/Desktop/Cub3d",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -2255,7 +2114,7 @@
       <workItem from="1725984821609" duration="1195000" />
       <workItem from="1726218217144" duration="18236000" />
       <workItem from="1726248519106" duration="973000" />
-      <workItem from="1726249494953" duration="11502000" />
+      <workItem from="1726249494953" duration="12221000" />
     </task>
     <task id="LOCAL-00001" summary="Early parser done">
       <option name="closed" value="true" />
