@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/17 11:06:32 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:36:41 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	shoot_rays(t_game *game)
 	int	x;
 
 	x = 0;
-	while (x++ < SCREEN_WIDTH)
+	while (x++ < SCREEN_WIDTH - 1)
 	{
 		calculate_ray_direction(game, x);
 		calculate_ray_steps(game);
