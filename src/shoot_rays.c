@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 12:16:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:19:12 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,10 @@ void	shoot_rays(t_game *game)
 		calculate_ray_steps(game);
 		dda(game);
 		calculate_lines(game);
-		//draw_floor_ceiling(game, x, game->ray->h_pixel, game->ray->l_pixel);
-		//draw_wall(game, game->ray->h_pixel, game->ray->l_pixel, x);
+		if (game->map.show_minimap == false)
+		{
+			draw_floor_ceiling(game, x, game->ray->h_pixel, game->ray->l_pixel);
+			draw_wall(game, game->ray->h_pixel, game->ray->l_pixel, x);
+		}
 	}
 }

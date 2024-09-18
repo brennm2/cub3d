@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/18 11:15:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:08:48 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_map
 	char *CEILING_PATH;
 	char *FLOOR_PATH;
 	char *EAST_PATH;
+
+	bool	show_minimap;
 } t_map;
 
 # define FOV 60
@@ -234,6 +236,9 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 bool ft_check_map(t_game *game, char **av);
 
+
+
+void	minimap(t_game *game);
 t_game *ft_init_structs(char *file);
 
 #endif

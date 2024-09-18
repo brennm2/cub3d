@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 12:27:10 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:57:36 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,65 @@ void	display_window(t_game *game)
 		return ;
 }
 
+void draw_box(t_game *game, int pos_y, int pos_x, long color)
+{
+    int x;
+    int y = pos_y + 1;
+
+    while (y < pos_y + 20)
+    {
+        x = pos_x + 1; // Iniciar x na posição correta
+        while (x < pos_x + 20)
+        {
+            better_mlx_pixel_put(&game->img, x, y, color);
+            x++;
+        }
+        y++;
+    }
+}
+
+// void	minimap_background(t_game *game)
+// {
+// 	int	x = 0;
+// 	int y = 0;
+	
+// }
+
 void	minimap(t_game *game)
 {
 	int y = 0;
 	int x = 0;
+	int step_y = (SCREEN_HEIGHT / 2) - ((game->map.height * 20)/ 2);
+	int step_x = SCREEN_WIDTH / 2;
+	int	player_step_x = (int)game->player.player_x * 20 + (SCREEN_HEIGHT / 2)- ((game->map.height * 20)/ 2);
+	int	player_step_y = (int)game->player.player_y * 20 + (SCREEN_WIDTH / 2);
 	
-	while (y < 500)
+	
+	while(y < game->map.height)
 	{
-		while (x < 500)
+		while(game->map.map[y][x])
 		{
-			better_mlx_pixel_put(&game->img, x++, y, 500);
-			if ((x % 10) == 0)
+			if (game->map.map[y][x] == '1')
+				draw_box(game, step_y, step_x, 7995649);
+			else if (game->map.map[y][x] == '0')
+				draw_box(game, step_y, step_x, 5263440);
+			else if (game->map.map[y][x] == 'D' || game->map.map[y][x] == 'i')
+				draw_box(game, step_y, step_x, 15118117);
+			else if (game->map.map[y][x] == 'd' || game->map.map[y][x] == 'i')
+				draw_box(game, step_y, step_x, 5061133);
+			draw_box(game, player_step_x, player_step_y, 90000);
+			step_x += 20;
+			if (game->map.map[y][x] == '\n')
+			{
+				step_x = SCREEN_WIDTH / 2;
 				break;
+			}
+			x++;
 		}
-		y+= 1;
-		x += 10;
+		step_y += 20;
+		y++;
+		x = 0;
 	}
-
 }
 
 int	game_frame_loop(t_game *game)
@@ -65,9 +107,20 @@ int	game_frame_loop(t_game *game)
 	// Calcula FPS
 	show_fps_debug(game);
 	//-------------
-	minimap(game);
+	if (game->map.show_minimap == true)
+		minimap(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	return (0);
+}
+
+int	key_release(int key, t_game *game)
+{
+	(void)key;
+	if (key == 'm')
+	{
+		game->map.show_minimap = false;
+	}
 	return (0);
 }
 
@@ -78,6 +131,7 @@ void	open_window(t_game *game)
 		return ;
 	mlx_loop_hook(game->mlx_ptr, &game_frame_loop, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_handler, game);
+	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, &key_release, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
 	//mlx_mouse_hook(vars.win, mouse_hook, &vars);
