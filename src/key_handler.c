@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 12:35:31 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:29:47 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,13 @@ int	key_handler(int key, t_game *game)
 		ft_printf("\n'ESC' pressed, game closed...\nThanks for playing!\n");
 		ft_quit_game(game);
 	}
-	if (key == 'w')
+	if (key == W)
 		move_up(game);
-	if (key == 's')
+	if (key == S)
 		move_down(game);
- 	if (key == 'a')
+ 	if (key == A)
 		move_left(game);
-	if (key == 'd')
+	if (key == D)
 		move_right(game);
 	if (key == LEFT)
 		look_direction(game, true);
@@ -119,6 +119,7 @@ int	key_handler(int key, t_game *game)
 int	ft_quit_game(t_game *game)
 {
 	//get_next_line(-1);
+	ft_free_textures(game);
 	free_all(game);
 	exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 12:15:55 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/14 14:58:43 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	create_texture(t_game *game)
 {
 	//texture 0 = N
 	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[0]->w,
+			game->mlx_ptr, game->map.NORTH_PATH, &game->texture[0]->w,
 				&game->texture[0]->h);
 	if (!game->texture[0]->img->mlx_img)
 	{
@@ -34,7 +34,7 @@ void	create_texture(t_game *game)
 	
 	//texture 1 = S
 	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/south_wall.xpm", &game->texture[1]->w,
+			game->mlx_ptr, game->map.SOUTH_PATH, &game->texture[1]->w,
 				&game->texture[1]->h);
 	if (!game->texture[1]->img->mlx_img)
 		printf("\nno texture created (south)\n\n");
@@ -49,7 +49,7 @@ void	create_texture(t_game *game)
 
 	//texture 2 = E
 	game->texture[2]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/east_wall.xpm", &game->texture[2]->w,
+			game->mlx_ptr, game->map.EAST_PATH, &game->texture[2]->w,
 				&game->texture[2]->h);
 	if (!game->texture[2]->img->mlx_img)
 		printf("\nno texture created (EAST)\n\n");
@@ -64,7 +64,7 @@ void	create_texture(t_game *game)
 
 	//texture 3 = W
 	game->texture[3]->img->mlx_img = mlx_xpm_file_to_image(
-			game->mlx_ptr, "sprites/west_wall.xpm", &game->texture[3]->w,
+			game->mlx_ptr, game->map.WEST_PATH, &game->texture[3]->w,
 				&game->texture[3]->h);
 	if (!game->texture[3]->img->mlx_img)
 		printf("\nno texture created (WEST)\n\n");

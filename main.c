@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 17:00:13 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:23:47 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	game_frame_loop(t_game *game)
 	game->debug_time = clock();
 	clock_t frametime = game->debug_time - game->debug_old_time;
 	double fps = CLOCKS_PER_SEC / (double)frametime;
-	printf("FPS: %.2f\n", fps);
+	ft_putstr_fd("\rFPS:", 1);
+	ft_putnbr_fd(fps, 1);
+	//printf("FPS: %.2f\n", fps);
 	//printf("frametime: %ld\n", frametime);
 	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
@@ -86,56 +88,6 @@ void	init_player(t_game *game, t_player player)
 	//player->fov_radian = (FOV * M_PI) / 180;
 	//player->angle = M_PI;
 }
-
-
-
-static bool is_cub_file(char *argv)
-{
-	char *dot_position;
-
-	dot_position = ft_strrchr(argv, '.');
-	if (dot_position)
-		if (ft_strcmp(dot_position, ".cub") == 0)
-			if (dot_position > argv && *(dot_position - 1) != '/')
-				return true;
-	printf("Error: File not valid!\n");
-	exit(1);
-}
-
-static void ft_check_args(int ac)
-{
-	if (ac != 2)
-	{
-		if (ac > 2)
-			printf("Error: Too Many Arguments!\n");
-		if (ac < 2)
-			printf("Error: Not Enough Arguments!\n");
-		exit(1);
-	}
-}
-
-static void file_exist(char *file)
-{
-	int fd;
-
-	fd = open(file, O_RDONLY);
-	if(fd < 0)
-	{
-		printf("Error: File does not exist!\n");
-		exit(1);
-	}
-}
-
-// t_game	*init_game(void)
-// {
-// 	t_game	*game;
-//
-//
-// 	init_player(game, game->player);
-// 	init_window(game);
-// 	init_game_data(game);
-// 	return (game);
-// }
 
 int	main(int ac, char **av)
 {

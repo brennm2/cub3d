@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:33:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:38:39 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/14 14:44:09 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,58 +105,6 @@ void	read_textures(t_game *game, char **av)
 	close(fd);
 }
 
-char	*remove_all_spaces(char *str)
-{
-	int		i;
-	int		j;
-	char	*result;
-
-	i = 0;
-	j = 0;
-	result = (char *)malloc(ft_strlen(str) + 1);
-	if (!result)
-		return (NULL);
-	while (str[i] != ' ' && !ft_isalpha(str[i]))
-		i++;
-	while (ft_isalpha(str[i]))
-		i++;
-	while (str[i])
-	{
-		if (str[i] != ' ')
-			result[j++] = str[i];
-		i++;
-	}
-	result[j] = '\0';
-	str = ft_strdup(result);
-	free(result);
-	return (str);
-}
-
-void	ft_get_textures(t_game *game)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	while (game->map.map[i])
-	{
-		len = ft_strlen(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], NORTH, len) != NULL)
-			game->map.NORTH_PATH = remove_all_spaces(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], SOUTH, len) != NULL)
-			game->map.SOUTH_PATH = remove_all_spaces(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], EAST, len) != NULL)
-			game->map.EAST_PATH = remove_all_spaces(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], WEST, len) != NULL)
-			game->map.WEST_PATH = remove_all_spaces(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], CEILING, len) != NULL)
-			game->map.CEILING_PATH = remove_all_spaces(game->map.map[i]);
-		if (ft_strnstr(game->map.map[i], FLOOR, len) != NULL)
-			game->map.FLOOR_PATH = remove_all_spaces(game->map.map[i]);
-		i++;
-	}
-}
-
 void	ft_read_map(t_game *game, char **av)
 {
 	int		fd;
@@ -242,7 +190,7 @@ bool	ft_check_map(t_game *game, char **av)
 	if (map_size < 6)
 		return (false);
 	game->map.map = malloc(sizeof(char *) * (map_size + 1));
-	if (!game->map.map)
+	if (game->map.map == NULL)
 		return (false);
 	read_textures(game, av);
 	ft_get_textures(game);

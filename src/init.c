@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 13:32:48 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/14 14:53:30 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void ft_extend_map(t_game *game)
 	game->map.map = new_map;
 }
 
-static bool ft_check_empty_line(const char *line, int option)
+bool ft_check_empty_line(const char *line, int option)
 {
 	int i;
 
@@ -83,7 +83,7 @@ static bool ft_check_empty_line(const char *line, int option)
 	return true;
 }
 
-static void ft_get_map(t_game *game)
+void ft_get_map(t_game *game)
 {
 	game->map.map = malloc(sizeof (char *) * 2);
 	if (game->map.map == NULL)
@@ -108,7 +108,7 @@ static void ft_get_map(t_game *game)
 	close(game->fd_file);
 }
 
-static bool ft_all_textures_set(t_game const *game)
+bool ft_all_textures_set(t_game const *game)
 {
 	if (game->map.NORTH_PATH != NULL && game->map.SOUTH_PATH != NULL
 		&& game->map.WEST_PATH != NULL && game->map.EAST_PATH != NULL
@@ -119,7 +119,7 @@ static bool ft_all_textures_set(t_game const *game)
 	return false;
 }
 
-static char	*remove_all_spaces(char *str)
+char	*remove_all_spaces(char *str)
 {
 	int i;
 	int j;
@@ -135,7 +135,7 @@ static char	*remove_all_spaces(char *str)
 	while (ft_isalpha(str[i]))
 		i++;
 	while (str[i]) {
-		if (str[i] != ' ')
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			result[j++] = str[i];
 		i++;
 	}
@@ -145,7 +145,7 @@ static char	*remove_all_spaces(char *str)
 	return (str);
 }
 
-static int ft_set_texture(t_game *game, char *line)
+int ft_set_texture(t_game *game, char *line)
 {
 	size_t len;
 
@@ -168,7 +168,7 @@ static int ft_set_texture(t_game *game, char *line)
 	return 0;
 }
 
-static bool ft_check_duplicates(t_game *game, char *line)
+bool ft_check_duplicates(t_game *game, char *line)
 {
 	size_t len;
 
@@ -176,49 +176,17 @@ static bool ft_check_duplicates(t_game *game, char *line)
 
 	if(ft_strnstr(line, NORTH, len) && game->map.NORTH_PATH != NULL)
 		return true;
-	else if(ft_strnstr(line, SOUTH, len)&& game->map.SOUTH_PATH != NULL)
+	if(ft_strnstr(line, SOUTH, len)&& game->map.SOUTH_PATH != NULL)
 		return true;
-	else if(ft_strnstr(line, EAST, len)&& game->map.EAST_PATH != NULL)
+	if(ft_strnstr(line, EAST, len)&& game->map.EAST_PATH != NULL)
 		return true;
-	else if(ft_strnstr(line, WEST, len)&& game->map.WEST_PATH != NULL)
+	if(ft_strnstr(line, WEST, len)&& game->map.WEST_PATH != NULL)
 		return true;
-	else if(ft_strnstr(line, CEILING, len)&& game->map.CEILING_PATH != NULL)
+	if(ft_strnstr(line, CEILING, len)&& game->map.CEILING_PATH != NULL)
 		return true;
-	else if(ft_strnstr(line, FLOOR, len)&& game->map.FLOOR_PATH != NULL)
+	if(ft_strnstr(line, FLOOR, len)&& game->map.FLOOR_PATH != NULL)
 		return true;
-	else
-		return false;
-}
-
-static void ft_get_textures(t_game *game)
-{
-
-	game->map.line = get_next_line(game->fd_file);
-	while (game->map.line != NULL && !ft_all_textures_set(game))
-	{
-		if (!ft_check_empty_line(game->map.line, 1))
-		{
-		    if(ft_check_duplicates(game, game->map.line))
-			{
-				printf("Error: duplicate textures");
-				return ;
-			}
-			ft_set_texture(game, game->map.line);
-		}
-		free(game->map.line);
-		game->map.line = get_next_line(game->fd_file);
-	}
-	// printf("%s", game->map.NORTH_PATH);
-	// printf("%s", game->map.SOUTH_PATH);
-	// printf("%s", game->map.EAST_PATH);
-	// printf("%s", game->map.WEST_PATH);
-	// printf("%s", game->map.CEILING_PATH);
-	// printf("%s", game->map.FLOOR_PATH);
-	while(game->map.line != NULL && ft_check_empty_line(game->map.line, 1))
-	{
-		free(game->map.line);
-		game->map.line = get_next_line(game->fd_file);
-	}
+	return false;
 }
 
 void	set_player_direction(t_game *game, char c)
@@ -268,37 +236,4 @@ void ft_get_player_pos(t_game *game)
 		}
 		i++;
 	}
-}
-
-t_game *ft_init_structs(char *file)
-{
-	t_game *game;
-
-	game = (t_game *)ft_calloc(sizeof(t_game), 1);
-	if (game == NULL)
-		return (NULL); // TODO put function to print and free memory
-	// game->mlx_ptr = NULL;
-	// game->win_ptr = NULL;
-	game->fd_file = open(file, O_RDONLY);
-	game->map.NORTH_PATH = NULL;
-	game->map.SOUTH_PATH = NULL;
-	game->map.WEST_PATH = NULL;
-	game->map.EAST_PATH = NULL;
-	game->map.CEILING_PATH = NULL;
-	game->map.FLOOR_PATH = NULL;
-	game->map.height = 0;
-	game->map.map = NULL;
-	ft_get_textures(game);
-	ft_get_map(game);
-	//duplica o mapa & flood fill
-	// if (flood fill passar)
-	// else (exit clean)
-	ft_get_player_pos(game);
-	game->ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
-	if (game->ray == NULL)
-		return (NULL);
-	game->img = ft_calloc(sizeof(t_img), 1);
-	if (game->img == NULL)
-		return (NULL);
-	return game;
 }

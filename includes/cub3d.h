@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 16:56:32 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/14 14:40:22 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define	CUB3D_H
 
 # include "../libs/includes/libft.h"
-# include "../libs/minilibx-linux/mlx.h"
-// # include "../minilibx-mac/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
@@ -37,6 +33,7 @@
 
 //! Minilibx events
 # ifdef __APPLE__
+# include "../libs/minilibx-mac/mlx.h"
 #  define ESC 53
 #  define W 13
 #  define A 0
@@ -51,6 +48,9 @@
 #  define DestroyNotify 17
 #  define StructureNotifyMask (1L<<17)
 # else
+# include "../libs/minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 #  define ESC 65307
 #  define W 119
 #  define A 97
@@ -157,7 +157,82 @@ typedef struct s_game
 	struct s_map	map;
 }	t_game;
 
+// ::::::::::::::::::::::::::::::: INIT_GAME :::::::::::::::::::::::::::::: //
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+/**
+ * \brief Checks the number of command-line arguments.
+ *
+ * This function verifies that the number of command-line arguments is exactly 2.
+ * If there are more than 2 arguments, it prints an error message indicating too many arguments.
+ * If there are fewer than 2 arguments, it prints an error message indicating not enough arguments.
+ * In both error cases, the function exits the program with a status of 1.
+ *
+ * \param ac The number of command-line arguments.
+ */
+void ft_check_args(int ac);
+
+/**
+ * \brief Checks if the given file has a .cub extension and is valid.
+ *
+ * This function verifies if the provided file name has a .cub extension.
+ * It checks the position of the last dot in the file name and ensures that
+ * the extension is .cub and that it is not preceded by a slash.
+ * If the file is valid, the function returns true. Otherwise, it prints
+ * an error message and exits the program with a status of 1.
+ *
+ * \param argv The file name to check.
+ * \return true if the file has a .cub extension and is valid, false otherwise.
+ */
+bool is_cub_file(char *argv);
+
+
+/**
+ * \brief Checks if the given file exists.
+ *
+ * This function verifies if the provided file exists by attempting to open it.
+ * If the file does not exist, it prints an error message and exits the program with a status of 1.
+ *
+ * \param file The file name to check.
+ */
+void file_exist(char *file);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+/**
+ * \brief Initializes the game structure.
+ *
+ * This function initializes the game structure and allocates memory for it.
+ * It also sets the file_descriptor to the given file name and initializes the
+ * player structure.
+ *
+ * \param file The name of the file to load the map from.
+ * \return A pointer to the newly created game structure.
+ */
+t_game *ft_init_structs(char *file);
+
+/**
+ * \brief Retrieves and sets texture paths from the configuration file.
+ *
+ * This function reads lines from the configuration file associated with the game
+ * and sets the texture paths for the game map. It continues to read lines until
+ * all textures are set or the end of the file is reached. If a duplicate texture
+ * is found, it prints an error message and returns. After setting the textures,
+ * it skips any empty lines.
+ *
+ * \param game	A pointer to the game structure containing the file descriptor
+ *				and map information.
+ */
+void ft_get_textures(t_game *game);
+
+bool	ft_all_textures_set(t_game const *game);
+char	*remove_all_spaces(char *str);
+int		ft_set_texture(t_game *game, char *line);
+bool	ft_check_duplicates(t_game *game, char *line);
+bool	ft_check_empty_line(const char *line, int option);
+void	ft_get_map(t_game *game);
+void	ft_get_player_pos(t_game *game);
 
 int		key_handler(int key, t_game *game);
 void	free_all(t_game *game);
@@ -192,6 +267,6 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 bool ft_check_map(t_game *game, char **av);
 
-t_game *ft_init_structs(char *file);
+void	ft_free_textures(t_game *game);
 
 #endif
