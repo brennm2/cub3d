@@ -61,7 +61,7 @@ $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $(OBJ_FOLDER)/main.o: main.c
-	@mkdir -p $(OBJ_FOLDER)  # Ensure the directory exists
+	@mkdir -p $(OBJ_FOLDER) # Ensure the directory exists
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c main.c -o $(OBJ_FOLDER)/main.o
 
 re: fclean

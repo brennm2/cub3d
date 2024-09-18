@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:42:38 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/14 14:53:30 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:50:14 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,17 +151,17 @@ int ft_set_texture(t_game *game, char *line)
 
 	len = ft_strlen(line);
 
-	if(ft_strnstr(line, NORTH, len))
+	if(!ft_strncmp(line, NORTH, 3))
 		game->map.NORTH_PATH = remove_all_spaces(line);
-	else if(ft_strnstr(line, SOUTH, len))
+	else if(!ft_strncmp(line, (SOUTH), 3))
 		game->map.SOUTH_PATH = remove_all_spaces(line);
-	else if(ft_strnstr(line, EAST, len))
+	else if(!ft_strncmp(line, EAST, 3))
 		game->map.EAST_PATH = remove_all_spaces(line);
-	else if(ft_strnstr(line, WEST, len))
+	else if(!ft_strncmp(line, WEST, 3))
 		game->map.WEST_PATH = remove_all_spaces(line);
-	else if(ft_strnstr(line, CEILING, len))
+	else if(!ft_strncmp(line, CEILING,	 2))
 		game->map.CEILING_PATH = remove_all_spaces(line);
-	else if(ft_strnstr(line, FLOOR, len))
+	else if(!ft_strncmp(line, FLOOR, 2))
 		game->map.FLOOR_PATH = remove_all_spaces(line);
 	else
 		return 1;

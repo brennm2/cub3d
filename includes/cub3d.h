@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/14 14:40:22 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:49:09 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 //Debug
 #include <time.h>
 
-# define NORTH "NO"
-# define SOUTH "SO"
-# define WEST "WE"
-# define EAST "EA"
-# define CEILING "C"
-# define FLOOR "F"
+# define NORTH "NO "
+# define SOUTH "SO "
+# define WEST "WE "
+# define EAST "EA "
+# define CEILING "C "
+# define FLOOR "F "
 
 
 //! Minilibx events
@@ -68,6 +68,8 @@ typedef struct s_map
 	char *line;
 	int height;
 	int length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
+	long CEILING_COLOR;
+	long FLOOR_COLOR;
 	char *NORTH_PATH;
 	char *SOUTH_PATH;
 	char *WEST_PATH;
@@ -292,5 +294,7 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 bool ft_check_map(t_game *game, char **av);
 
 void	ft_free_textures(t_game *game);
+void	free_map(t_game *game);
+void	ft_free_map(char **map);
 
 #endif

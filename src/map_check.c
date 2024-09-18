@@ -168,6 +168,19 @@ bool ft_map_valid_chars(t_game *game)
 	return true;
 }
 
+void ft_free_map(char **map)
+{
+	int i = 0;
+	if (map == NULL)
+		return;
+	while (map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
 void free_map(t_game *game)
 {
 	int i = 0;

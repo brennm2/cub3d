@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 13:50:22 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:40:44 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	create_north_texture(t_game *game)
 {
 	game->texture[0]->img->mlx_img = mlx_xpm_file_to_image(
-		game->mlx_ptr, "sprites/north_wall.xpm", &game->texture[0]->w,
+		game->mlx_ptr, game->map.NORTH_PATH, &game->texture[0]->w,
 			&game->texture[0]->h);
 	if (!game->texture[0]->img->mlx_img)
 	{
@@ -37,7 +37,7 @@ int	create_north_texture(t_game *game)
 int	create_south_texture(t_game *game)
 {
 	game->texture[1]->img->mlx_img = mlx_xpm_file_to_image(
-		game->mlx_ptr, "sprites/south_wall.xpm", &game->texture[1]->w,
+		game->mlx_ptr, game->map.SOUTH_PATH, &game->texture[1]->w,
 			&game->texture[1]->h);
 	if (!game->texture[1]->img->mlx_img)
 	{
@@ -59,7 +59,7 @@ int	create_south_texture(t_game *game)
 int	create_east_texture(t_game *game)
 {
 	game->texture[2]->img->mlx_img = mlx_xpm_file_to_image(
-		game->mlx_ptr, "sprites/east_wall.xpm", &game->texture[2]->w,
+		game->mlx_ptr, game->map.EAST_PATH, &game->texture[2]->w,
 			&game->texture[2]->h);
 	if (!game->texture[2]->img->mlx_img)
 	{
@@ -81,7 +81,7 @@ int	create_east_texture(t_game *game)
 int	create_west_texture(t_game *game)
 {
 	game->texture[3]->img->mlx_img = mlx_xpm_file_to_image(
-		game->mlx_ptr, "sprites/west_wall.xpm", &game->texture[3]->w,
+		game->mlx_ptr, game->map.WEST_PATH, &game->texture[3]->w,
 			&game->texture[3]->h);
 	if (!game->texture[3]->img->mlx_img)
 	{
