@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/18 18:08:48 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:13:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define CEILING "C"
 # define FLOOR "F"
 
+
+//
 
 //! Minilibx events
 # ifdef __APPLE__
@@ -84,6 +86,8 @@ typedef struct s_map
 # define BLOCK_SIZE 64
 # define PLAYER_SPEED 0.2
 # define PLAYER_SENS 0.045
+# define MOUSE_SENS 0.040
+# define MOUSE_PITCH 25
 # define TEXTURE_W 64
 # define TEXTURE_H 64
 
@@ -123,7 +127,9 @@ typedef struct s_ray
 	bool	is_door;
 	bool	is_mid_door;
 	bool	door_is_closing;
-
+	bool	is_in_y;
+	
+	int		mouse_height;
 	int		map_x;
 	int		map_y;
 	int		step_x;
@@ -167,6 +173,8 @@ typedef struct s_game
 	int			h;
 	int			fd_file;
 	
+	int			*mouse_x;
+	int			*mouse_y;
 	int			new_x;
 	int			new_y;
 	double		dirx;
@@ -180,6 +188,7 @@ typedef struct s_game
 	void		*win_ptr;
 
 
+	t_img		*handmap;
 	t_ray		*ray;
 	t_player	player;
 	t_img		*img;
@@ -223,8 +232,8 @@ void	place_player(t_game *game, double player_x, double player_y);
 // SRC/FOG_CREATOR.C
 int	darken_rgb_color3 (int color, double factor, int i);
 int	get_fog(t_game *game, int color);
-int			get_fog_ceiling(int color, int i);
-int			get_fog_floor(int color, int i);
+int			get_fog_ceiling(int color, int i, int mouse);
+int			get_fog_floor(int color, int i, int mouse);
 
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
 int				get_texture_color(t_game *game, int tex_y);
@@ -237,8 +246,7 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 bool ft_check_map(t_game *game, char **av);
 
 
-
-void	minimap(t_game *game);
+void	minimap(t_game *game, int *x_p, int *y_p);
 t_game *ft_init_structs(char *file);
 
 #endif

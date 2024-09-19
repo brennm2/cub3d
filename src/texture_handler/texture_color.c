@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 11:44:39 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 11:18:29 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,32 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			else
 			{
 				temp_fps = 0;
-				if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
-					&& game->ray->door_is_closing == false)
-					game->map.map[(int)game->player.player_x][(int)game->new_y] = 'd';
-				else if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
-					&& game->ray->door_is_closing == true)
+				if (game->ray->is_in_y == false)
 				{
-					game->ray->door_is_closing = false;
-					game->ray->is_mid_door = false;
-					game->map.map[(int)game->player.player_x][(int)game->new_y] = 'D';
+					if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
+						&& game->ray->door_is_closing == false)
+						game->map.map[(int)game->player.player_x][(int)game->new_y] = 'd';
+					else if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
+						&& game->ray->door_is_closing == true)
+					{
+						game->ray->door_is_closing = false;
+						game->ray->is_mid_door = false;
+						game->map.map[(int)game->player.player_x][(int)game->new_y] = 'D';
+					}
 				}
-					
+				else
+				{
+					if (game->map.map[(int)game->new_x][(int)game->player.player_y] == 'i'
+						&& game->ray->door_is_closing == false)
+						game->map.map[(int)game->new_x][(int)game->player.player_y] = 'd';
+					else if (game->map.map[(int)game->new_x][(int)game->player.player_y] == 'i'
+						&& game->ray->door_is_closing == true)
+					{
+						game->ray->door_is_closing = false;
+						game->ray->is_mid_door = false;
+						game->map.map[(int)game->new_x][(int)game->player.player_y] = 'D';
+					}
+				}
 			}
 		}
 		else

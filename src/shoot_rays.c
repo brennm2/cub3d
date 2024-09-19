@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 18:19:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:15:36 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void	calculate_lines(t_game *game)
 
 	line_height = (int)(SCREEN_HEIGHT / game->ray->distance);
 	game->ray->line_height = line_height;
-	game->ray->h_pixel = -line_height / 2 + SCREEN_HEIGHT / 2;
-	game->ray->l_pixel = line_height / 2 + SCREEN_HEIGHT / 2;
+
+	game->ray->h_pixel = -line_height / 2 + (SCREEN_HEIGHT / 2) + game->ray->mouse_height;
+	game->ray->l_pixel = line_height / 2 + (SCREEN_HEIGHT / 2) + game->ray->mouse_height;
 	if (game->ray->h_pixel < 0)
 		game->ray->h_pixel = 0;
 	if (game->ray->l_pixel >= SCREEN_HEIGHT)
@@ -48,9 +49,7 @@ void	calculate_lines(t_game *game)
 void	dda(t_game *game)
 {
 	bool	wall_hit;
-	//bool	is_door;
-	
-	//is_door = false;
+
 	wall_hit = false;
 	while (wall_hit == false)
 	{
@@ -76,6 +75,7 @@ void	dda(t_game *game)
 		{
 			wall_hit = true;
 			game->ray->is_door = true;
+			game->ray->is_mid_door = false;
 		}
 		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'i')
 		{
@@ -130,7 +130,7 @@ void	shoot_rays(t_game *game)
 	int	x;
 
 	x = 0;
-	while (x++ < SCREEN_WIDTH)
+	while (x++ < SCREEN_WIDTH - 1)
 	{
 		calculate_ray_direction(game, x);
 		calculate_ray_steps(game);

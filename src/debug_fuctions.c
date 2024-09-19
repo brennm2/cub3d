@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:46:29 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 12:04:34 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:28:52 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void show_fps_debug(t_game *game)
 	// else if (game->fps->fps <= 34)
 	// 	printf("\033[0;31mFPS: %.2f\033[0;37m\n", game->fps->fps);
 	// else
-	// 	printf("FPS: %.2f\n", game->fps->fps);
+	printf("FPS: %.2f\n", game->fps->fps);
 }

@@ -12,7 +12,7 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g #-Ofast -ffast-math -finline-functions -march=native -flto
 RM = rm -rf
 AR = ar -rcs
 
@@ -21,12 +21,12 @@ INC_FOLDER = includes
 SRC_FOLDER = src
 OBJ_FOLDER = objects
 LIBFT = ./libs
-LIBFT_MAKE = $(MAKE) -s -C $(LIBFT)  # Use -s to suppress output
+LIBFT_MAKE = $(MAKE) -C $(LIBFT)  # Use -s to suppress output
 LIBS = -L./libs -lft
 MLX = ./libs/minilibx-linux
 
 # Flags
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 CPPFLAGS = -I $(INC_FOLDER)
 MAKEFLAGS = --no-print-directory
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -lXext -lX11
@@ -51,7 +51,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FOLDER) $(OBJS) $(MAIN_OBJ)
 	#@echo "[$(CYAN)Compiling MLX$(RESET)] $(GREEN)$(MLX)$(RESET)"
-	@clear
+	#@clear
 	@./Asccii/creating.sh
 	$(MAKE) -s -C $(MLX) > /dev/null 2>&1
 	#@echo "[$(CYAN)Compiling libft$(RESET)] $(GREEN)$(LIBFT)$(RESET)"
@@ -59,7 +59,7 @@ $(NAME): $(OBJ_FOLDER) $(OBJS) $(MAIN_OBJ)
 	#@echo "[$(CYAN)Linking$(RESET)] $(GREEN)$(NAME)$(RESET)"
 	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LDFLAGS) -o $(NAME)
 	#@echo "$(GREEN)Build complete!$(RESET)"
-	@clear
+	#@clear
 	@./Asccii/completed.sh
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
@@ -77,7 +77,7 @@ re: fclean
 
 clean:
 	@$(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus
-	@clear
+	#@clear
 	@./Asccii/object.sh
 
 

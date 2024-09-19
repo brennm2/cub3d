@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 18:57:36 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:17:39 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	init_window(t_game *game)
 	game->win_ptr= NULL;
 	game->texture = ft_calloc(sizeof(t_texture), 4);
 	game->fps = ft_calloc(sizeof(t_fps), 1);
-  	for (int i = 0; i < 6; i++)
+  	for (int i = 0; i < 7; i++)
 	{
         game->texture[i] = ft_calloc(1, sizeof(t_texture));
         game->texture[i]->h = 64;
         game->texture[i]->w = 64;
         game->texture[i]->img = ft_calloc(1, sizeof(t_img));
     }
+	game->mouse_x = ft_calloc(sizeof(int *), 1);
+	game->mouse_y = ft_calloc(sizeof(int *), 1);
 }
 
 void	display_window(t_game *game)
@@ -53,14 +55,7 @@ void draw_box(t_game *game, int pos_y, int pos_x, long color)
     }
 }
 
-// void	minimap_background(t_game *game)
-// {
-// 	int	x = 0;
-// 	int y = 0;
-	
-// }
-
-void	minimap(t_game *game)
+void	minimap(t_game *game, int *x_p, int *y_p)
 {
 	int y = 0;
 	int x = 0;
@@ -69,7 +64,15 @@ void	minimap(t_game *game)
 	int	player_step_x = (int)game->player.player_x * 20 + (SCREEN_HEIGHT / 2)- ((game->map.height * 20)/ 2);
 	int	player_step_y = (int)game->player.player_y * 20 + (SCREEN_WIDTH / 2);
 	
-	
+	if (game->img && game->img->mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "sprites/handmap.xpm", x_p, y_p);
+	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
+	if (!game->img->mlx_img)
+	{
+		printf("minimap image dead\n");
+		free_all(game);
+	}
 	while(y < game->map.height)
 	{
 		while(game->map.map[y][x])
@@ -97,8 +100,50 @@ void	minimap(t_game *game)
 	}
 }
 
+void	mouse_direction(t_game *game)
+{
+	int center_x = (SCREEN_WIDTH / 2);
+	int	center_y = (SCREEN_HEIGHT / 2);
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = game->dirx;
+	old_plane_x = game->plane_x;
+	(void)center_y;
+	if (*game->mouse_x - center_x < -10)
+	{
+		game->dirx = game->dirx * cos(MOUSE_SENS) - game->diry * sin(MOUSE_SENS);
+		game->diry = old_dir_x * sin(MOUSE_SENS) + game->diry * cos(MOUSE_SENS);
+		game->plane_x = game->plane_x * cos(MOUSE_SENS) - game->plane_y * sin(MOUSE_SENS);
+		game->plane_y = old_plane_x * sin(MOUSE_SENS) + game->plane_y * cos(MOUSE_SENS);
+		
+	}
+	else if (*game->mouse_x - center_x > 10)
+	{
+		game->dirx = game->dirx * cos(-MOUSE_SENS) - game->diry * sin(-MOUSE_SENS);
+		game->diry = old_dir_x * sin(-MOUSE_SENS) + game->diry * cos(-MOUSE_SENS);
+		game->plane_x = game->plane_x * cos(-MOUSE_SENS) - game->plane_y * sin(-MOUSE_SENS);
+		game->plane_y = old_plane_x * sin(-MOUSE_SENS) + game->plane_y * cos(-MOUSE_SENS);
+	}
+	if (*game->mouse_y - center_y < -10)
+	{
+		game->ray->mouse_height += MOUSE_PITCH;
+		if (game->ray->mouse_height >= 300)
+			game->ray->mouse_height = 300;
+	}
+	else if (*game->mouse_y - center_y > 10)
+	{
+		game->ray->mouse_height -= MOUSE_PITCH;
+		if (game->ray->mouse_height <= -300)
+			game->ray->mouse_height = -300;
+	}
+}
+
 int	game_frame_loop(t_game *game)
 {
+	int x = SCREEN_WIDTH;
+	int y = SCREEN_HEIGHT;
+
 	if (game->img && game->img->mlx_img)
 		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -108,7 +153,10 @@ int	game_frame_loop(t_game *game)
 	show_fps_debug(game);
 	//-------------
 	if (game->map.show_minimap == true)
-		minimap(game);
+		minimap(game, &x, &y);
+	mlx_mouse_get_pos(game->mlx_ptr, game->win_ptr, game->mouse_x, game->mouse_y);
+	mlx_mouse_move(game->mlx_ptr, game->win_ptr, (SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2));
+	mouse_direction(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
 	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
@@ -118,9 +166,7 @@ int	key_release(int key, t_game *game)
 {
 	(void)key;
 	if (key == 'm')
-	{
 		game->map.show_minimap = false;
-	}
 	return (0);
 }
 
@@ -134,7 +180,7 @@ void	open_window(t_game *game)
 	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, &key_release, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
-	//mlx_mouse_hook(vars.win, mouse_hook, &vars);
+	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	mlx_loop(game->mlx_ptr);
 }
 

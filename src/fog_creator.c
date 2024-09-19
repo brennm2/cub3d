@@ -6,18 +6,18 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:24:45 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 18:32:51 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:18:37 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes//cub3d.h"
 
-int	get_fog_floor(int color, int i)
+int	get_fog_floor(int color, int i, int mouse)
 {
 	int	times;
 	int	stop;
 
-	stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2));
+	stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2) + mouse);
 	times = 0;
 	while (i < stop + 50 && times <= 18)
 	{
@@ -28,12 +28,12 @@ int	get_fog_floor(int color, int i)
 	return (color);
 }
 
-int	get_fog_ceiling(int color, int i)
+int	get_fog_ceiling(int color, int i, int mouse)
 {
 	int	times;
 
 	times = 18;
-	while (i < (SCREEN_HEIGHT / 2) - 110)
+	while (i < (SCREEN_HEIGHT / 2) - 110 + mouse)
 	{
 		i += 10;
 		times--;

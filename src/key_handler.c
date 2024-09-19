@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/18 18:23:55 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/19 11:15:16 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,24 +105,46 @@ void	look_direction(t_game *game, bool is_left)
 	}
 }
 
-void	door_animation(t_game *game, int new_x, int new_y)
+void	door_animation(t_game *game, int new_x, int new_y, bool in_y)
 {
 	game->new_x = new_x;
 	game->new_y = new_y;
-	if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D')
+	game->ray->is_in_y = in_y ;
+
+	if (in_y == false)
 	{
-		game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
-		game->ray->is_mid_door = true;
-		game->ray->door_is_closing = false;
+		if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D')
+		{
+			game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
+			game->ray->is_mid_door = true;
+			game->ray->door_is_closing = false;
+			
+		}
+		else if (game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
+		{
+			game->ray->is_mid_door = true;
+			game->ray->door_is_closing = true;
+			game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
+		}
+		ft_printf("open door X\n");
+	}
+	else
+	{
+		if (game->map.map[(int)new_x][(int)game->player.player_y] == 'D')
+		{
+			game->map.map[(int)new_x][(int)game->player.player_y] = 'i';
+			game->ray->is_mid_door = true;
+			game->ray->door_is_closing = false;
+		}
+		else if(game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
+		{
+			game->ray->is_mid_door = true;
+			game->ray->door_is_closing = true;
+			game->map.map[(int)new_x][(int)game->player.player_y] = 'i';
+		}
+		ft_printf("open door Y\n");
 		
 	}
-	else if (game->map.map[(int)game->player.player_x][(int)new_y] == 'd')
-	{
-		game->ray->is_mid_door = true;
-		game->ray->door_is_closing = true;
-		game->map.map[(int)game->player.player_x][(int)new_y] = 'i';
-	}
-	ft_printf("open door X\n");
 }
 
 void	door_handler(t_game *game)
@@ -133,17 +155,18 @@ void	door_handler(t_game *game)
 	new_x = game->player.player_x + game->dirx * (PLAYER_SPEED * 5);
 	new_y = game->player.player_y + game->diry * (PLAYER_SPEED * 5);
 	if (game->map.map[(int)new_x][(int)game->player.player_y] == 'D' \
-		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'd')
+		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'd' \
+		|| game->map.map[(int)new_x][(int)game->player.player_y] == 'i')
 	{
-
+		door_animation(game, new_x, new_y, true);
 	}
 	if (game->map.map[(int)game->player.player_x][(int)new_y] == 'D' \
 		|| game->map.map[(int)game->player.player_x][(int)new_y] == 'd' ||
 		game->map.map[(int)game->player.player_x][(int)new_y] == 'i')
 	{
-		door_animation(game, new_x, new_y);
+		door_animation(game, new_x, new_y, false);
 	}
-	//show_map(game);
+	show_map(game);
 }
 
 int	key_handler(int key, t_game *game)
