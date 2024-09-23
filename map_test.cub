@@ -1,14 +1,10 @@
-   
-       NO assets/sprites/north_wall.xpm
-              NO assets/sprites/north_wall.xpm
-       
-      
-SO assets/sprites/south_wall.xpm
-WE assets/sprites/west_wall.xpm
-EA assets/sprites/east_wall.xpm
+NO sprites/north_wall.xpm
+SO sprites/south_wall.xpm
+WE sprites/west_wall.xpm
+EA sprites/east_wall.xpm
 
-F 0,0,0
-C 0,0,0
+F              0,0,0
+C 255,0,0
 
 1111111111
 1W00100001

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:49:09 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:46:56 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,14 +178,16 @@ typedef struct s_game
 /**
  * \brief Checks the number of command-line arguments.
  *
- * This function verifies that the number of command-line arguments is exactly 2.
- * If there are more than 2 arguments, it prints an error message indicating too many arguments.
- * If there are fewer than 2 arguments, it prints an error message indicating not enough arguments.
+ * This function verifies that the number of arguments is exactly 2.
+ * If there are more than 2 arguments, it prints an error message indicating
+ * too many arguments.
+ * If there are fewer than 2 arguments, it prints an error message indicating
+ * not enough arguments.
  * In both error cases, the function exits the program with a status of 1.
  *
  * \param ac The number of command-line arguments.
  */
-void ft_check_args(int ac);
+void ft_check_args(const int ac);
 
 /**
  * \brief Checks if the given file has a .cub extension and is valid.
@@ -199,18 +201,19 @@ void ft_check_args(int ac);
  * \param argv The file name to check.
  * \return true if the file has a .cub extension and is valid, false otherwise.
  */
-bool is_cub_file(char *argv);
+bool is_cub_file(const char *argv);
 
 
 /**
  * \brief Checks if the given file exists.
  *
  * This function verifies if the provided file exists by attempting to open it.
- * If the file does not exist, it prints an error message and exits the program with a status of 1.
+ * If the file does not exist, it prints an error message and exits the program
+ * with a status of 1.
  *
  * \param file The file name to check.
  */
-void file_exist(char *file);
+void file_exist(const char *file);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -226,6 +229,8 @@ void file_exist(char *file);
  */
 t_game *ft_init_structs(char *file);
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TEXTURES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
 /**
  * \brief Retrieves and sets texture paths from the configuration file.
  *
@@ -240,10 +245,156 @@ t_game *ft_init_structs(char *file);
  */
 void ft_get_textures(t_game *game);
 
-bool	ft_all_textures_set(t_game const *game);
+/**
+ * @brief Checks if all texture paths are set in the game map.
+ *
+ * This function verifies if all the texture paths:
+ * (NORTH, SOUTH, WEST, EAST, CEILING, and FLOOR) are set.
+ *
+ * @param game	A constant pointer to the game structure containing the map with
+ *				texture paths.
+ * @return		true if all texture paths are set, false otherwise.
+ */
+bool ft_all_textures_set(t_game const *game);
+
+/**
+ * @brief Checks if a line is empty based on the given option.
+ *
+ * This function iterates through each character of the provided line and checks
+ * if it is empty.
+ * If the option is 1, it considers a line empty if it contains
+ * only spaces and newline characters.
+ * If the option is not 1, it considers a line empty if it contains
+ * only newline characters.
+ *
+ * @param line The line to be checked.
+ * @param option The option to determine the criteria for an empty line.
+ * @return true if the line is empty based on the given option, false otherwise.
+ */
+bool ft_check_empty_line(const char *line, int option);
+
+/**
+ * @brief Checks for duplicate texture paths in the game map.
+ *
+ * This function checks if the given line contains any of the texture
+ * identifiers (NORTH, SOUTH, EAST, WEST, CEILING, FLOOR) and if the texture
+ * path is a duplicate, it returns true.
+ *
+ * @param game A constant pointer to the game structure containing the map with
+ *				texture paths.
+ * @param line The line to be checked for duplicate texture paths.
+ * @return true if a duplicate texture path is found, false otherwise.
+ */
+bool ft_check_duplicates(const t_game *game, const char *line);
+
+/**
+ * @brief Sets the texture path in the game map based on the given line.
+ *
+ * This function checks the provided line for texture identifiers
+ * (NORTH, SOUTH, EAST, WEST, CEILING, FLOOR)
+ * and sets the corresponding texture path in the game map.
+ *
+ * @param game A pointer to the game structure with the map with texture paths.
+ * @param line The line to be checked for texture identifiers and paths.
+ * @return 0 if a texture path is successfully set, 1 otherwise.
+ */
+int ft_set_texture(t_game *game, const char *line);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MAP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+/**
+ * \brief Reads and processes the game map from a file.
+ *
+ * This function allocates memory for the game map and reads each line from
+ * the file. It checks for empty lines and valid characters, and extends the
+ * map as needed. If an invalid character is found, it prints an error message
+ * and exits the program.
+ *
+ * \param game A pointer to the game structure containing the map and file
+ * descriptor.
+ */
+void ft_get_map(t_game *game);
+
+/**
+ * \brief Checks if a string contains only valid characters.
+ *
+ * This function iterates through each character of the provided string and
+ * checks if it is present in the set of valid characters. If all characters
+ * in the string are valid, it returns true; otherwise, it returns false.
+ *
+ * \param str The string to be checked.
+ * \param valid_chars A string containing the set of valid characters.
+ * \return true if all characters in the string are valid, false otherwise.
+ */
+bool has_valid_chars(const char *str, const char *valid_chars);
+
+/**
+ * \brief Extends the game map by allocating more memory.
+ *
+ * This function allocates additional memory for the game map to accommodate
+ * more lines. It copies the existing map lines to the new memory location,
+ * frees the old map memory, and updates the map pointer to the new memory.
+ *
+ * \param game A pointer to the game structure containing the map.
+ */
+void ft_extend_map(t_game *game);
+
+/**
+ * \brief Duplicates the game map.
+ *
+ * This function allocates memory for a new map and copies the contents of the
+ * existing game map into it. If memory allocation fails, it returns NULL.
+ *
+ * \param game A pointer to the game structure containing the map.
+ * \return A pointer to the duplicated map, or NULL if memory allocation fails.
+ */
+char	**ft_dup_map(const t_game *game);
+
+/**
+ * \brief Performs a flood fill algorithm to validate the game map.
+ *
+ * This function recursively checks the game map to ensure it is properly
+ * enclosed by walls. If an invalid map configuration is detected, it prints
+ * an error message and exits the program.
+ *
+ * \param game A pointer to the game structure containing the map.
+ * \param map A 2D array representing the game map.
+ * \param x The x-coordinate to start the flood fill.
+ * \param y The y-coordinate to start the flood fill.
+ * \return 1 if the current position is a wall, otherwise 0.
+ */
+int ft_flood_fill(t_game *game, char **map, const int x, const int y);
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PLAYER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+/**
+ * \brief Finds and sets the player's initial position on the game map.
+ *
+ * This function iterates through the game map to find the player's starting
+ * position, which is indicated by the characters 'N', 'S', 'E', or 'W'. Once
+ * found, it sets the player's coordinates and direction, and replaces the
+ * map character with '0'.
+ *
+ * \param game A pointer to the game structure containing the map and player
+ * information.
+ */
+void ft_get_player_pos(t_game *game);
+
+/**
+ * \brief Sets the player's direction based on the given character.
+ *
+ * This function sets the player's direction and plane values based on the
+ * provided character, which indicates the initial direction the player is
+ * facing ('N', 'S', 'E', or 'W').
+ *
+ * \param game A pointer to the game structure containing player information.
+ * \param c The character indicating the player's initial direction.
+ */
+void	set_player_direction(t_game *game, char c);
+
+
 char	*remove_all_spaces(char *str);
-int		ft_set_texture(t_game *game, char *line);
-bool	ft_check_duplicates(t_game *game, char *line);
+int		ft_set_texture(t_game *game, const char *line);
 bool	ft_check_empty_line(const char *line, int option);
 void	ft_get_map(t_game *game);
 void	ft_get_player_pos(t_game *game);
@@ -259,10 +410,12 @@ void	fill_map(int fd, t_game *game);
 
 
 // SRC/TEXTURE_HANDLER/CREATE_TEXTURE
-void	create_texture(t_game *game);
+void create_all_textures(const t_game *game);
+int create_texture(const t_game *game, const int index, char *path, const char *error_msg);
+
 
 // SRC/DEBUG/DEBUG_FUNCIONS.C
-void	show_map(t_game *game);
+void	show_map(const t_game *game);
 void	show_fps_debug(void);
 
 // SRC/RAYCASTING/SHOOT_RAYS.C

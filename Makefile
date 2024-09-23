@@ -12,7 +12,8 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g -Ofast #-ffast-math -finline-functions -march=native -flto
+#CC = cc -g -O0
 RM = rm -rf
 AR = ar -rcs
 
@@ -36,9 +37,9 @@ LIBS = -L./libs -lft
 LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
 
 # Files
-MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator
-MANDATORY_FILES += texture_handler/create_texture texture_handler/texture_color
-MANDATORY_FILES += init_game/file init_game/structs
+MANDATORY_FILES += draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator
+MANDATORY_FILES += init_game/file init_game/structs init_game/textures init_game/map init_game/player init_game/create_texture init_game/texture_color
+MANDATORY_FILES += debug/debug_utils
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
 MAIN_OBJ = $(OBJ_FOLDER)/main.o

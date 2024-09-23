@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 12:02:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:29:05 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	game_frame_loop(t_game *game)
 	show_fps_debug();
 	//-------------
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
-	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	return (0);
+	// mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+		return (0);
 }
 
 void	open_window(t_game *game)
 {
 	display_window(game);
-	if (!game->win_ptr)
+	if (game->win_ptr == NULL)
 		return ;
 	mlx_loop_hook(game->mlx_ptr, &game_frame_loop, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_handler, game);
@@ -62,16 +62,7 @@ void	open_window(t_game *game)
 	mlx_loop(game->mlx_ptr);
 }
 
-void	init_game_data(t_game *game)
-{
-	(void)game;
-	// game->dirx = 0;
-	// game->diry = 1;
-	// game->plane_x = 0.66;
-	// game->plane_y = 0;
-}
-
-void	init_player(t_game *game, t_player player)
+void	init_player(t_game *game, t_player player) //TODO IS IT NECESSARY???
 {
 	game->player_in_map_x = 14; //DEBUG
 	game->player_in_map_y = 3; //DEBUG
@@ -82,7 +73,9 @@ void	init_player(t_game *game, t_player player)
 	//player->angle = M_PI;
 }
 
-int	main(int ac, char **av)
+//TODO map too long its not working
+
+int	main(const int ac, char **av)
 {
 	t_game	*game;
 
@@ -92,7 +85,6 @@ int	main(int ac, char **av)
 	game = ft_init_structs(av[1]);
 	init_player(game, game->player);
 	init_window(game);
-	init_game_data(game);
-	create_texture(game);
+	create_all_textures(game);
 	open_window(game);
 }

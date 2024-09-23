@@ -6,54 +6,11 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 14:27:02 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:39:03 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:45:06 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void ft_print_map(char **map)
-{
-	int i = 0;
-	while (map[i] != NULL)
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-}
-
-int ft_flood_fill(t_game *game, char **map, int x, int y)
-{
-	if (x < 0 || y < 0 || y >= game->map.height || x >= (int)ft_strlen(map[y]) || map[y][x] == 32)
-	{
-		printf("Invalid Map(Not Wall Closed)\n");
-		exit(1);
-	}
-	if (map[y][x] == '1')
-		return (1);
-	map[y][x] = '1';
-	ft_flood_fill(game, map, x + 1, y);
-	ft_flood_fill(game, map, x - 1, y);
-	ft_flood_fill(game, map, x, y + 1);
-	ft_flood_fill(game, map, x, y - 1);
-	return (0);
-}
-
-char	**ft_dup_map(t_game *game)
-{
-	char	**map_test;
-	int		i;
-
-	i = -1;
-	map_test = ft_calloc(game->map.height + 1, sizeof (char *));
-	if (map_test == NULL)
-		free(map_test);
-	else
-		while (++i < game->map.height)
-			map_test[i] = ft_strdup(game->map.map[i]);
-	map_test[i] = NULL;
-	return (map_test);
-}
 
 t_game *ft_init_structs(char *file)
 {
@@ -77,6 +34,23 @@ t_game *ft_init_structs(char *file)
 	if (game->img == NULL)
 		return (NULL);
 	return game;
+}
+
+size_t ft_count_char(const char *str, const char find)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+
+	while(str[i])
+	{
+		if(str[i] == find)
+			count++;
+		i++;
+	}
+	return count;
 }
 
 int ft_count_colours(char **colours)
@@ -110,55 +84,59 @@ void ft_set_color(char **color_values, long *color)
 	*color = (r << 16) | (g << 8) | b;
 }
 
-void ft_check_color(t_game *game)
+
+void	ft_parse_and_set_color(const char *path, long *color, const char *type)
 {
-	char **color_ceiling;
-	char **color_floor;
+	char **color_split;
 
-	color_ceiling = ft_split(game->map.CEILING_PATH, ',');
-	color_floor = ft_split(game->map.FLOOR_PATH, ',');
-
-	if (color_ceiling && ft_count_colours(color_ceiling) == 3 &&
-		color_floor && ft_count_colours(color_floor) == 3)
+	if (ft_count_char(path, ',') != 2)
 	{
-		ft_set_color(color_ceiling, &game->map.CEILING_COLOR);
-		ft_set_color(color_floor, &game->map.FLOOR_COLOR);
-	}
-	else
-	{
-		printf("Invalid color format\n");
-		exit(1); // TODO: Replace with function to print and free
-	}
-}
-
-
-void ft_get_textures(t_game *game)
-{
-	game->map.line = get_next_line(game->fd_file);
-	while (game->map.line != NULL && !ft_all_textures_set(game))
-	{
-		if (!ft_check_empty_line(game->map.line, 1))
-		{
-			if(ft_check_duplicates(game, game->map.line))
-			{
-				printf("Error: duplicate textures");
-				return ;
-			}
-			game->map.line = ft_strtrim(game->map.line, " ");
-			ft_set_texture(game, game->map.line);
-		}
-		free(game->map.line);
-		game->map.line = get_next_line(game->fd_file);
-	}
-	while(game->map.line != NULL && ft_check_empty_line(game->map.line, 1))
-	{
-		free(game->map.line);
-		game->map.line = get_next_line(game->fd_file);
-	}
-	if(game->map.line == NULL)
-	{
-		printf("Not all testures\n");
+		printf("Invalid %s colour!\n", type);
 		exit(1);
 	}
-	ft_check_color(game);
+
+	color_split = ft_split(path, ',');
+	if (color_split == NULL || ft_count_colours(color_split) != 3)
+	{
+		printf("Invalid %s colour!\n", type);
+		exit(1);
+	}
+
+	ft_set_color(color_split, color);
+}
+
+void	ft_check_color(t_game *game)
+{
+	ft_parse_and_set_color(game->map.CEILING_PATH, &game->map.CEILING_COLOR, "CEILING");
+	ft_parse_and_set_color(game->map.FLOOR_PATH, &game->map.FLOOR_COLOR, "FLOOR");
+}
+
+void check_string_content(const char *str) {
+	if (str == NULL || *str == '\0') {
+		printf("Empty file\n");
+		return;
+	}
+
+	bool only_spaces = false;
+	bool only_tabs = false;
+
+	for (int i = 0; str[i] != '\0'; i++) {
+		if (str[i] == ' ') {
+			only_spaces = true;
+		}
+		if (str[i] == '\t') {
+			only_tabs = true;
+		}
+		if (str[i] != '\t' && str[i] != ' ') {
+			return;
+		}
+	}
+
+	if (only_spaces && only_tabs)
+		printf("Only spaces and tabs\n");
+	else if (only_spaces) {
+		printf("Only spaces\n");
+	} else if (only_tabs) {
+		printf("Only tabs\n");
+	}
 }

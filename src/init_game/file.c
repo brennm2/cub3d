@@ -6,13 +6,13 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:46:37 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/13 18:47:42 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:40:22 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void ft_check_args(int ac)
+void ft_check_args(const int ac)
 {
 	if (ac != 2)
 	{
@@ -24,7 +24,7 @@ void ft_check_args(int ac)
 	}
 }
 
-bool is_cub_file(char *argv)
+bool is_cub_file(const char *argv)
 {
 	char *dot_position;
 
@@ -37,7 +37,7 @@ bool is_cub_file(char *argv)
 	exit(1);
 }
 
-void file_exist(char *file)
+void file_exist(const char *file)
 {
 	int fd;
 
