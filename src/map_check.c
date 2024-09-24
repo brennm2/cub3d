@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:33:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/14 14:44:09 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:23:08 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ void	ft_free_textures(t_game *game)
 		free(game->map.map[i]);
 		i++;
 	}
-	printf("NORTH %s", game->map.NORTH_PATH);
-	printf("SOUTH %s", game->map.SOUTH_PATH);
-	printf("WEST %s", game->map.WEST_PATH);
-	printf("EAST %s", game->map.EAST_PATH);
-	printf("CEILING %s", game->map.CEILING_PATH);
-	printf("FLOOR %s", game->map.FLOOR_PATH);
 	free(game->map.NORTH_PATH); //TODO THESE FREE NEEDS TO BE ADDED LATER WHEN THE PROGRAM FINISH
 	free(game->map.SOUTH_PATH);
 	free(game->map.WEST_PATH);
