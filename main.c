@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/19 18:17:39 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:30:58 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int	game_frame_loop(t_game *game)
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
 	// Calcula FPS
-	show_fps_debug(game);
+	//show_fps_debug(game);
 	//-------------
 	if (game->map.show_minimap == true)
 		minimap(game, &x, &y);

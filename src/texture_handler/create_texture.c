@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/19 17:25:18 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:37:55 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	create_door_texture (t_game *game)
 	}
 
 
-		game->texture[5]->img->mlx_img = mlx_xpm_file_to_image(
+	game->texture[5]->img->mlx_img = mlx_xpm_file_to_image(
 		game->mlx_ptr, "sprites/door_mid.xpm", &game->texture[5]->w,
 			&game->texture[5]->h);
 	if (!game->texture[5]->img->mlx_img)
@@ -136,6 +136,25 @@ int	create_door_texture (t_game *game)
 	if (!game->texture[5]->img->addr)
 	{
 		printf("\nNo texture addr created(MID_DOOR)\n\n");
+		return (1);
+	}
+
+
+		game->texture[6]->img->mlx_img = mlx_xpm_file_to_image(
+		game->mlx_ptr, "sprites/door_side.xpm", &game->texture[6]->w,
+			&game->texture[6]->h);
+	if (!game->texture[6]->img->mlx_img)
+	{
+		printf("\nNo texture created (door_side)\n\n");
+		return (1);
+	}
+	game->texture[6]->img->addr = mlx_get_data_addr(
+			game->texture[6]->img->mlx_img, &game->texture[6]->img->bpp,
+				&game->texture[6]->img->line_len,
+					&game->texture[6]->img->endian);
+	if (!game->texture[6]->img->addr)
+	{
+		printf("\nNo texture addr created(door_side)\n\n");
 		return (1);
 	}
 	return (0);
@@ -180,5 +199,5 @@ void	create_texture(t_game *game)
 	
 
 	create_door_texture(game);
-	create_texture_all(game, 6);
+	//create_texture_all(game, 6);
 }

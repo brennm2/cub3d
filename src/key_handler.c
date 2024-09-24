@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/19 11:15:16 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:42:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,9 @@ void	door_handler(t_game *game)
 {
 	double new_x;
 	double new_y;
+
+	if (game->map.map[(int)game->player.player_x][(int)game->player.player_y] == 'd')
+		return ;
 
 	new_x = game->player.player_x + game->dirx * (PLAYER_SPEED * 5);
 	new_y = game->player.player_y + game->diry * (PLAYER_SPEED * 5);

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/19 18:13:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:04:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef enum s_tdir
 	east_t,
 	door,
 	door_mid,
+	door_side,
 }		t_tdir;
 
 typedef struct s_fps
@@ -119,7 +120,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double	ray_angle;
+	//double	ray_angle;
 	double	distance;
 	int		line_height;
 	bool	wall_hit;
@@ -188,6 +189,7 @@ typedef struct s_game
 	void		*win_ptr;
 
 
+	int			tex_index;
 	t_img		*handmap;
 	t_ray		*ray;
 	t_player	player;
@@ -250,3 +252,94 @@ void	minimap(t_game *game, int *x_p, int *y_p);
 t_game *ft_init_structs(char *file);
 
 #endif
+
+
+
+
+// void	set_door_state(t_game *game, int option)
+// {
+// 	if (option == 0) // 'D'
+// 	{
+// 		game->ray->is_door = true;
+// 		game->ray->is_mid_door = false;
+// 	}
+// 	else if (option == 1) // 'i'
+// 	{
+// 		game->ray->is_mid_door = true;
+// 		game->ray->is_door = true;
+// 	}
+// 	else if (option == 2) // 'd'
+// 	{
+// 		game->ray->is_mid_door = false;
+// 		game->ray->is_door = false;
+// 	}
+// }
+
+
+// bool	door_texture_handler(t_game *game, int option)
+// {
+// 	if (game->ray->side == false)
+// 	{
+// 		game->ray->raydist_x -= game->ray->deltadist_x / 2;
+		
+// 		if (game->ray->raydist_x > game->ray->raydist_y)
+// 		{
+// 			game->ray->raydist_y += game->ray->deltadist_y;
+// 			game->ray->side = true;
+// 		}
+// 		game->ray->raydist_x += game->ray->deltadist_x;
+// 	}
+// 	else
+// 	{
+// 		game->ray->raydist_y -= game->ray->deltadist_y / 2;
+// 		if (game->ray->raydist_y > game->ray->raydist_x)
+// 		{
+// 			game->ray->raydist_x += game->ray->deltadist_x;
+// 			game->ray->side = 0;
+// 		}
+// 		game->ray->raydist_y += game->ray->deltadist_y;
+// 	}
+// 	set_door_state(game, option);
+// 	return (true);
+// }
+
+// void	dda(t_game *game)
+// {
+// 	bool	wall_hit;
+
+// 	wall_hit = false;
+	
+// 	while (wall_hit == false)
+// 	{
+// 		if (game->ray->raydist_x < game->ray->raydist_y)
+// 		{
+// 			game->ray->raydist_x += game->ray->deltadist_x;
+// 			game->ray->map_x += game->ray->step_x;
+// 			game->ray->side = false;
+// 		}
+// 		else
+// 		{
+// 			game->ray->raydist_y += game->ray->deltadist_y;
+// 			game->ray->map_y += game->ray->step_y;
+// 			game->ray->side = true;
+// 		}
+// 		if (game->map.map[game->ray->map_x][game->ray->map_y] == '1')
+// 		{
+// 			wall_hit = true;
+// 			game->ray->is_door = false;
+// 		}
+// 		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'D')
+// 			wall_hit = door_texture_handler(game, 0);
+// 		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'i')
+// 			wall_hit = door_texture_handler(game, 1);
+// 		if (game->map.map[game->ray->map_x][game->ray->map_y] == 'd')
+// 		{
+// 			wall_hit = false;
+// 			door_texture_handler(game, 2);
+// 		}
+// 	}
+// 	if (game->ray->side == false)
+// 		game->ray->distance = (game->ray->raydist_x - game->ray->deltadist_x);
+// 	else
+// 		game->ray->distance = (game->ray->raydist_y - game->ray->deltadist_y);
+// }

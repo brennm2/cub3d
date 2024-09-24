@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/19 11:18:29 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:17:41 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static inline int	get_pixel_color(t_game *game, int higher_pixel,
 	return (color);
 }
 
+
 int	find_right_side(t_game *game, int tex_y, int tex_x)
 {
 	if (game->ray->is_door == true)
@@ -33,7 +34,7 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			if (temp_fps < 100000000)
 			{
 				temp_fps += 1;
-				return (get_pixel_color(game, tex_y, tex_x, door_mid));
+				return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
 			}
 			else
 			{
@@ -67,7 +68,9 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			}
 		}
 		else
-			return (get_pixel_color(game, tex_y, tex_x, door));
+		{
+			return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
+		}
 	}
 	else if (game->ray->side == true && game->ray->is_door == false)
 	{
