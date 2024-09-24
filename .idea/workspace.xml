@@ -8,12 +8,12 @@
 }</component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="42_Cub3d" targetName="objects" />
-      <config projectName="42_Cub3d" targetName="all" />
-      <config projectName="42_Cub3d" targetName="re" />
-      <config projectName="42_Cub3d" targetName="fclean" />
-      <config projectName="42_Cub3d" targetName="norm" />
-      <config projectName="42_Cub3d" targetName="cub3d" />
+      <config projectName="cub3d" targetName="objects" />
+      <config projectName="cub3d" targetName="fclean" />
+      <config projectName="cub3d" targetName="cub3d" />
+      <config projectName="cub3d" targetName="norm" />
+      <config projectName="cub3d" targetName="all" />
+      <config projectName="cub3d" targetName="re" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -23,22 +23,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/init_game/create_texture.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/map_too_long.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/map_too_long.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/cheese_maze 1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/cheese_maze 1.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/broken_xpm.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/broken_xpm.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/map_too_long.cub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libs/libft.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_test.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map_test.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/debug_fuctions.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/east_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/east_wall.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/north_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/north_wall.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/south_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/south_wall.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/west_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/west_wall.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug/debug_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/debug_utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/draw_wall.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/draw_wall.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fill_map.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fog_creator.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/fog_creator.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/structs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/texture_handler/create_texture.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/texture_handler/texture_color.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/texture_color.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/create_texture.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/file.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/texture_color.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/textures.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/textures.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/place_player.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shoot_rays.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/shoot_rays.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,29 +78,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/bruno/Desktop/42 Porto/42_Cub3d/main.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/draw_wall.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/fill_map.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/init_game/create_texture.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/init_game/file.c" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/init_game/texture_color.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/shoot_rays.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -426,68 +417,36 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_game/draw_wall.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_game/shoot_rays.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_struct/create_texture.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_struct/file.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_struct/structs.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/init_struct/texture_color.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/bsousa-d/Desktop/cub3d/src/init_struct/textures.c" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MakefileLocalSettings">
     <option name="availableProjects">
@@ -495,14 +454,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="42_Cub3d" />
+              <option name="name" value="cub3d" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="42_Cub3d" />
+                <option name="name" value="cub3d" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -546,12 +505,13 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/bsousa-d/Desktop/Cub3d",
+    "last_opened_file_path": "/home/bsousa-d/Desktop/cub3d",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "CLionExternalConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
@@ -559,53 +519,97 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/init_game" />
+      <recent name="$PROJECT_DIR$/src/init_struct" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/texture_handler" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/libs" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Custom Build Application.Debug">
+    <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="assets/map_files/invalid/broken_xpm.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cub3d" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="cub3d" CONFIG_NAME="cub3d" version="1">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+    <configuration name="cub3d" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3d" CONFIG_NAME="cub3d" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
+    <configuration name="cub3d" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3d" CONFIG_NAME="cub3d" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="objects" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="objects" CONFIG_NAME="objects" version="1">
+    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="objects" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="objects" CONFIG_NAME="objects" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="objects" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="objects" CONFIG_NAME="objects" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Custom Build Application.Debug" />
+      <item itemvalue="Native Application.all" />
+      <item itemvalue="Native Application.cub3d" />
+      <item itemvalue="Native Application.fclean" />
+      <item itemvalue="Native Application.norm" />
+      <item itemvalue="Native Application.objects" />
+      <item itemvalue="Native Application.re" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -626,6 +630,8 @@
       <workItem from="1726663145642" duration="4075000" />
       <workItem from="1726667629376" duration="3946000" />
       <workItem from="1727086663906" duration="7913000" />
+      <workItem from="1727177510500" duration="1806000" />
+      <workItem from="1727182435254" duration="13249000" />
     </task>
     <task id="LOCAL-00001" summary="Early parser done">
       <option name="closed" value="true" />

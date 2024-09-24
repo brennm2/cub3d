@@ -6,14 +6,14 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/16 18:58:38 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:39:03 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 static int	get_pixel_color(t_game *game, int higher_pixel,
-	                          int lower_pixel, int t_index)
+		int lower_pixel, int t_index)
 {
 	int	color;
 
@@ -29,16 +29,11 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 	{
 		if (game->ray->raydir_y > 0)
 			return (get_pixel_color(game, tex_y, tex_x, west_t));
-		else
-			return (get_pixel_color(game, tex_y, tex_x, east_t));
+		return (get_pixel_color(game, tex_y, tex_x, east_t));
 	}
-	else
-	{
 		if (game->ray->raydir_x > 0)
 			return (get_pixel_color(game, tex_y, tex_x, north_t));
-		else
-			return (get_pixel_color(game, tex_y, tex_x, south_t));
-	}
+		return (get_pixel_color(game, tex_y, tex_x, south_t));
 }
 
 int	get_texture_color(t_game *game, int tex_y)

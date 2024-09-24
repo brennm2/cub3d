@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes//cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	get_fog_floor(int color, int i)
 {

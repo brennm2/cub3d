@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:05:32 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/23 15:42:50 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:35:22 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void ft_get_map(t_game *game)
 		{
 			if (!has_valid_chars(game->map.line, "10NSWE\n"))
 			{
+				game->map.map[game->map.height] =  NULL;
+				ft_quit_game(game);
 				printf("Invalid char!\n");
 				exit(1); //TODO change to funtion to print, free and exit
 			}
@@ -105,6 +107,8 @@ int ft_flood_fill(t_game *game, char **map, const int x, const int y)
 	if (x < 0 || y < 0 || y >= game->map.height || x >= (int)ft_strlen(map[y]) || map[y][x] == 32)
 	{
 		printf("Invalid Map(Not Wall Closed)\n");
+		free_double_pointer_array(map);
+		ft_quit_game(game);
 		exit(1);
 	}
 	if (map[y][x] == '1')

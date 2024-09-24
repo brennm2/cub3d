@@ -12,8 +12,8 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -Ofast #-ffast-math -finline-functions -march=native -flto
-#CC = cc -g -O0
+#CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g
 RM = rm -rf
 AR = ar -rcs
 
@@ -37,8 +37,11 @@ LIBS = -L./libs -lft
 LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
 
 # Files
-MANDATORY_FILES += draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator
-MANDATORY_FILES += init_game/file init_game/structs init_game/textures init_game/map init_game/player init_game/create_texture init_game/texture_color
+MANDATORY_FILES += init_game/draw_wall free init init_game/shoot_rays init_game/fog_creator
+MANDATORY_FILES += init_struct/create_texture init_struct/texture_color
+MANDATORY_FILES += init_struct/map_utils
+MANDATORY_FILES += init_struct/file init_struct/structs init_struct/textures init_struct/map init_struct/player
+MANDATORY_FILES += init_game/init_game init_game/move_player
 MANDATORY_FILES += debug/debug_utils
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
@@ -69,12 +72,13 @@ re: fclean
 	@$(MAKE) all
 
 clean:
+	@$(MAKE) clean -s -C $(LIBFT) > /dev/null 2>&1
 	@$(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus
 	@clear
 	@./Asccii/object.sh
 
 fclean: clean
-	@$(MAKE) clean -s -C $(LIBFT) > /dev/null 2>&1
+	@$(MAKE) fclean -s -C $(LIBFT) > /dev/null 2>&1
 	@$(MAKE) clean -s -C $(MLX) > /dev/null 2>&1
 	@$(RM) $(NAME)
 
@@ -84,8 +88,10 @@ $(OBJ_FOLDER):
 
 norm:
 	@echo "\n\t$(BLUE)Checking norm for *.h files...$(RESET)\n"
-	@norminette -R CheckDefine $(shell find . -type f -name "*.h")
+	@norminette -R CheckDefine $(shell find . -type f -name "*.h" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 	@echo "\n\t$(BLUE)Checking norm for *.c files...$(RESET)\n"
-	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
+	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
+
+
 
 .SILENT:

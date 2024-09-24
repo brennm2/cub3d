@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_handler.c                                      :+:      :+:    :+:   */
+/*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/13 18:29:47 by bsousa-d         ###   ########.fr       */
+/*   Created: 2024/09/24 14:22:05 by bsousa-d          #+#    #+#             */
+/*   Updated: 2024/09/24 16:44:07 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	move_up(t_game *game)
 {
@@ -70,7 +70,7 @@ void	move_left(t_game *game)
 		game->player.player_y += new_y;
 }
 
-void	look_direction(t_game *game, bool is_left)
+void	look_direction(t_game *game, const bool is_left)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -93,12 +93,12 @@ void	look_direction(t_game *game, bool is_left)
 	}
 }
 
-int	key_handler(int key, t_game *game)
+int	key_handler(const int key, t_game *game)
 {
 	(void)game;
 	if (key == ESC)
 	{
-		ft_printf("\n'ESC' pressed, game closed...\nThanks for playing!\n");
+		// ft_printf("\n'ESC' pressed, game closed...\nThanks for playing!\n");
 		ft_quit_game(game);
 	}
 	if (key == W)
@@ -114,12 +114,4 @@ int	key_handler(int key, t_game *game)
 	if (key == RIGHT)
 		look_direction(game, false);
 	return (0);
-}
-
-int	ft_quit_game(t_game *game)
-{
-	//get_next_line(-1);
-	ft_free_textures(game);
-	free_all(game);
-	exit (0);
 }

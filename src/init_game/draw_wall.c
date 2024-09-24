@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	print_texture_pixel(t_game *game, int x, int h_pixel, int color)
 {
@@ -55,7 +55,7 @@ void	draw_ceiling(t_game *game, int x, int ray_count, int h_pixel)
 	unsigned long	ceiling_rgb_set;
 	int				stop;
 
-	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
+	ceiling_rgb_set = convert_rgb(game->map.ceiling_path);
 	stop = (SCREEN_HEIGHT / 2) - ((SCREEN_HEIGHT / 2) / 2);
 	while (x < SCREEN_HEIGHT / 2)
 	{
@@ -80,7 +80,7 @@ void	draw_floor(t_game *game, int x, int ray_count, int l_pixel)
 	unsigned long	floor_rgb;
 	int				stop;
 
-	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
+	floor_rgb_set = convert_rgb(game->map.floor_path);
 	stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
 	while (x < SCREEN_HEIGHT)
 	{
