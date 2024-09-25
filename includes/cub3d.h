@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 15:39:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:52:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,8 @@ typedef struct s_game
 
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int			mm_step_x;
+	int			mm_step_y;
 
 
 	int			tex_index;
@@ -230,6 +232,9 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel);
 
 // SRC/PLAYER/PLACE_PLAYER.C
 void	place_player(t_game *game, double player_x, double player_y);
+
+// SRC/MINIMAP
+void	minimap(t_game *game, int *x_p, int *y_p);
 
 
 // SRC/FOG_CREATOR.C

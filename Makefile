@@ -39,7 +39,7 @@ ifeq ($(OS), Darwin)
 endif
 
 # Files
-MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator
+MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator minimap
 MANDATORY_FILES += texture_handler/create_texture texture_handler/texture_color
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
