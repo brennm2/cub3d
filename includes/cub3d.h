@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/24 17:15:50 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:11:55 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ typedef struct s_game
  *
  * \param ac The number of command-line arguments.
  */
-void	ft_check_args(const int ac);
+void			ft_check_args(const int ac);
 
 /**
  * \brief Checks if the given file has a .cub extension and is valid.
@@ -189,7 +189,7 @@ void	ft_check_args(const int ac);
  * \param argv The file name to check.
  * \return true if the file has a .cub extension and is valid, false otherwise.
  */
-bool	is_cub_file(const char *argv);
+bool			is_cub_file(const char *argv);
 
 /**
  * \brief Checks if the given file exists.
@@ -200,7 +200,7 @@ bool	is_cub_file(const char *argv);
  *
  * \param file The file name to check.
  */
-void	file_exist(const char *file);
+void			file_exist(const char *file);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ STRUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -214,7 +214,7 @@ void	file_exist(const char *file);
  * \param file The name of the file to load the map from.
  * \return A pointer to the newly created game structure.
  */
-t_game	*ft_init_structs(const char *file);
+t_game			*ft_init_structs(const char *file);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TEXTURES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -230,7 +230,7 @@ t_game	*ft_init_structs(const char *file);
  * \param game	A pointer to the game structure containing the file descriptor
  *				and map information.
  */
-void	ft_get_textures(t_game *game);
+void			ft_get_textures(t_game *game);
 
 /**
  * @brief Checks if all texture paths are set in the game map.
@@ -242,7 +242,7 @@ void	ft_get_textures(t_game *game);
  *				texture paths.
  * @return		true if all texture paths are set, false otherwise.
  */
-bool	ft_all_textures_set(t_game const *game);
+bool			ft_all_textures_set(t_game const *game);
 
 /**
  * @brief Checks if a line is empty based on the given option.
@@ -258,7 +258,7 @@ bool	ft_all_textures_set(t_game const *game);
  * @param option The option to determine the criteria for an empty line.
  * @return true if the line is empty based on the given option, false otherwise.
  */
-bool	ft_check_empty_line(const char *line, int option);
+bool			ft_check_empty_line(const char *line, int option);
 
 /**
  * @brief Checks for duplicate texture paths in the game map.
@@ -272,7 +272,7 @@ bool	ft_check_empty_line(const char *line, int option);
  * @param line The line to be checked for duplicate texture paths.
  * @return true if a duplicate texture path is found, false otherwise.
  */
-bool	ft_check_duplicates(const t_game *game, const char *line);
+bool			ft_check_duplicates(const t_game *game, const char *line);
 
 /**
  * @brief Sets the texture path in the game map based on the given line.
@@ -285,7 +285,7 @@ bool	ft_check_duplicates(const t_game *game, const char *line);
  * @param line The line to be checked for texture identifiers and paths.
  * @return 0 if a texture path is successfully set, 1 otherwise.
  */
-int		ft_set_texture(t_game *game, const char *line);
+int				ft_set_texture(t_game *game, const char *line);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MAP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -300,7 +300,7 @@ int		ft_set_texture(t_game *game, const char *line);
  * \param game A pointer to the game structure containing the map and file
  * descriptor.
  */
-void	ft_get_map(t_game *game);
+void			ft_get_map(t_game *game);
 
 /**
  * \brief Checks if a string contains only valid characters.
@@ -313,7 +313,7 @@ void	ft_get_map(t_game *game);
  * \param valid_chars A string containing the set of valid characters.
  * \return true if all characters in the string are valid, false otherwise.
  */
-bool	has_valid_chars(const char *str, const char *valid_chars);
+bool			has_valid_chars(const char *str, const char *valid_chars);
 
 /**
  * \brief Extends the game map by allocating more memory.
@@ -324,7 +324,7 @@ bool	has_valid_chars(const char *str, const char *valid_chars);
  *
  * \param game A pointer to the game structure containing the map.
  */
-void	ft_extend_map(t_game *game);
+void			ft_extend_map(t_game *game);
 
 /**
  * \brief Duplicates the game map.
@@ -335,7 +335,7 @@ void	ft_extend_map(t_game *game);
  * \param game A pointer to the game structure containing the map.
  * \return A pointer to the duplicated map, or NULL if memory allocation fails.
  */
-char	**ft_dup_map(const t_game *game);
+char			**ft_dup_map(const t_game *game);
 
 /**
  * \brief Performs a flood fill algorithm to validate the game map.
@@ -350,7 +350,7 @@ char	**ft_dup_map(const t_game *game);
  * \param y The y-coordinate to start the flood fill.
  * \return 1 if the current position is a wall, otherwise 0.
  */
-int		ft_flood_fill(t_game *game, char **map, const int x, const int y);
+int				ft_flood_fill(t_game *game, char **map, int x, int y);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PLAYER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -365,7 +365,7 @@ int		ft_flood_fill(t_game *game, char **map, const int x, const int y);
  * \param game A pointer to the game structure containing the map and player
  * information.
  */
-void	ft_get_player_pos(t_game *game);
+void			ft_get_player_pos(t_game *game);
 
 /**
  * \brief Sets the player's direction based on the given character.
@@ -377,54 +377,62 @@ void	ft_get_player_pos(t_game *game);
  * \param game A pointer to the game structure containing player information.
  * \param c The character indicating the player's initial direction.
  */
-void	set_player_direction(t_game *game, char c);
-char	*remove_all_spaces(char *str);
-int		ft_set_texture(t_game *game, const char *line);
-bool	ft_check_empty_line(const char *line, int option);
-void	ft_get_map(t_game *game);
-void	ft_get_player_pos(t_game *game);
-
-int		key_handler(int key, t_game *game);
-void	free_all(t_game *game);
-int		ft_quit_game(t_game *game);
+void			set_player_direction(t_game *game, char c);
+char			*remove_all_spaces(char *str);
+int				ft_set_texture(t_game *game, const char *line);
+bool			ft_check_empty_line(const char *line, int option);
+void			ft_get_map(t_game *game);
+void			ft_get_player_pos(t_game *game);
+int				key_handler(int key, t_game *game);
+void			free_all(t_game *game);
+int				ft_quit_game(t_game *game);
 // src/map_handler/fill_map.c
-void	read_map(char *map_name, t_game *game);
-void	fill_map(int fd, t_game *game);
+void			read_map(char *map_name, t_game *game);
+void			fill_map(int fd, t_game *game);
 // SRC/TEXTURE_HANDLER/CREATE_TEXTURE
-void	create_all_textures(t_game *game);
-int		create_texture(t_game *game, const int index, char *path,
-			const char *error_msg);
+void			create_all_textures(t_game *game);
+int				create_texture(t_game *game, const int index, char *path,
+					const char *error_msg);
 // SRC/DEBUG/DEBUG_FUNCIONS.C
-void	show_map(const t_game *game);
-void	show_fps_debug(void);
+void			show_map(const t_game *game);
+void			show_fps_debug(void);
 // SRC/RAYCASTING/SHOOT_RAYS.C
-void	shoot_rays(t_game *game);
-float	normalize_angle(float angle);
+void			shoot_rays(t_game *game);
+float			normalize_angle(float angle);
 // SRC/RAYCASTING/DRAW_WALL.C
-void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x);
-void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel,
-			int l_pixel);
+void			draw_wall(t_game *game, int h_pixel, int l_pixel, int x);
+void			draw_floor_ceiling(t_game *game, int ray_count, int h_pixel,
+					int l_pixel);
 // SRC/PLAYER/PLACE_PLAYER.C
-void	place_player(t_game *game, double player_x, double player_y);
+void			place_player(t_game *game, double player_x, double player_y);
 // SRC/FOG_CREATOR.C
-int		darken_rgb_color3(int color, double factor, int i);
-int		get_fog(t_game *game, int color);
-int		get_fog_ceiling(int color, int i);
-int		get_fog_floor(int color, int i);
+int				darken_rgb_color3(int color, double factor, int i);
+int				get_fog(t_game *game, int color);
+int				get_fog_ceiling(int color, int i);
+int				get_fog_floor(int color, int i);
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
-int		get_texture_color(t_game *game, int tex_y);
+int				get_texture_color(t_game *game, int tex_y);
 unsigned long	convert_rgb(char *color);
-void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
-void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
-bool	ft_check_map(t_game *game, char **av);
-void	ft_free_textures(t_game *game);
-void	free_map(t_game *game);
-void	ft_free_map(char **map);
-void	init_window(t_game *game);
-void	display_window(t_game *game);
-void	init_game(t_game *game);
-int		game_frame_loop(t_game *game);
-void	check_string_content(const char *str);
-void	ft_check_color(t_game *game);
-void	free_double_pointer_array(char **array);
+void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
+void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
+bool			ft_check_map(t_game *game, char **av);
+void			ft_free_textures(t_game *game);
+void			free_map(t_game *game);
+void			ft_free_map(char **map);
+void			init_window(t_game *game);
+void			display_window(t_game *game);
+void			init_game(t_game *game);
+int				game_frame_loop(t_game *game);
+void			check_string_content(const char *str);
+void			ft_check_color(t_game *game);
+void			free_double_pointer_array(char **array);
+void			look_direction(t_game *game, bool is_left);
+void			ft_skip_empty_lines(t_game *game);
+int				ft_count_colours(char **colours);
+size_t			ft_count_char(const char *str, char find);
+bool			has_only_tabs(const char *str);
+bool			has_only_spaces(const char *str);
+void			ft_parse_and_set_color(t_game *game,
+					const char *path, long *color, const char *type);
+void			free_textures(t_game *game);
 #endif

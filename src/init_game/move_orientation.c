@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   move_orientation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 14:57:30 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/24 14:58:13 by bsousa-d         ###   ########.fr       */
+/*   Created: 2024/09/25 13:25:56 by bsousa-d          #+#    #+#             */
+/*   Updated: 2024/09/25 13:29:20 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char	*remove_all_spaces(char *str)
+void	rotate_vector(double *x, double *y, double angle)
 {
-	int i;
-	int j;
-	char *result;
+	double	old_x;
 
-	i = 0;
-	j = 0;
-	result = (char *) malloc(ft_strlen(str) + 1);
-	if (result == NULL)
-		return (NULL);
-	while (str[i] != ' ' && !ft_isalpha(str[i]))
-		i++;
-	while (ft_isalpha(str[i]))
-		i++;
-	while (str[i]) {
-		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-			result[j++] = str[i];
-		i++;
-	}
-	result[j] = '\0';
-	str = ft_strdup(result);
-	free(result);
-	return (str);
+	old_x = *x;
+	*x = *x * cos(angle) - *y * sin(angle);
+	*y = old_x * sin(angle) + *y * cos(angle);
+}
+
+void	look_direction(t_game *game, const bool is_left)
+{
+	double	angle;
+
+	if (is_left)
+		angle = PLAYER_SENS;
+	else
+		angle = -PLAYER_SENS;
+	rotate_vector(&game->dirx, &game->diry, angle);
+	rotate_vector(&game->plane_x, &game->plane_y, angle);
 }

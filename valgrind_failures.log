@@ -1,18 +1,24 @@
-Mapa válido com falhas: assets/map_files/valid/library.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right1.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right2.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right4.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right5.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right6.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/right7.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/test_pos_bottom.cub
-Invalid Map(Not Wall Closed)
-Mapa válido com falhas: assets/map_files/valid/test_pos_right.cub
-Invalid Map(Not Wall Closed)
+Mapa inválido com erros: assets/map_files/invalid/file_letter_end.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!
+Mapa inválido com erros: assets/map_files/invalid/map5.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!
+Mapa inválido com erros: assets/map_files/invalid/map_too_small.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!
+Mapa inválido com erros: assets/map_files/invalid/player_multiple.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!
+Mapa inválido com erros: assets/map_files/invalid/player_none.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!
+Mapa inválido com erros: assets/map_files/invalid/player_on_edge.cub
+
+'ESC' pressed, game closed...
+Thanks for playing!

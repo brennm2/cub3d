@@ -31,9 +31,9 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			return (get_pixel_color(game, tex_y, tex_x, west_t));
 		return (get_pixel_color(game, tex_y, tex_x, east_t));
 	}
-		if (game->ray->raydir_x > 0)
-			return (get_pixel_color(game, tex_y, tex_x, north_t));
-		return (get_pixel_color(game, tex_y, tex_x, south_t));
+	if (game->ray->raydir_x > 0)
+		return (get_pixel_color(game, tex_y, tex_x, north_t));
+	return (get_pixel_color(game, tex_y, tex_x, south_t));
 }
 
 int	get_texture_color(t_game *game, int tex_y)

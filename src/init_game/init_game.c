@@ -26,10 +26,11 @@ void	init_game(t_game *game)
 
 void	display_window(t_game *game)
 {
-	if(game->mlx_ptr == NULL)
+	if (game->mlx_ptr == NULL)
 		return ;
-	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
-	if(game->win_ptr == NULL)
+	game->win_ptr = mlx_new_window(game->mlx_ptr,
+			SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
+	if (game->win_ptr == NULL)
 		return ;
 }
 
@@ -37,9 +38,12 @@ int	game_frame_loop(t_game *game)
 {
 	if (game->img && game->img->mlx_img)
 		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
-	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
+	game->img->mlx_img = mlx_new_image(game->mlx_ptr,
+			SCREEN_WIDTH, SCREEN_HEIGHT);
+	game->img->addr = mlx_get_data_addr(game->img->mlx_img,
+			&game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->img->mlx_img, 0, 0);
 	return (0);
 }

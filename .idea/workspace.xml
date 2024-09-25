@@ -23,36 +23,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/broken_xpm.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/broken_xpm.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/map_too_long.cub" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/map_too_small.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/map_too_small.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/east_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/east_wall.xpm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/north_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/north_wall.xpm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/south_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/south_wall.xpm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/west_wall.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/west_wall.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_valgrind.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_valgrind.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/debug/debug_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/debug_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/draw_wall.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/draw_wall.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fill_map.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fog_creator.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/fog_creator.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/create_texture.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/texture_color.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/textures.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/textures.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/key_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map_check.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/place_player.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shoot_rays.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/shoot_rays.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/init_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/init_game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/move_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/move_player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/create_texture.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/file.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/map_utils.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/texture_color.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/texture_color.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/textures.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/textures.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" afterPath="$PROJECT_DIR$/valgrind_failures.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -461,17 +451,12 @@
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="cub3d" />
+                <option name="name" value="Cub3d" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
           </value>
         </entry>
-      </map>
-    </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
       </map>
     </option>
   </component>
@@ -491,31 +476,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Custom Build Application.Debug.executor": "Debug",
-    "Native Application.all.executor": "Debug",
-    "Native Application.cub3d.executor": "Debug",
-    "Native Application.re.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/bsousa-d/Desktop/cub3d",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CLionExternalConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Custom Build Application.Debug.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.all.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.cub3d.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.re.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bsousa-d/Desktop/cub3d&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CLionExternalConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/init_game" />
@@ -531,14 +516,19 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="assets/map_files/invalid/broken_xpm.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
@@ -547,6 +537,11 @@
       </method>
     </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/cub3d">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cub3d" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="cub3d" CONFIG_NAME="cub3d" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -571,12 +566,27 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="norm" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="norm" CONFIG_NAME="norm" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="objects" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="objects" CONFIG_NAME="objects" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -599,6 +609,16 @@
     <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -632,6 +652,7 @@
       <workItem from="1727086663906" duration="7913000" />
       <workItem from="1727177510500" duration="1806000" />
       <workItem from="1727182435254" duration="13249000" />
+      <workItem from="1727262942480" duration="5491000" />
     </task>
     <task id="LOCAL-00001" summary="Early parser done">
       <option name="closed" value="true" />

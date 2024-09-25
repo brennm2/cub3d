@@ -6,13 +6,13 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/24 14:17:14 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:16:45 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-static void ft_check_file(const int ac, char **av)
+static void	ft_check_file(const int ac, char **av)
 {
 	ft_check_args(ac);
 	is_cub_file(av[1]);

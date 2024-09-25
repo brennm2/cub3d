@@ -37,11 +37,11 @@ LIBS = -L./libs -lft
 LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
 
 # Files
-MANDATORY_FILES += init_game/draw_wall free init init_game/shoot_rays init_game/fog_creator
+MANDATORY_FILES += init_game/draw_wall free endgame init_game/shoot_rays init_game/fog_creator
 MANDATORY_FILES += init_struct/create_texture init_struct/texture_color
-MANDATORY_FILES += init_struct/map_utils
 MANDATORY_FILES += init_struct/file init_struct/structs init_struct/textures init_struct/map init_struct/player
-MANDATORY_FILES += init_game/init_game init_game/move_player
+MANDATORY_FILES += init_struct/textures_utils init_struct/utils
+MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation
 MANDATORY_FILES += debug/debug_utils
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))

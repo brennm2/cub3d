@@ -34,7 +34,7 @@ run_valid() {
     echo -e "\e[33mExecutando ./cub3d \"$map_file\"\e[0m"
     
     # Captura a saída do comando
-    output=$(./cub3d "$map_file")
+    output=$(./cub3D "$map_file")
     
     # Verifica se a saída está vazia
     if [ -z "$output" ]; then
