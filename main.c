@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/24 12:30:58 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:47:34 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_window(t_game *game)
 	game->win_ptr= NULL;
 	game->texture = ft_calloc(sizeof(t_texture), 4);
 	game->fps = ft_calloc(sizeof(t_fps), 1);
-  	for (int i = 0; i < 7; i++)
+  	for (int i = 0; i < 8; i++)
 	{
         game->texture[i] = ft_calloc(1, sizeof(t_texture));
         game->texture[i]->h = 64;
@@ -55,6 +55,31 @@ void draw_box(t_game *game, int pos_y, int pos_x, long color)
     }
 }
 
+void	create_minimap_background(t_game *game)
+{
+	int	*x_p;
+	int	*y_p;
+
+	x_p = (int *)SCREEN_HEIGHT;
+	y_p = (int *)SCREEN_WIDTH;
+	if (game->img && game->img->mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, \
+		"sprites/handmap.xm", x_p, y_p);
+	if (!game->img->mlx_img)
+	{
+		printf("\nNo texture created (hand_map)\n\n");
+		ft_quit_game(game);
+	}
+	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, \
+		&game->img->line_len, &game->img->endian);
+	if (!game->img->addr)
+	{
+		printf("\nNo texture addr created(hand_map)\n\n");
+		ft_quit_game(game);
+	}
+}
+
 void	minimap(t_game *game, int *x_p, int *y_p)
 {
 	int y = 0;
@@ -64,15 +89,17 @@ void	minimap(t_game *game, int *x_p, int *y_p)
 	int	player_step_x = (int)game->player.player_x * 20 + (SCREEN_HEIGHT / 2)- ((game->map.height * 20)/ 2);
 	int	player_step_y = (int)game->player.player_y * 20 + (SCREEN_WIDTH / 2);
 	
-	if (game->img && game->img->mlx_img)
-		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "sprites/handmap.xpm", x_p, y_p);
-	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
-	if (!game->img->mlx_img)
-	{
-		printf("minimap image dead\n");
-		free_all(game);
-	}
+	
+	create_minimap_background(game);
+	// if (game->img && game->img->mlx_img)
+	// 	mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	// game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, "sprites/handmap.xm", x_p, y_p);
+	// game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
+	// if (!game->img->mlx_img)
+	// {
+	// 	printf("minimap image dead\n");
+	// 	ft_quit_game(game);
+	// }
 	while(y < game->map.height)
 	{
 		while(game->map.map[y][x])
@@ -180,7 +207,7 @@ void	open_window(t_game *game)
 	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, &key_release, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
-	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
+	//mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	mlx_loop(game->mlx_ptr);
 }
 

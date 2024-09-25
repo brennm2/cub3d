@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/24 18:04:07 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:39:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef enum s_tdir
 	door,
 	door_mid,
 	door_side,
+	hand_map,
 }		t_tdir;
 
 typedef struct s_fps
