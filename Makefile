@@ -12,7 +12,8 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+#CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g
 RM = rm -rf
 AR = ar -rcs
 
@@ -21,26 +22,27 @@ INC_FOLDER = includes
 SRC_FOLDER = src
 OBJ_FOLDER = objects
 LIBFT = ./libs
-LIBFT_MAKE = $(MAKE) -C $(LIBFT)  # Use -s to suppress output
-LIBS = -L./libs -lft
-MLX = ./libs/minilibx-linux
+LIBFT_MAKE = $(MAKE) -s -C $(LIBFT)  # Use -s to suppress output
 
-# Flags
-CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I $(INC_FOLDER)
-MAKEFLAGS = --no-print-directory
-MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -lXext -lX11
-LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
-
-# Conditional for macOS
+# System-specific settings
 ifeq ($(OS), Darwin)
-    MLX = mlx_macos
+    MLX = ./libs/minilibx-mac
     MLXFLAGS = -L ./$(MLX) -lmlx -framework OpenGL -framework AppKit -lm
+else
+    MLX = ./libs/minilibx-linux
+    MLXFLAGS = -L $(MLX) -lm -lmlx -lXext -lX11
 endif
 
+LIBS = -L./libs -lft
+LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
+
 # Files
-MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator minimap door_animation door_texture_handler mouse_handler texture_color_sup
-MANDATORY_FILES += texture_handler/create_texture texture_handler/texture_color
+MANDATORY_FILES += init_game/draw_wall free endgame init_game/shoot_rays init_game/fog_creator minimap door_animation door_texture_handler mouse_handler texture_color_sup
+MANDATORY_FILES += init_struct/create_texture init_struct/texture_color
+MANDATORY_FILES += init_struct/file init_struct/structs init_struct/textures init_struct/map init_struct/player
+MANDATORY_FILES += init_struct/textures_utils init_struct/utils
+MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation
+MANDATORY_FILES += debug/debug_utils
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
 MAIN_OBJ = $(OBJ_FOLDER)/main.o
@@ -50,43 +52,34 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJ_FOLDER) $(OBJS) $(MAIN_OBJ)
-	#@echo "[$(CYAN)Compiling MLX$(RESET)] $(GREEN)$(MLX)$(RESET)"
-	#@clear
+	@clear
 	@./Asccii/creating.sh
 	$(MAKE) -s -C $(MLX) > /dev/null 2>&1
-	#@echo "[$(CYAN)Compiling libft$(RESET)] $(GREEN)$(LIBFT)$(RESET)"
 	$(MAKE) -s -C $(LIBFT) > /dev/null 2>&1
-	#@echo "[$(CYAN)Linking$(RESET)] $(GREEN)$(NAME)$(RESET)"
 	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LDFLAGS) -o $(NAME)
-	#@echo "$(GREEN)Build complete!$(RESET)"
-	#@clear
+	@clear
 	@./Asccii/completed.sh
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	@mkdir -p $(dir $@)  # Ensure the directory exists
-	#@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$<$(RESET)"
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $(OBJ_FOLDER)/main.o: main.c
-	@mkdir -p $(OBJ_FOLDER)  # Ensure the directory exists
-	#@echo "[$(CYAN)Compiling main.c$(RESET)] $(GREEN)$(OBJ_FOLDER)/main.o$(RESET)"
+	@mkdir -p $(OBJ_FOLDER) # Ensure the directory exists
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c main.c -o $(OBJ_FOLDER)/main.o
 
 re: fclean
 	@$(MAKE) all
 
 clean:
+	@$(MAKE) clean -s -C $(LIBFT) > /dev/null 2>&1
 	@$(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus
 	#@clear
 	@./Asccii/object.sh
 
-
 fclean: clean
-	#@echo "[$(RED)Removing$(RESET)] $(GREEN)LIBFT$(RESET)"
-	@$(MAKE) clean -s -C $(LIBFT) > /dev/null 2>&1
-	#@echo "[$(RED)Removing$(RESET)] $(GREEN)MLX$(RESET)"
+	@$(MAKE) fclean -s -C $(LIBFT) > /dev/null 2>&1
 	@$(MAKE) clean -s -C $(MLX) > /dev/null 2>&1
-	#@echo "[$(RED)Removing$(RESET)] $(GREEN)CUB3D$(RESET)"
 	@$(RM) $(NAME)
 
 # Custom Rules
@@ -95,8 +88,10 @@ $(OBJ_FOLDER):
 
 norm:
 	@echo "\n\t$(BLUE)Checking norm for *.h files...$(RESET)\n"
-	@norminette -R CheckDefine $(shell find . -type f -name "*.h")
+	@norminette -R CheckDefine $(shell find . -type f -name "*.h" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 	@echo "\n\t$(BLUE)Checking norm for *.c files...$(RESET)\n"
-	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
+	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
+
+
 
 .SILENT:
