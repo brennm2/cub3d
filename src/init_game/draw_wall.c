@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:11:41 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:21:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	print_texture_pixel(t_game *game, int x, int h_pixel, int color)
 {
@@ -38,7 +38,8 @@ void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
 	int		tex_y;
 
 	step = 1.0 * TEXTURE_H / game->ray->line_height;
-	tex_pos = (h_pixel - SCREEN_HEIGHT / 2 + game->ray->line_height / 2) * step;
+	tex_pos = (h_pixel - game->ray->mouse_height - SCREEN_HEIGHT / 2 \
+		+ game->ray->line_height / 2) * step;
 	while (h_pixel++ < l_pixel)
 	{
 		tex_y = (int)tex_pos & (TEXTURE_H - 1);
@@ -55,18 +56,20 @@ void	draw_ceiling(t_game *game, int x, int ray_count, int h_pixel)
 	unsigned long	ceiling_rgb_set;
 	int				stop;
 
-	ceiling_rgb_set = convert_rgb(game->map.CEILING_PATH);
+	//ceiling_rgb_set = convert_rgb(game->map.ceiling_color);
+	ceiling_rgb_set = game->map.ceiling_color;
 	stop = (SCREEN_HEIGHT / 2) - ((SCREEN_HEIGHT / 2) / 2);
-	while (x < SCREEN_HEIGHT / 2)
+	while (x < (SCREEN_HEIGHT / 2) + game->ray->mouse_height)
 	{
 		if (x == h_pixel)
 			return ;
 		ceiling_rgb = ceiling_rgb_set;
-		if (x > ((SCREEN_HEIGHT / 2) + stop) / 2)
+		if (x > ((SCREEN_HEIGHT / 2) + stop) / 2 + game->ray->mouse_height)
 			better_mlx_pixel_put(&game->img, ray_count, x++, 0);
-		else if (x >= ((SCREEN_HEIGHT / 2) / 2) - 100)
+		else if (x >= ((SCREEN_HEIGHT / 2) / 2) - 100 + game->ray->mouse_height)
 		{
-			ceiling_rgb = get_fog_ceiling(ceiling_rgb, x);
+			ceiling_rgb = get_fog_ceiling(ceiling_rgb, x, \
+				game->ray->mouse_height);
 			better_mlx_pixel_put(&game->img, ray_count, x++, ceiling_rgb);
 		}
 		else
@@ -80,18 +83,20 @@ void	draw_floor(t_game *game, int x, int ray_count, int l_pixel)
 	unsigned long	floor_rgb;
 	int				stop;
 
-	floor_rgb_set = convert_rgb(game->map.FLOOR_PATH);
-	stop = (SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2);
+	//floor_rgb_set = convert_rgb(game->map.floor_color); //#TODO ver se isso esta certo
+	floor_rgb_set = game->map.floor_color;
+	stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2) \
+		+ game->ray->mouse_height);
 	while (x < SCREEN_HEIGHT)
 	{
 		while (x < l_pixel)
 			x++ ;
 		floor_rgb = floor_rgb_set;
-		if (x < (((SCREEN_HEIGHT / 2) + stop) / 2))
+		if (x < (((SCREEN_HEIGHT / 2) + stop + game->ray->mouse_height) / 2))
 			better_mlx_pixel_put(&game->img, ray_count, x++, 0);
 		else if (x < stop + 50)
 		{
-			floor_rgb = get_fog_floor(floor_rgb, x);
+			floor_rgb = get_fog_floor(floor_rgb, x, game->ray->mouse_height);
 			better_mlx_pixel_put(&game->img, ray_count, x++, floor_rgb);
 		}
 		else
@@ -106,6 +111,6 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, \
 
 	x = 0;
 	draw_ceiling(game, x, ray_count, h_pixel);
-	x = SCREEN_HEIGHT / 2;
+	x = SCREEN_HEIGHT / 2 + game->ray->mouse_height;
 	draw_floor(game, x, ray_count, l_pixel);
 }

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/26 12:10:22 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:10:41 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,13 +180,10 @@ typedef struct s_game
 	double		plane_y;
 	int			player_in_map_x;
 	int			player_in_map_y;
-
 	void		*mlx_ptr;
 	void		*win_ptr;
 	int			mm_step_x;
 	int			mm_step_y;
-
-
 	int			tex_index;
 	t_img		*handmap;
 	t_ray		*ray;

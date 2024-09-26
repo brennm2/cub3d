@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:05:32 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 13:56:12 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:42:31 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	ft_get_map(t_game *game)
 	{
 		if (!ft_check_empty_line(game->map.line, 2))
 		{
-			if (!has_valid_chars(game->map.line, "10NSWE\n"))
+			if (!has_valid_chars(game->map.line, "10NSWED\n"))
 			{
 				game->map.map[game->map.height] = NULL;
-				ft_quit_game(game);
 				printf("Invalid char!\n");
+				ft_quit_game(game);
 			}
 			game->map.map[game->map.height] = ft_strdup(game->map.line);
 			game->map.height++;

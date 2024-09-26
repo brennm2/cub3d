@@ -6,13 +6,13 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:12:52 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:27:46 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static inline int	get_pixel_color(t_game *game, int higher_pixel,
+int	get_pixel_color(t_game *game, int higher_pixel,
 	int lower_pixel, int t_index)
 {
 	int	color;
@@ -25,20 +25,29 @@ static inline int	get_pixel_color(t_game *game, int higher_pixel,
 
 int	find_right_side(t_game *game, int tex_y, int tex_x)
 {
-	if (game->ray->side == true)
+	static int	temp_fps;
+
+	if (game->ray->is_door == true)
 	{
-		if (game->ray->raydir_y > 0)
-			return (get_pixel_color(game, tex_y, tex_x, west_t));
+		if (game->ray->is_mid_door == true)
+		{
+			if (temp_fps < 100000000)
+			{
+				temp_fps += 1;
+				return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
+			}
+			else
+			{
+				temp_fps = 0;
+				change_door_in_map(game);
+			}
+		}
 		else
-			return (get_pixel_color(game, tex_y, tex_x, east_t));
+			return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
 	}
 	else
-	{
-		if (game->ray->raydir_x > 0)
-			return (get_pixel_color(game, tex_y, tex_x, north_t));
-		else
-			return (get_pixel_color(game, tex_y, tex_x, south_t));
-	}
+		return (select_wall_texture(game, tex_x, tex_y));
+	return (0);
 }
 
 int	get_texture_color(t_game *game, int tex_y)

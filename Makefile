@@ -12,8 +12,8 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-#CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
-CC = cc -g
+CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+#CC = cc -g
 RM = rm -rf
 AR = ar -rcs
 
@@ -92,6 +92,9 @@ norm:
 	@echo "\n\t$(BLUE)Checking norm for *.c files...$(RESET)\n"
 	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 
-
+update:
+	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
+	@tar -xzf minilibx-linux.tgz -C libs
+	@rm minilibx-linux.tgz
 
 .SILENT:

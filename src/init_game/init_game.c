@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:15:53 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/24 14:15:55 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:16:40 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	key_release(int key, t_game *game)
+{
+	if (key == 'm')
+		game->map.show_minimap = false;
+	return (0);
+}
 
 void	init_game(t_game *game)
 {
@@ -19,8 +26,10 @@ void	init_game(t_game *game)
 		return ;
 	mlx_loop_hook(game->mlx_ptr, &game_frame_loop, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_handler, game);
+	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, &key_release, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
+	//mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	mlx_loop(game->mlx_ptr);
 }
 
@@ -43,6 +52,13 @@ int	game_frame_loop(t_game *game)
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img,
 			&game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
+	if (game->map.show_minimap == true)
+		minimap(game);
+	mlx_mouse_get_pos(game->mlx_ptr, game->win_ptr, game->mouse_x, \
+		game->mouse_y);
+	mlx_mouse_move(game->mlx_ptr, game->win_ptr, (SCREEN_WIDTH / 2), \
+		(SCREEN_HEIGHT / 2));
+	mouse_direction(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		game->img->mlx_img, 0, 0);
 	return (0);

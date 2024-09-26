@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs.c                                     :+:      :+:    :+:   */
+/*   structs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 14:27:02 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 13:52:11 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:09:21 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	init_window(t_game *game)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = NULL;
 	game->texture = ft_calloc(sizeof(t_texture), 4);
-	while (i < 4)
+	while (i < 8)
 	{
 		game->texture[i] = ft_calloc(1, sizeof(t_texture));
 		game->texture[i]->h = 64;
@@ -116,4 +116,6 @@ void	init_window(t_game *game)
 		game->texture[i]->img = ft_calloc(1, sizeof(t_img));
 		i++;
 	}
+	game->mouse_x = ft_calloc(sizeof(int *), 1);
+	game->mouse_y = ft_calloc(sizeof(int *), 1);
 }

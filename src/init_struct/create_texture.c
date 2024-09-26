@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/24 17:10:38 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:57:02 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ void	create_all_textures(t_game *game)
 	if (create_texture(game, 0, game->map.north_path, "NORTH")
 		|| create_texture(game, 1, game->map.south_path, "SOUTH")
 		|| create_texture(game, 2, game->map.east_path, "EAST")
-		|| create_texture(game, 3, game->map.west_path, "WEST"))
+		|| create_texture(game, 3, game->map.west_path, "WEST")
+		|| create_texture(game, door, "sprites/door.xpm", "DOOR")
+		|| create_texture(game, door_mid, "sprites/door_mid.xpm", "DOOR_MID")
+		|| create_texture(game, door_side, "sprites/door_side.xpm", \
+			"DOOR_SIDE"))
 	{
 		ft_quit_game(game);
 		return ;

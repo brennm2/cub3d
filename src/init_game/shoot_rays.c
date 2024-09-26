@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 17:03:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:12:47 by bde-souz         ###   ########.fr       */
+/*   Created: 2024/09/26 12:24:42 by bde-souz          #+#    #+#             */
+/*   Updated: 2024/09/26 12:24:47 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	calculate_ray_direction(t_game *game, int x)
 {
@@ -37,8 +37,10 @@ void	calculate_lines(t_game *game)
 
 	line_height = (int)(SCREEN_HEIGHT / game->ray->distance);
 	game->ray->line_height = line_height;
-	game->ray->h_pixel = -line_height / 2 + SCREEN_HEIGHT / 2;
-	game->ray->l_pixel = line_height / 2 + SCREEN_HEIGHT / 2;
+	game->ray->h_pixel = -line_height / 2 + (SCREEN_HEIGHT / 2) \
+		+ game->ray->mouse_height;
+	game->ray->l_pixel = line_height / 2 + (SCREEN_HEIGHT / 2) \
+		+ game->ray->mouse_height;
 	if (game->ray->h_pixel < 0)
 		game->ray->h_pixel = 0;
 	if (game->ray->l_pixel >= SCREEN_HEIGHT)
@@ -64,8 +66,7 @@ void	dda(t_game *game)
 			game->ray->map_y += game->ray->step_y;
 			game->ray->side = true;
 		}
-		if (game->map.map[game->ray->map_x][game->ray->map_y] == '1')
-			wall_hit = true;
+		wall_hit = check_wall_hit(game);
 	}
 	if (game->ray->side == false)
 		game->ray->distance = (game->ray->raydist_x - game->ray->deltadist_x);
@@ -106,13 +107,16 @@ void	shoot_rays(t_game *game)
 	int	x;
 
 	x = 0;
-	while (x++ < SCREEN_WIDTH)
+	while (x++ < SCREEN_WIDTH - 1)
 	{
 		calculate_ray_direction(game, x);
 		calculate_ray_steps(game);
 		dda(game);
 		calculate_lines(game);
-		draw_floor_ceiling(game, x, game->ray->h_pixel, game->ray->l_pixel);
-		draw_wall(game, game->ray->h_pixel, game->ray->l_pixel, x);
+		if (game->map.show_minimap == false)
+		{
+			draw_floor_ceiling(game, x, game->ray->h_pixel, game->ray->l_pixel);
+			draw_wall(game, game->ray->h_pixel, game->ray->l_pixel, x);
+		}
 	}
 }

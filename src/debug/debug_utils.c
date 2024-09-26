@@ -6,13 +6,13 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:46:29 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:10:52 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:32:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes//cub3d.h"
+#include "../../includes//cub3d.h"
 
-void	show_map(t_game *game)
+void	show_map(const t_game *game)
 {
 	int	i;
 
