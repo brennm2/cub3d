@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 16:52:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 11:51:18 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void	draw_floor_ceiling(t_game *game, int ray_count, int h_pixel, int l_pixel);
 void	place_player(t_game *game, double player_x, double player_y);
 
 // SRC/MINIMAP
-void	minimap(t_game *game, int *x_p, int *y_p);
+void	minimap(t_game *game);
 
 
 // SRC/FOG_CREATOR.C
@@ -242,6 +242,21 @@ int	darken_rgb_color3 (int color, double factor, int i);
 int	get_fog(t_game *game, int color);
 int			get_fog_ceiling(int color, int i, int mouse);
 int			get_fog_floor(int color, int i, int mouse);
+
+
+//SRC/DOOR_HANDLER.C
+void	door_handler(t_game *game);
+
+//SRC/DOOR_TEXTURE_HANDLER
+bool	door_texture_handler(t_game *game, int option);
+bool	check_wall_hit(t_game *game);
+
+//SRC/MOUSE_HANDLER.C
+void	mouse_direction(t_game *game);
+
+//SRC/TEXTURE_COLOR_SUP.C
+int		select_wall_texture(t_game *game, int tex_x, int tex_y);
+void	change_door_in_map(t_game *game);
 
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
 int				get_texture_color(t_game *game, int tex_y);
@@ -253,8 +268,8 @@ void	better_mlx_pixel_put(t_img **img, int x, int y, int color);
 
 bool ft_check_map(t_game *game, char **av);
 
+int	get_pixel_color(t_game *game, int higher_pixel,int lower_pixel, int t_index);
 
-void	minimap(t_game *game, int *x_p, int *y_p);
 t_game *ft_init_structs(char *file);
 
 #endif

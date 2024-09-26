@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:57:13 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/25 16:55:59 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 09:45:26 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,11 @@ void	draw_minimap_row(t_game *game, int y)
 	}
 }
 
-void	minimap(t_game *game, int *x_p, int *y_p)
+void	minimap(t_game *game)
 {
 	int	y;
-	int	x;
 
 	y = 0;
-	x = 0;
 	game->mm_step_x = SCREEN_WIDTH / 2;
 	game->mm_step_y = (SCREEN_HEIGHT / 2) - ((game->map.height * 20) / 2);
 	create_minimap_background(game);

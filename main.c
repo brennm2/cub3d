@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:49:07 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/25 16:06:52 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:25:42 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,72 +38,24 @@ void	display_window(t_game *game)
 		return ;
 }
 
-
-void	mouse_direction(t_game *game)
-{
-	int center_x = (SCREEN_WIDTH / 2);
-	int	center_y = (SCREEN_HEIGHT / 2);
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = game->dirx;
-	old_plane_x = game->plane_x;
-	(void)center_y;
-	if (*game->mouse_x - center_x < -10)
-	{
-		game->dirx = game->dirx * cos(MOUSE_SENS) - game->diry * sin(MOUSE_SENS);
-		game->diry = old_dir_x * sin(MOUSE_SENS) + game->diry * cos(MOUSE_SENS);
-		game->plane_x = game->plane_x * cos(MOUSE_SENS) - game->plane_y * sin(MOUSE_SENS);
-		game->plane_y = old_plane_x * sin(MOUSE_SENS) + game->plane_y * cos(MOUSE_SENS);
-		
-	}
-	else if (*game->mouse_x - center_x > 10)
-	{
-		game->dirx = game->dirx * cos(-MOUSE_SENS) - game->diry * sin(-MOUSE_SENS);
-		game->diry = old_dir_x * sin(-MOUSE_SENS) + game->diry * cos(-MOUSE_SENS);
-		game->plane_x = game->plane_x * cos(-MOUSE_SENS) - game->plane_y * sin(-MOUSE_SENS);
-		game->plane_y = old_plane_x * sin(-MOUSE_SENS) + game->plane_y * cos(-MOUSE_SENS);
-	}
-	if (*game->mouse_y - center_y < -10)
-	{
-		game->ray->mouse_height += MOUSE_PITCH;
-		if (game->ray->mouse_height >= 300)
-			game->ray->mouse_height = 300;
-	}
-	else if (*game->mouse_y - center_y > 10)
-	{
-		game->ray->mouse_height -= MOUSE_PITCH;
-		if (game->ray->mouse_height <= -300)
-			game->ray->mouse_height = -300;
-	}
-}
-
 int	game_frame_loop(t_game *game)
 {
-	int x = SCREEN_WIDTH;
-	int y = SCREEN_HEIGHT;
-
 	if (game->img && game->img->mlx_img)
 		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	game->img->mlx_img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 	shoot_rays(game);
-	// Calcula FPS
-	//show_fps_debug(game);
-	//-------------
 	if (game->map.show_minimap == true)
-		minimap(game, &x, &y);
+		minimap(game);
 	mlx_mouse_get_pos(game->mlx_ptr, game->win_ptr, game->mouse_x, game->mouse_y);
 	mlx_mouse_move(game->mlx_ptr, game->win_ptr, (SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2));
 	mouse_direction(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
-	//mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return (0);
 }
 
 int	key_release(int key, t_game *game)
 {
-	(void)key;
 	if (key == 'm')
 		game->map.show_minimap = false;
 	return (0);
@@ -142,8 +94,6 @@ void	init_player(t_game *game, t_player player)
 	//player->fov_radian = (FOV * M_PI) / 180;
 	//player->angle = M_PI;
 }
-
-
 
 static bool is_cub_file(char *argv)
 {

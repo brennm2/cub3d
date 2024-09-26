@@ -12,7 +12,7 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g #-Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
 RM = rm -rf
 AR = ar -rcs
 
@@ -26,7 +26,7 @@ LIBS = -L./libs -lft
 MLX = ./libs/minilibx-linux
 
 # Flags
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I $(INC_FOLDER)
 MAKEFLAGS = --no-print-directory
 MLXFLAGS = -L ./libs/minilibx-linux -lm -lmlx -lXext -lX11
@@ -39,7 +39,7 @@ ifeq ($(OS), Darwin)
 endif
 
 # Files
-MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator minimap
+MANDATORY_FILES = debug_fuctions draw_wall fill_map free init key_handler map_check place_player shoot_rays fog_creator minimap door_animation door_texture_handler mouse_handler texture_color_sup
 MANDATORY_FILES += texture_handler/create_texture texture_handler/texture_color
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))

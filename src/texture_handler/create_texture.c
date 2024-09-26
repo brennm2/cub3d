@@ -6,13 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/25 15:40:39 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:25:56 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "../../includes/cub3d.h"
-
-
 
 int	create_north_texture(t_game *game)
 {

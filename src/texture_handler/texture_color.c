@@ -6,13 +6,13 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/24 18:17:41 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/26 11:53:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static inline int	get_pixel_color(t_game *game, int higher_pixel,
+int	get_pixel_color(t_game *game, int higher_pixel,
 	int lower_pixel, int t_index)
 {
 	int	color;
@@ -23,12 +23,12 @@ static inline int	get_pixel_color(t_game *game, int higher_pixel,
 	return (color);
 }
 
-
 int	find_right_side(t_game *game, int tex_y, int tex_x)
 {
+	static int	temp_fps;
+
 	if (game->ray->is_door == true)
 	{
-		static int temp_fps = 0;
 		if (game->ray->is_mid_door == true)
 		{
 			if (temp_fps < 100000000)
@@ -39,53 +39,14 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			else
 			{
 				temp_fps = 0;
-				if (game->ray->is_in_y == false)
-				{
-					if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
-						&& game->ray->door_is_closing == false)
-						game->map.map[(int)game->player.player_x][(int)game->new_y] = 'd';
-					else if (game->map.map[(int)game->player.player_x][(int)game->new_y] == 'i'
-						&& game->ray->door_is_closing == true)
-					{
-						game->ray->door_is_closing = false;
-						game->ray->is_mid_door = false;
-						game->map.map[(int)game->player.player_x][(int)game->new_y] = 'D';
-					}
-				}
-				else
-				{
-					if (game->map.map[(int)game->new_x][(int)game->player.player_y] == 'i'
-						&& game->ray->door_is_closing == false)
-						game->map.map[(int)game->new_x][(int)game->player.player_y] = 'd';
-					else if (game->map.map[(int)game->new_x][(int)game->player.player_y] == 'i'
-						&& game->ray->door_is_closing == true)
-					{
-						game->ray->door_is_closing = false;
-						game->ray->is_mid_door = false;
-						game->map.map[(int)game->new_x][(int)game->player.player_y] = 'D';
-					}
-				}
+				change_door_in_map(game);
 			}
 		}
 		else
-		{
 			return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
-		}
-	}
-	else if (game->ray->side == true && game->ray->is_door == false)
-	{
-		if (game->ray->raydir_y > 0)
-			return (get_pixel_color(game, tex_y, tex_x, west_t));
-		else
-			return (get_pixel_color(game, tex_y, tex_x, east_t));
 	}
 	else
-	{
-		if (game->ray->raydir_x > 0)
-			return (get_pixel_color(game, tex_y, tex_x, north_t));
-		else
-			return (get_pixel_color(game, tex_y, tex_x, south_t));
-	}
+		return (select_wall_texture(game, tex_x, tex_y));
 	return (0);
 }
 
