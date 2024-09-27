@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:57:13 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 09:45:26 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:59:24 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ void	draw_box(t_game *game, int pos_y, int pos_x, long color)
 {
 	int	x;
 	int	y;
+	int	scale;
 
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
 	y = pos_y + 1;
-	while (y < pos_y + 20)
+	while (y < pos_y + scale)
 	{
 		x = pos_x + 1;
-		while (x < pos_x + 20)
+		while (x < pos_x + scale)
 		{
 			better_mlx_pixel_put(&game->img, x, y, color);
 			x++;
@@ -59,10 +61,13 @@ void	select_box(t_game *game, int x, int y)
 {
 	int	player_step_x;
 	int	player_step_y;
+	int	scale;
 
-	player_step_x = (int)game->player.player_x * 20
-		+ (SCREEN_HEIGHT / 2) - ((game->map.height * 20) / 2);
-	player_step_y = (int)game->player.player_y * 20 + (SCREEN_WIDTH / 2);
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
+	player_step_x = (int)game->player.player_x * scale
+		+ (SCREEN_HEIGHT / 2) - ((game->map.height * scale) / 2);
+	player_step_y = (int)game->player.player_y * scale + (SCREEN_WIDTH / 2)
+		- ((10 * scale) / 2);
 	if (game->map.map[y][x] == '1')
 		draw_box(game, game->mm_step_y, game->mm_step_x, 7995649);
 	else if (game->map.map[y][x] == '0')
@@ -77,15 +82,18 @@ void	select_box(t_game *game, int x, int y)
 void	draw_minimap_row(t_game *game, int y)
 {
 	int	x;
+	int	scale;
+
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
 
 	x = 0;
 	while (game->map.map[y][x])
 	{
 		select_box(game, x, y);
-		game->mm_step_x += 20;
+		game->mm_step_x += scale;
 		if (game->map.map[y][x] == '\n')
 		{
-			game->mm_step_x = SCREEN_WIDTH / 2;
+			game->mm_step_x = SCREEN_WIDTH / 2 - ((10 * scale) / 2);
 			break ;
 		}
 		x++;
@@ -95,15 +103,17 @@ void	draw_minimap_row(t_game *game, int y)
 void	minimap(t_game *game)
 {
 	int	y;
+	int	scale;
 
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
 	y = 0;
-	game->mm_step_x = SCREEN_WIDTH / 2;
-	game->mm_step_y = (SCREEN_HEIGHT / 2) - ((game->map.height * 20) / 2);
+	game->mm_step_x = SCREEN_WIDTH / 2 - ((10 * scale) / 2);
+	game->mm_step_y = (SCREEN_HEIGHT / 2) - ((game->map.height * scale) / 2);
 	create_minimap_background(game);
 	while (y < game->map.height)
 	{
 		draw_minimap_row(game, y);
-		game->mm_step_y += 20;
+		game->mm_step_y += scale;
 		y++;
 	}
 }

@@ -4,7 +4,7 @@
 		"name": "(gdb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "/home/bde-souz/cub3d/cub3d",
+		"program": "/home/bde-souz/Documents/cub3d_rep/cub3d",
 		"args": ["map_test.cub"],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",
