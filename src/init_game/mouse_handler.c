@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 10:17:40 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 10:25:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:15:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	rotate_player(t_game *game, double angle)
 {

@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:35:35 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 09:54:55 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:17:11 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	update_door_state(t_game *game, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:57:13 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 11:59:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:18:44 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	create_minimap_background(t_game *game)
 {
@@ -85,7 +85,6 @@ void	draw_minimap_row(t_game *game, int y)
 	int	scale;
 
 	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
-
 	x = 0;
 	while (game->map.map[y][x])
 	{

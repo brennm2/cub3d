@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:20:16 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/25 14:11:40 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:45:09 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void	free_all(t_game *game)
 	}
 	if (game->ray)
 		free(game->ray);
+	if (game->mouse_x)
+		free(game->mouse_x);
+	if (game->mouse_y)
+		free(game->mouse_y);
 	free(game);
 }
 

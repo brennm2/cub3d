@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:47:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 11:53:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:16:07 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	change_door_in_y(t_game *game)
 {

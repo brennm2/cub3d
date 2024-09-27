@@ -6,11 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 10:00:47 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 10:16:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:17:14 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 bool	check_wall_hit(t_game *game)
 {

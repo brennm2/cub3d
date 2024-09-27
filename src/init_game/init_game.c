@@ -6,18 +6,11 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:15:53 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 00:58:13 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:11:57 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int	key_release(int key, t_game *game)
-{
-	if (key == 'm')
-		game->map.show_minimap = false;
-	return (0);
-}
 
 void	init_game(t_game *game)
 {
@@ -43,33 +36,40 @@ void	display_window(t_game *game)
 		return ;
 }
 
+void	create_logo_to_window(t_game *game, int x_p, int y_p)
+{
+	if (game->img && game->img->mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, \
+			"sprites/logo.xpm", &x_p, &y_p);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+				game->img->mlx_img, (SCREEN_WIDTH / 2) - (x_p / 2), 550);
+}
+
 void	login_screen(t_game *game)
 {
-	int	x_p;
-	int	y_p;
+	int				x_p;
+	int				y_p;
+	static double	moves = -400;
+	static bool		logo;
 
 	x_p = 620;
 	y_p = 375;
-	static double moves;
-	static bool	logo;
 	while (moves < 150)
 	{
 		if (game->img && game->img->mlx_img)
 			mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 		game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, \
 			"sprites/mood.xpm", &x_p, &y_p);
-		game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, \
-			&game->img->line_len, &game->img->endian);
-			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->img->addr = mlx_get_data_addr(game->img->mlx_img, \
+			&game->img->bpp, &game->img->line_len, &game->img->endian);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 				game->img->mlx_img, (SCREEN_WIDTH / 2) - (x_p / 2), moves);
-		moves+= 0.5;
+		moves += 1.5;
 	}
 	if (logo == false)
 	{
-		game->img->mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, \
-				"sprites/logo.xpm", &x_p, &y_p);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->img->mlx_img, (SCREEN_WIDTH / 2) - (x_p / 2), 550);
+		create_logo_to_window(game, 779, 200);
 		logo = true;
 	}
 }

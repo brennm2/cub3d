@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:21:07 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:03:29 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	draw_ceiling(t_game *game, int x, int ray_count, int h_pixel)
 	unsigned long	ceiling_rgb_set;
 	int				stop;
 
-	//ceiling_rgb_set = convert_rgb(game->map.ceiling_color);
 	ceiling_rgb_set = game->map.ceiling_color;
 	stop = (SCREEN_HEIGHT / 2) - ((SCREEN_HEIGHT / 2) / 2);
 	while (x < (SCREEN_HEIGHT / 2) + game->ray->mouse_height)
@@ -83,7 +82,6 @@ void	draw_floor(t_game *game, int x, int ray_count, int l_pixel)
 	unsigned long	floor_rgb;
 	int				stop;
 
-	//floor_rgb_set = convert_rgb(game->map.floor_color); //#TODO ver se isso esta certo
 	floor_rgb_set = game->map.floor_color;
 	stop = ((SCREEN_HEIGHT / 2) + ((SCREEN_HEIGHT / 2) / 2) \
 		+ game->ray->mouse_height);
