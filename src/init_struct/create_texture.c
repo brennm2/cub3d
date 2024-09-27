@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:57:02 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:27:06 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	create_all_textures(t_game *game)
 			"DOOR_SIDE"))
 	{
 		ft_quit_game(game);
-		return ;
 	}
 }
