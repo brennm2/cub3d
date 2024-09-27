@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 14:27:02 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 13:52:11 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:17:47 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_game	*ft_init_structs(const char *file)
 	ft_get_map(game);
 	ft_get_player_pos(game);
 	map = ft_dup_map(game);
-	ft_flood_fill(game, map, game->player.player_x, game->player.player_y);
+	ft_flood_fill(game, map, game->player.player_y, game->player.player_x);
 	ft_free_map(map);
 	game->ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
 	if (game->ray == NULL)

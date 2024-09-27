@@ -23,26 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/map_too_small.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/map_too_small.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_valgrind.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_valgrind.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/debug/debug_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/debug/debug_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/free.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/init_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/init_game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/move_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/move_player.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/create_texture.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/file.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/file.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/map_utils.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init_struct/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/texture_color.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/texture_color.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/textures.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/textures.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" afterPath="$PROJECT_DIR$/valgrind_failures.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -614,11 +595,6 @@
     <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
