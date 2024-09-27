@@ -23,10 +23,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sprites/barrel.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bluestone.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/colorstone.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/eagle.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/enemy.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/fuhrer.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/greenlight.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/grey_stone.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/greystone.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/mossy.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/pillar.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/purplestone.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/redbrick.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/sky.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/texture_north.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wall1.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wall2.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wall3.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wall4.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wall5.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wood.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/wrong.xpm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/init_struct/map_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/library.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/library.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/create_texture.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/file_letter_end.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/file_letter_end.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/others/map-litle.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/others/map-litle.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/others/map-no-0.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/others/map-no-0.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map1.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map2.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map2.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map3.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map3.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map4.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map4.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map5.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map5.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_valgrind.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_valgrind.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game/move_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/move_player.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init_struct/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" afterPath="$PROJECT_DIR$/valgrind_failures.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -496,7 +535,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Debug">
-    <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="assets/map_files/invalid/broken_xpm.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
+    <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="assets/map_files/valid/square_map.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
@@ -507,6 +546,11 @@
       </method>
     </configuration>
     <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
@@ -670,6 +714,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixing merge" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/init_struct/textures.c</url>
+          <line>47</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CLionNativeAppRunConfigurationType">
         <watch expression="*map @ 20" custom="AddWatchAsArrayAction.marker:  @ 20" />

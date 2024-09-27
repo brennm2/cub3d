@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:05:32 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 12:23:22 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:04:13 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 void	ft_get_map(t_game *game)
 {
-	game->map.map = malloc(sizeof (char *) * 2);
+	bool	found_empty;
+
+	found_empty = false;
+	game->map.map = malloc(sizeof(char *) * 2);
 	if (game->map.map == NULL)
 		return ;
 	while (game->map.line != NULL)
 	{
+		if (has_trailing_text_after_empty_line(game->map.line, found_empty))
+		{
+			printf("Error: Map has text after an empty line!\n");
+			ft_quit_game(game);
+		}
 		if (!ft_check_empty_line(game->map.line, 2))
 		{
-			if (!has_valid_chars(game->map.line, " 10NSWE\n"))
-			{
-				game->map.map[game->map.height] = NULL;
-				printf("Invalid char!\n");
-				ft_quit_game(game);
-			}
-			game->map.map[game->map.height] = ft_strdup(game->map.line);
-			game->map.height++;
-			game->map.map[game->map.height] = NULL;
-			ft_extend_map(game);
+			validate_map_line(game);
+			found_empty = false;
 		}
+		else
+			found_empty = true;
 		free(game->map.line);
 		game->map.line = get_next_line(game->fd_file);
 	}

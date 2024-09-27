@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/25 14:11:55 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:05:16 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -435,4 +435,9 @@ bool			has_only_spaces(const char *str);
 void			ft_parse_and_set_color(t_game *game,
 					const char *path, long *color, const char *type);
 void			free_textures(t_game *game);
+bool			ft_color_check(char **str);
+void			ft_check_player(t_game *game);
+void			validate_map_line(t_game *game);
+bool			has_trailing_text_after_empty_line(const char *line,
+					bool found_empty);
 #endif
