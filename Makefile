@@ -41,7 +41,7 @@ MANDATORY_FILES += init_game/draw_wall free endgame init_game/shoot_rays init_ga
 MANDATORY_FILES += init_struct/create_texture init_struct/texture_color
 MANDATORY_FILES += init_struct/file init_struct/structs init_struct/textures init_struct/map init_struct/player
 MANDATORY_FILES += init_struct/textures_utils init_struct/utils init_struct/texture_color_sup
-MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation init_game/key_handler
+MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation init_game/key_handler init_game/intro_screen
 MANDATORY_FILES += debug/debug_utils
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 13:58:59 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:29:06 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,6 +483,7 @@ int	get_pixel_color(t_game *game, int higher_pixel,int lower_pixel, int t_index)
 void			ft_free_textures(t_game *game);
 void			free_map(t_game *game);
 void			ft_free_map(char **map);
+void			login_screen(t_game *game);
 void			init_window(t_game *game);
 void			display_window(t_game *game);
 void			init_game(t_game *game);

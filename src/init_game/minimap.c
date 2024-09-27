@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:57:13 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 14:18:44 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:07:18 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	draw_box(t_game *game, int pos_y, int pos_x, long color)
 	int	y;
 	int	scale;
 
-	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.3;
 	y = pos_y + 1;
 	while (y < pos_y + scale)
 	{
 		x = pos_x + 1;
-		while (x < pos_x + scale)
+		while (x < pos_x + scale && x < SCREEN_WIDTH - 150)
 		{
 			better_mlx_pixel_put(&game->img, x, y, color);
 			x++;
@@ -63,7 +63,7 @@ void	select_box(t_game *game, int x, int y)
 	int	player_step_y;
 	int	scale;
 
-	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.3;
 	player_step_x = (int)game->player.player_x * scale
 		+ (SCREEN_HEIGHT / 2) - ((game->map.height * scale) / 2);
 	player_step_y = (int)game->player.player_y * scale + (SCREEN_WIDTH / 2)
@@ -84,7 +84,7 @@ void	draw_minimap_row(t_game *game, int y)
 	int	x;
 	int	scale;
 
-	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.3;
 	x = 0;
 	while (game->map.map[y][x])
 	{
@@ -104,7 +104,7 @@ void	minimap(t_game *game)
 	int	y;
 	int	scale;
 
-	scale = (SCREEN_HEIGHT / game->map.height) * 0.4;
+	scale = (SCREEN_HEIGHT / game->map.height) * 0.3;
 	y = 0;
 	game->mm_step_x = SCREEN_WIDTH / 2 - ((10 * scale) / 2);
 	game->mm_step_y = (SCREEN_HEIGHT / 2) - ((game->map.height * scale) / 2);
