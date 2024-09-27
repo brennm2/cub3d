@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:55:25 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/24 17:10:38 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:22:58 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ void	create_all_textures(t_game *game)
 		|| create_texture(game, 3, game->map.west_path, "WEST"))
 	{
 		ft_quit_game(game);
-		return ;
 	}
 }

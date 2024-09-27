@@ -23,7 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/init_struct/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/library.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/library.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/create_texture.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/create_texture.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" afterPath="$PROJECT_DIR$/valgrind_failures.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,31 +461,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Custom Build Application.Debug.executor&quot;: &quot;Debug&quot;,
-    &quot;Native Application.all.executor&quot;: &quot;Debug&quot;,
-    &quot;Native Application.cub3d.executor&quot;: &quot;Debug&quot;,
-    &quot;Native Application.re.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/bsousa-d/Desktop/cub3d&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CLionExternalConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Custom Build Application.Debug.executor": "Debug",
+    "Native Application.all.executor": "Debug",
+    "Native Application.cub3d.executor": "Debug",
+    "Native Application.re.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/bsousa-d/Desktop/cub3d",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/init_game" />
