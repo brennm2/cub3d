@@ -52,12 +52,12 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJ_FOLDER) $(OBJS) $(MAIN_OBJ)
-	@clear
+	#@clear
 	@./Asccii/creating.sh
 	$(MAKE) -s -C $(MLX) > /dev/null 2>&1
 	$(MAKE) -s -C $(LIBFT) > /dev/null 2>&1
 	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) $(LDFLAGS) -o $(NAME)
-	@clear
+	#@clear
 	@./Asccii/completed.sh
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c

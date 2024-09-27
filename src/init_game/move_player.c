@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:14:31 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 13:13:43 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:56:01 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ void	move_left(t_game *game)
 		game->player.player_y += new_y;
 }
 
+void	login(t_game *game)
+{
+	if(game->login == false)
+		game->login = true;
+}
+
 int	key_handler(int key, t_game *game)
 {
 	if (key == ESC)
@@ -104,6 +110,8 @@ int	key_handler(int key, t_game *game)
 			look_direction(game, false);
 		if (key == 'e')
 			door_handler(game);
+		if (key == ENTER)
+			login(game);
 	}
 	if (key == 'm')
 		game->map.show_minimap = true;

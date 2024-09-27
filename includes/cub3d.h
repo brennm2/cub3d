@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/26 13:10:41 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:55:49 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 #  define D 100
 #  define C 99
 #  define V 118
+#  define ENTER 65293
 #  define RIGHT 65363
 #  define LEFT 65361
 # endif
@@ -129,7 +130,7 @@ typedef struct s_ray
 	bool	is_mid_door;
 	bool	door_is_closing;
 	bool	is_in_y;
-	
+
 	int		mouse_height;
 	int		map_x;
 	int		map_y;
@@ -169,6 +170,7 @@ typedef struct s_game
 	int			map_h;
 	int			h;
 	int			fd_file;
+	bool		login;
 	
 	int			*mouse_x;
 	int			*mouse_y;
