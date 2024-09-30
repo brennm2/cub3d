@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsousa-d <bsousa-d@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:14:52 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 16:04:54 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:57:53 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	has_trailing_text_after_empty_line(const char *line, bool found_empty)
 
 void	validate_map_line(t_game *game)
 {
-	if (!has_valid_chars(game->map.line, " 10NSWE\n"))
+	if (!has_valid_chars(game->map.line, " 10NSWED\n"))
 	{
 		game->map.map[game->map.height] = NULL;
 		printf("Invalid character!\n");

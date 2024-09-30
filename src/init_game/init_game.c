@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:15:53 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 15:21:40 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:55:06 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_game(t_game *game)
 	mlx_hook(game->win_ptr, KeyRelease, KeyReleaseMask, &key_release, game);
 	mlx_hook(game->win_ptr, DestroyNotify, StructureNotifyMask,
 		&ft_quit_game, game);
-	//mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
+	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	mlx_loop(game->mlx_ptr);
 }
 

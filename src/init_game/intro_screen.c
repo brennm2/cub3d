@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:21:22 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 15:38:24 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:59:03 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	create_logo_to_window(t_game *game, int x_p, int y_p)
 
 void	login_screen(t_game *game)
 {
-	static double	moves = 149;
+	static double	moves = -400;
 	static bool		logo;
 
 	while (moves < 150)

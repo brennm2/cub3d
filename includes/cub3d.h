@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 11:06:56 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:05:21 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,19 @@
 # define FLOOR "F "
 
 //! Minilibx events
-# ifdef __APPLE__
-#  include "../libs/minilibx-mac/mlx.h"
-#  define ESC 53
-#  define W 13
-#  define A 0
-#  define S 1
-#  define D 2
-#  define C 8
-#  define V 9
-#  define RIGHT 124
-#  define LEFT 123
-#  define KeyPress 2
-#  define KeyPressMask (1L<<0)
-#  define DestroyNotify 17
-#  define StructureNotifyMask (1L<<17)
-# else
-#  include "../libs/minilibx-linux/mlx.h"
-#  include <X11/X.h>
-#  include <X11/keysym.h>
-#  define ESC 65307
-#  define W 119
-#  define A 97
-#  define S 115
-#  define D 100
-#  define C 99
-#  define V 118
-#  define ENTER 65293
-#  define RIGHT 65363
-#  define LEFT 65361
-# endif
+# include "../libs/minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define C 99
+# define V 118
+# define ENTER 65293
+# define RIGHT 65363
+# define LEFT 65361
 
 typedef struct s_map
 {
@@ -112,7 +95,6 @@ typedef struct s_fps
 	double	temp_fps;
 }	t_fps;
 
-
 typedef struct s_player
 {
 	double		player_x;
@@ -121,7 +103,6 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	//double	ray_angle;
 	double	distance;
 	int		line_height;
 	bool	wall_hit;
@@ -130,7 +111,6 @@ typedef struct s_ray
 	bool	is_mid_door;
 	bool	door_is_closing;
 	bool	is_in_y;
-
 	int		mouse_height;
 	int		map_x;
 	int		map_y;
@@ -142,7 +122,6 @@ typedef struct s_ray
 	double	raydist_y;
 	double	deltadist_x;
 	double	deltadist_y;
-	
 	int		l_pixel;
 	int		h_pixel;
 }	t_ray;
@@ -165,37 +144,35 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	char		*map_name;
-	int			map_w;
-	int			map_h;
-	int			h;
-	int			fd_file;
-	bool		login;
-	
-	int			*mouse_x;
-	int			*mouse_y;
-	int			new_x;
-	int			new_y;
-	double		dirx;
-	double		diry;
-	double		plane_x;
-	double		plane_y;
-	int			player_in_map_x;
-	int			player_in_map_y;
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			mm_step_x;
-	int			mm_step_y;
-	int			tex_index;
-	t_img		*handmap;
-	t_ray		*ray;
-	t_player	player;
-	t_img		*img;
-	t_texture	**texture;
-	t_fps		*fps;
-
+	char			*map_name;
+	int				map_w;
+	int				map_h;
+	int				h;
+	int				fd_file;
+	bool			login;
+	int				*mouse_x;
+	int				*mouse_y;
+	int				new_x;
+	int				new_y;
+	double			dirx;
+	double			diry;
+	double			plane_x;
+	double			plane_y;
+	int				player_in_map_x;
+	int				player_in_map_y;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	int				mm_step_x;
+	int				mm_step_y;
+	int				tex_index;
+	t_img			*handmap;
+	t_ray			*ray;
+	t_player		player;
+	t_img			*img;
+	t_texture		**texture;
+	t_fps			*fps;
 	struct s_map	map;
-}	t_game;
+}			t_game;
 
 // ::::::::::::::::::::::::::::::: INIT_GAME :::::::::::::::::::::::::::::: //
 
@@ -451,35 +428,34 @@ void			draw_floor_ceiling(t_game *game, int ray_count, int h_pixel,
 void			place_player(t_game *game, double player_x, double player_y);
 
 // SRC/MINIMAP
-void	minimap(t_game *game);
+void			minimap(t_game *game);
 // SRC/FOG_CREATOR.C
 int				darken_rgb_color3(int color, double factor, int i);
 int				get_fog(t_game *game, int color);
 int				get_fog_ceiling(int color, int i, int mouse);
 int				get_fog_floor(int color, int i, int mouse);
 
-
 //SRC/DOOR_HANDLER.C
-void	door_handler(t_game *game);
+void			door_handler(t_game *game);
 
 //SRC/DOOR_TEXTURE_HANDLER
-bool	door_texture_handler(t_game *game, int option);
-bool	check_wall_hit(t_game *game);
+bool			door_texture_handler(t_game *game, int option);
+bool			check_wall_hit(t_game *game);
 
 //SRC/MOUSE_HANDLER.C
-void	mouse_direction(t_game *game);
+void			mouse_direction(t_game *game);
 
 //SRC/TEXTURE_COLOR_SUP.C
-int		select_wall_texture(t_game *game, int tex_x, int tex_y);
-void	change_door_in_map(t_game *game);
+int				select_wall_texture(t_game *game, int tex_x, int tex_y);
+void			change_door_in_map(t_game *game);
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
 int				get_texture_color(t_game *game, int tex_y);
 unsigned long	convert_rgb(char *color);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 bool			ft_check_map(t_game *game, char **av);
-
-int	get_pixel_color(t_game *game, int higher_pixel,int lower_pixel, int t_index);
+int				get_pixel_color(t_game *game, int higher_pixel, \
+int lower_pixel, int t_index);
 void			ft_free_textures(t_game *game);
 void			free_map(t_game *game);
 void			ft_free_map(char **map);

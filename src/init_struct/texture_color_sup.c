@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:47:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 14:16:07 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:45:46 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	select_wall_texture(t_game *game, int tex_x, int tex_y)
 {
 	if (game->ray->side == true && game->ray->is_door == false)
 	{
-		if (game->ray->raydir_y > 0)
+		if (game->ray->raydir_y < 0)
 			return (get_pixel_color(game, tex_y, tex_x, west_t));
 		else
 			return (get_pixel_color(game, tex_y, tex_x, east_t));
