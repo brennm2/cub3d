@@ -1,0 +1,13 @@
+NO sprites/default/north_wall.xpm
+SO sprites/default/south_wall.xpm
+WE sprites/default/west_wall.xpm
+EA sprites/default/east_wall.xpm
+
+F 18,53,25
+C 153,204,255
+
+111111111
+100000001
+1000W0001
+100000001
+111111111
