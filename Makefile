@@ -88,9 +88,9 @@ $(OBJ_FOLDER):
 
 norm:
 	@echo "\n\t$(BLUE)Checking norm for *.h files...$(RESET)\n"
-	@norminette -R CheckDefine $(shell find . -type f -name "*.h" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
+	@norminette $(shell find . -type f -name "*.h" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 	@echo "\n\t$(BLUE)Checking norm for *.c files...$(RESET)\n"
-	@norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
+	@norminette $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 
 update:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
