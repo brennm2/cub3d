@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:14:52 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 15:52:25 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:52:19 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 bool	ft_color_check(char **str)
 {
@@ -40,7 +40,7 @@ bool	has_trailing_text_after_empty_line(const char *line, bool found_empty)
 
 void	validate_map_line(t_game *game)
 {
-	if (!has_valid_chars(game->map.line, " 10NSWE\n"))
+	if (!has_valid_chars(game->map.line, " 10NSWED\n"))
 	{
 		game->map.map[game->map.height] = NULL;
 		printf("Invalid character!\n");
