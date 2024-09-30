@@ -1,4 +1,4 @@
-NO ./sprites/textures/wall.xpm
+NO ./sprites/wall1.xpm
 SO ./sprites/wall2.xpm
 WE ./sprites/wall3.xpm
 EA ./sprites/wall4.xpm

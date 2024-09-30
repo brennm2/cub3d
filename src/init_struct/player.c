@@ -6,7 +6,7 @@
 /*   By: bsousa-d <bsousa-d@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:12:00 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/24 17:51:57 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:03:23 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_get_player_pos(t_game *game)
 		}
 		i++;
 	}
+	printf("No PLayer\n");
+	ft_quit_game(game);
 }
 
 void	set_player_direction(t_game *game, const char c)
@@ -59,5 +61,32 @@ void	set_player_direction(t_game *game, const char c)
 	{
 		game->diry = -1;
 		game->plane_x = -0.66;
+	}
+}
+
+void	ft_check_player(t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (game->map.map[i])
+	{
+		j = 0;
+		while (game->map.map[i][j])
+		{
+			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'W'
+				|| game->map.map[i][j] == 'S' || game->map.map[i][j] == 'E')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	if (count != 1)
+	{
+		printf("2 Player Position\n");
+		ft_quit_game(game);
 	}
 }

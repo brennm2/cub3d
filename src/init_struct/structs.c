@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 14:27:02 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 12:43:06 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:07:42 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_game	*ft_init_structs(const char *file)
 	game->fd_file = open(file, O_RDONLY);
 	ft_get_textures(game);
 	ft_get_map(game);
+	ft_check_player(game);
 	ft_get_player_pos(game);
 	map = ft_dup_map(game);
 	ft_flood_fill(game, map, game->player.player_y, game->player.player_x);
@@ -74,7 +75,8 @@ void	ft_parse_and_set_color(t_game *game,
 		exit(1);
 	}
 	color_split = ft_split(path, ',');
-	if (color_split == NULL || ft_count_colours(color_split) != 3)
+	if (color_split == NULL || ft_count_colours(color_split) != 3
+		||!ft_color_check(color_split))
 	{
 		free_double_pointer_array(color_split);
 		printf("Invalid %s colour!\n", type);
