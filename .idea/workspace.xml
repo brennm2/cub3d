@@ -23,50 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cb0d677-7f6d-4582-a1c5-514cc2db57c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sprites/barrel.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/bluestone.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/colorstone.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/eagle.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/enemy.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/fuhrer.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/greenlight.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/grey_stone.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/greystone.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/mossy.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/pillar.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/purplestone.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/redbrick.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/screenshots/screenshot_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/sky.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/texture_north.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wall1.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wall2.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wall3.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wall4.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wall5.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wood.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprites/wrong.xpm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/init_struct/map_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/file_letter_end.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/file_letter_end.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/others/map-litle.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/others/map-litle.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/invalid/others/map-no-0.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/invalid/others/map-no-0.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map1.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map1.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map2.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map2.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map3.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map3.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map4.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map4.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map_files/valid/map5.cub" beforeDir="false" afterPath="$PROJECT_DIR$/assets/map_files/valid/map5.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_valgrind.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_valgrind.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_game/move_player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game/move_player.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/player.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init_struct/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/structs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valgrind_failures.log" beforeDir="false" afterPath="$PROJECT_DIR$/valgrind_failures.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_struct/map_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_struct/map_utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -500,38 +460,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Custom Build Application.Debug.executor": "Debug",
-    "Native Application.all.executor": "Debug",
-    "Native Application.cub3d.executor": "Debug",
-    "Native Application.re.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/bsousa-d/Desktop/cub3d",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Custom Build Application.Debug.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.all.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.cub3d.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Application.re.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bsousa-d/Desktop/cub3d&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/map_files/invalid" />
       <recent name="$PROJECT_DIR$/src/init_game" />
       <recent name="$PROJECT_DIR$/src/init_struct" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/texture_handler" />
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Debug">
@@ -546,11 +506,6 @@
       </method>
     </configuration>
     <configuration name="Debug" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="map_test.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="42_Cub3d" TARGET_NAME="Debug" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/cub3d">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
@@ -677,6 +632,7 @@
       <workItem from="1727177510500" duration="1806000" />
       <workItem from="1727182435254" duration="13249000" />
       <workItem from="1727262942480" duration="5491000" />
+      <workItem from="1727700639967" duration="2028000" />
     </task>
     <task id="LOCAL-00001" summary="Early parser done">
       <option name="closed" value="true" />

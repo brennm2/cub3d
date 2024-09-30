@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 16:05:16 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:56:59 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,18 @@
 # define CEILING "C "
 # define FLOOR "F "
 
-//! Minilibx events
-# ifdef __APPLE__
-#  include "../libs/minilibx-mac/mlx.h"
-#  define ESC 53
-#  define W 13
-#  define A 0
-#  define S 1
-#  define D 2
-#  define C 8
-#  define V 9
-#  define RIGHT 124
-#  define LEFT 123
-#  define KeyPress 2
-#  define KeyPressMask (1L<<0)
-#  define DestroyNotify 17
-#  define StructureNotifyMask (1L<<17)
-# else
-#  include "../libs/minilibx-linux/mlx.h"
-#  include <X11/X.h>
-#  include <X11/keysym.h>
-#  define ESC 65307
-#  define W 119
-#  define A 97
-#  define S 115
-#  define D 100
-#  define C 99
-#  define V 118
-#  define RIGHT 65363
-#  define LEFT 65361
-# endif
+# include "../libs/minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define C 99
+# define V 118
+# define RIGHT 65363
+# define LEFT 65361
 
 typedef struct s_map
 {
