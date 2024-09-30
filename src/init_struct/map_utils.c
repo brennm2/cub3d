@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:14:52 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 11:57:53 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:25:47 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,10 @@ void	validate_map_line(t_game *game)
 	game->map.map[game->map.height] = ft_strdup(game->map.line);
 	game->map.height++;
 	game->map.map[game->map.height] = NULL;
+	if(game->map.height > 2000)
+	{
+		printf("Map too long\n");
+		ft_quit_game(game);
+	}
 	ft_extend_map(game);
 }
