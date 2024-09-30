@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 14:26:12 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:44:46 by bsousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_map
 	char	**map;
 	char	*line;
 	int		height;
-	int		length; //TODO DONT KNOW IF ITS NECESSARY, JUST LEAVE IT FOR NOW
 	long	ceiling_color;
 	long	floor_color;
 	char	*north_path;
@@ -85,15 +84,6 @@ typedef enum s_tdir
 	door_side,
 	hand_map,
 }		t_tdir;
-
-typedef struct s_fps
-{
-	clock_t	old_time;
-	clock_t	time;
-	clock_t	frametime;
-	double	fps;
-	double	temp_fps;
-}	t_fps;
 
 typedef struct s_player
 {
@@ -144,9 +134,6 @@ typedef struct s_texture
 
 typedef struct s_game
 {
-	char			*map_name;
-	int				map_w;
-	int				map_h;
 	int				h;
 	int				fd_file;
 	bool			login;
@@ -158,19 +145,15 @@ typedef struct s_game
 	double			diry;
 	double			plane_x;
 	double			plane_y;
-	int				player_in_map_x;
-	int				player_in_map_y;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	int				mm_step_x;
 	int				mm_step_y;
 	int				tex_index;
-	t_img			*handmap;
 	t_ray			*ray;
 	t_player		player;
 	t_img			*img;
 	t_texture		**texture;
-	t_fps			*fps;
 	struct s_map	map;
 }			t_game;
 
@@ -393,7 +376,6 @@ void			ft_get_player_pos(t_game *game);
  * \param c The character indicating the player's initial direction.
  */
 void			set_player_direction(t_game *game, char c);
-char			*remove_all_spaces(char *str);
 int				ft_set_texture(t_game *game, const char *line);
 bool			ft_check_empty_line(const char *line, int option);
 void			ft_get_map(t_game *game);
@@ -407,25 +389,17 @@ void			move_right(t_game *game);
 void			move_left(t_game *game);
 void			free_all(t_game *game);
 int				ft_quit_game(t_game *game);
-// src/map_handler/fill_map.c
-void			read_map(char *map_name, t_game *game);
-void			fill_map(int fd, t_game *game);
 // SRC/TEXTURE_HANDLER/CREATE_TEXTURE
 void			create_all_textures(t_game *game);
 int				create_texture(t_game *game, const int index, char *path,
 					const char *error_msg);
-// SRC/DEBUG/DEBUG_FUNCIONS.C
-void			show_map(const t_game *game);
-void			show_fps_debug(void);
 // SRC/RAYCASTING/SHOOT_RAYS.C
 void			shoot_rays(t_game *game);
-float			normalize_angle(float angle);
 // SRC/RAYCASTING/DRAW_WALL.C
 void			draw_wall(t_game *game, int h_pixel, int l_pixel, int x);
 void			draw_floor_ceiling(t_game *game, int ray_count, int h_pixel,
 					int l_pixel);
 // SRC/PLAYER/PLACE_PLAYER.C
-void			place_player(t_game *game, double player_x, double player_y);
 
 // SRC/MINIMAP
 void			minimap(t_game *game);
@@ -450,14 +424,11 @@ int				select_wall_texture(t_game *game, int tex_x, int tex_y);
 void			change_door_in_map(t_game *game);
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
 int				get_texture_color(t_game *game, int tex_y);
-unsigned long	convert_rgb(char *color);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
-bool			ft_check_map(t_game *game, char **av);
 int				get_pixel_color(t_game *game, int higher_pixel, \
 int lower_pixel, int t_index);
 void			ft_free_textures(t_game *game);
-void			free_map(t_game *game);
 void			ft_free_map(char **map);
 void			login_screen(t_game *game);
 void			init_window(t_game *game);
