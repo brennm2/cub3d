@@ -12,7 +12,7 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto
+CC = cc -g -pthread
 #CC = cc -g
 RM = rm -rf
 AR = ar -rcs
@@ -34,14 +34,14 @@ else
 endif
 
 LIBS = -L./libs -lft
-LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread
+LDFLAGS = $(LIBS) $(MLXFLAGS) -lm -lpthread -pthread
 
 # Files
 MANDATORY_FILES += init_game/draw_wall free endgame init_game/shoot_rays init_game/fog_creator init_game/minimap init_game/door_animation init_game/door_texture_handler init_game/mouse_handler
-MANDATORY_FILES += init_struct/create_texture init_struct/texture_color
+MANDATORY_FILES += init_struct/create_texture init_struct/texture_color debug
 MANDATORY_FILES += init_struct/file init_struct/structs init_struct/textures init_struct/map init_struct/player
 MANDATORY_FILES += init_struct/textures_utils init_struct/utils init_struct/texture_color_sup init_struct/map_utils
-MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation init_game/key_handler init_game/intro_screen
+MANDATORY_FILES += init_game/init_game init_game/move_player init_game/move_orientation init_game/key_handler init_game/intro_screen 
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
 MAIN_OBJ = $(OBJ_FOLDER)/main.o

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:15:53 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 12:55:06 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 16:45:42 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	display_window(t_game *game)
 		return ;
 }
 
+
+
+
 int	game_frame_loop(t_game *game)
 {
 	if (game->login == true)
@@ -54,6 +57,7 @@ int	game_frame_loop(t_game *game)
 		mlx_mouse_move(game->mlx_ptr, game->win_ptr, (SCREEN_WIDTH / 2), \
 			(SCREEN_HEIGHT / 2));
 		mouse_direction(game);
+		show_fps_debug();
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->img->mlx_img, 0, 0);
 	}

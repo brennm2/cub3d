@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:15:21 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 14:03:29 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:22:15 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	print_texture_pixel(t_game *game, int x, int h_pixel, int color)
 			better_mlx_pixel_put(&game->img, x, h_pixel, color);
 	}
 }
+
 
 void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x)
 {

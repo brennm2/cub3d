@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/30 14:44:46 by bsousa-d         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:22:18 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/time.h>
 # include <math.h>
 # include <stdint.h>
+# include <pthread.h>
 
 //Debug
 # include <time.h>
@@ -85,6 +86,7 @@ typedef enum s_tdir
 	hand_map,
 }		t_tdir;
 
+
 typedef struct s_player
 {
 	double		player_x;
@@ -100,6 +102,7 @@ typedef struct s_ray
 	bool	is_door;
 	bool	is_mid_door;
 	bool	door_is_closing;
+
 	bool	is_in_y;
 	int		mouse_height;
 	int		map_x;
@@ -156,6 +159,8 @@ typedef struct s_game
 	t_texture		**texture;
 	struct s_map	map;
 }			t_game;
+
+
 
 // ::::::::::::::::::::::::::::::: INIT_GAME :::::::::::::::::::::::::::::: //
 
@@ -452,4 +457,6 @@ void			ft_check_player(t_game *game);
 void			validate_map_line(t_game *game);
 bool			has_trailing_text_after_empty_line(const char *line,
 					bool found_empty);
+void add_task_to_pool(void *(*task)(void *), void *arg);
+void 			show_fps_debug(void);
 #endif

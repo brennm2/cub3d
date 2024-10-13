@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:24:42 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 13:59:47 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:14:11 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	calculate_ray_steps(t_game *game)
 		* game->ray->deltadist_y;
 	}
 }
+
+
 
 void	shoot_rays(t_game *game)
 {
