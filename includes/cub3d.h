@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:50:11 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/10/13 17:22:18 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:22:51 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,19 @@ typedef struct s_game
 	t_img			*img;
 	t_texture		**texture;
 	struct s_map	map;
+	pthread_mutex_t ray_mutex;
 }			t_game;
+
+
+#define NUM_THREADS  sysconf(_SC_NPROCESSORS_ONLN)
+
+typedef struct s_thread_data {
+    t_game *game;
+    int start;
+    int end;
+    t_ray *ray;
+} t_thread_data;
+
 
 
 
@@ -401,16 +413,16 @@ int				create_texture(t_game *game, const int index, char *path,
 // SRC/RAYCASTING/SHOOT_RAYS.C
 void			shoot_rays(t_game *game);
 // SRC/RAYCASTING/DRAW_WALL.C
-void			draw_wall(t_game *game, int h_pixel, int l_pixel, int x);
+void	draw_wall(t_game *game, int h_pixel, int l_pixel, int x, t_ray *ray);
 void			draw_floor_ceiling(t_game *game, int ray_count, int h_pixel,
-					int l_pixel);
+					int l_pixel, t_ray *ray);
 // SRC/PLAYER/PLACE_PLAYER.C
 
 // SRC/MINIMAP
 void			minimap(t_game *game);
 // SRC/FOG_CREATOR.C
 int				darken_rgb_color3(int color, double factor, int i);
-int				get_fog(t_game *game, int color);
+int	get_fog(t_game *game, int color, t_ray *ray);
 int				get_fog_ceiling(int color, int i, int mouse);
 int				get_fog_floor(int color, int i, int mouse);
 
@@ -419,16 +431,16 @@ void			door_handler(t_game *game);
 
 //SRC/DOOR_TEXTURE_HANDLER
 bool			door_texture_handler(t_game *game, int option);
-bool			check_wall_hit(t_game *game);
+bool			check_wall_hit(t_game *game, t_ray *ray);
 
 //SRC/MOUSE_HANDLER.C
 void			mouse_direction(t_game *game);
 
 //SRC/TEXTURE_COLOR_SUP.C
-int				select_wall_texture(t_game *game, int tex_x, int tex_y);
+int				select_wall_texture(t_game *game, int tex_x, int tex_y, t_ray *ray);
 void			change_door_in_map(t_game *game);
 // SRC/TEXTURE_HANDLER/GET_TEXTURE_COLOR.C
-int				get_texture_color(t_game *game, int tex_y);
+int	get_texture_color(t_game *game, int tex_y, t_ray *ray);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 void			better_mlx_pixel_put(t_img **img, int x, int y, int color);
 int				get_pixel_color(t_game *game, int higher_pixel, \
@@ -458,5 +470,7 @@ void			validate_map_line(t_game *game);
 bool			has_trailing_text_after_empty_line(const char *line,
 					bool found_empty);
 void add_task_to_pool(void *(*task)(void *), void *arg);
+
+void init_threads(t_game *game);
 void 			show_fps_debug(void);
 #endif

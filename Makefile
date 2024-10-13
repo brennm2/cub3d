@@ -12,8 +12,8 @@ CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
 # Commands
-CC = cc -g -pthread
-#CC = cc -g
+CC = cc -g -Ofast -ffast-math -finline-functions -march=native -flto -pthread #-fsanitize=thread
+#CC = cc -g -pthread 
 RM = rm -rf
 AR = ar -rcs
 

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:38:49 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/26 12:27:46 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:58:08 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	get_pixel_color(t_game *game, int higher_pixel,
 	return (color);
 }
 
-int	find_right_side(t_game *game, int tex_y, int tex_x)
+int	find_right_side(t_game *game, int tex_y, int tex_x, t_ray *ray)
 {
 	static int	temp_fps;
 
-	if (game->ray->is_door == true)
+	if (ray->is_door == true)
 	{
-		if (game->ray->is_mid_door == true)
+		if (ray->is_mid_door == true)
 		{
 			if (temp_fps < 100000000)
 			{
@@ -46,28 +46,28 @@ int	find_right_side(t_game *game, int tex_y, int tex_x)
 			return (get_pixel_color(game, tex_y, tex_x, game->tex_index));
 	}
 	else
-		return (select_wall_texture(game, tex_x, tex_y));
+		return (select_wall_texture(game, tex_x, tex_y, ray));
 	return (0);
 }
 
-int	get_texture_color(t_game *game, int tex_y)
+int	get_texture_color(t_game *game, int tex_y, t_ray *ray)
 {
 	double	wall_x;
 	int		tex_x;
 
-	if (game->ray->side == false)
-		wall_x = game->player.player_y + game->ray->distance \
-			* game->ray->raydir_y;
+	if (ray->side == false)
+		wall_x = game->player.player_y + ray->distance \
+			* ray->raydir_y;
 	else
-		wall_x = game->player.player_x + game->ray->distance \
-			* game->ray->raydir_x;
+		wall_x = game->player.player_x + ray->distance \
+			* ray->raydir_x;
 	wall_x -= floor(wall_x);
 	tex_x = wall_x * (double)TEXTURE_W;
-	if (game->ray->side == false && game->ray->raydir_x > 0)
+	if (ray->side == false && ray->raydir_x > 0)
 		tex_x = TEXTURE_W - tex_x - 1;
-	if (game->ray->side == true && game->ray->raydir_y < 0)
+	if (ray->side == true && ray->raydir_y < 0)
 		tex_x = TEXTURE_W - tex_x - 1;
-	return (find_right_side(game, tex_y, tex_x));
+	return (find_right_side(game, tex_y, tex_x, ray));
 }
 
 unsigned long	convert_rgb(char *color)

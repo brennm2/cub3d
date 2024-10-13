@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:24:45 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/19 16:18:37 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:21:35 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ int	get_fog_ceiling(int color, int i, int mouse)
 	return (color);
 }
 
-int	get_fog(t_game *game, int color)
+int	get_fog(t_game *game, int color, t_ray *ray)
 {
 	double	distance;
 	int		times;
 
-	if (game->ray->distance > 4.2)
+	if (ray->distance > 4.2)
 		return (0);
 	times = 0;
 	distance = 1;
-	while (distance < game->ray->distance)
+	while (distance < ray->distance)
 	{
 		distance += 0.101;
 		times++;

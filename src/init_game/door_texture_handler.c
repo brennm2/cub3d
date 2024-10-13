@@ -6,20 +6,20 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 10:00:47 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/27 14:17:14 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:32:53 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool	check_wall_hit(t_game *game)
+bool	check_wall_hit(t_game *game, t_ray *ray)
 {
 	char	tile;
 
-	tile = game->map.map[game->ray->map_x][game->ray->map_y];
+	tile = game->map.map[ray->map_x][ray->map_y];
 	if (tile == '1')
 	{
-		game->ray->is_door = false;
+		ray->is_door = false;
 		return (true);
 	}
 	if (tile == 'D')
@@ -28,8 +28,8 @@ bool	check_wall_hit(t_game *game)
 		return (door_texture_handler(game, 1));
 	if (tile == 'd')
 	{
-		game->ray->is_mid_door = false;
-		game->ray->is_door = false;
+		ray->is_mid_door = false;
+		ray->is_door = false;
 		return (false);
 	}
 	return (false);

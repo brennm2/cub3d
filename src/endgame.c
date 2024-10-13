@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:08:31 by bsousa-d          #+#    #+#             */
-/*   Updated: 2024/09/27 12:38:27 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:55:51 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_quit_game(t_game *game)
 	}
 	ft_free_textures(game);
 	free_all(game);
+	pthread_mutex_destroy(&game->ray_mutex);
 	exit (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bde-souz <bde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:47:05 by bde-souz          #+#    #+#             */
-/*   Updated: 2024/09/30 12:45:46 by bde-souz         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:57:59 by bde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ void	change_door_in_map(t_game *game)
 	}
 }
 
-int	select_wall_texture(t_game *game, int tex_x, int tex_y)
+int	select_wall_texture(t_game *game, int tex_x, int tex_y, t_ray *ray)
 {
-	if (game->ray->side == true && game->ray->is_door == false)
+	if (ray->side == true && ray->is_door == false)
 	{
-		if (game->ray->raydir_y < 0)
+		if (ray->raydir_y < 0)
 			return (get_pixel_color(game, tex_y, tex_x, west_t));
 		else
 			return (get_pixel_color(game, tex_y, tex_x, east_t));
 	}
 	else
 	{
-		if (game->ray->raydir_x > 0)
+		if (ray->raydir_x > 0)
 			return (get_pixel_color(game, tex_y, tex_x, north_t));
 		else
 			return (get_pixel_color(game, tex_y, tex_x, south_t));
