@@ -16,6 +16,9 @@
 <div align="center">
 <p>I'm glad you asked! The process is very simple.</p>
 </div>
+<div align="center">
+  <img src="https://i.imgur.com/vwyPraS.png">
+</div>
 
 <br>
 <h4>1º Step - Download the files:</h4>
@@ -48,10 +51,8 @@ Now you need to put in the following inputs:<br>
 <h4>4º Step - Playing the game!</h4>
 
 - You can move your character with the <strong>[WASD]</strong> keys
-- You can change the direction with the <strong>[ARROW]</strong> keys
+- You can change the direction with the <strong>[ARROW]</strong> keys or <strong>[MOUSE]</strong>
 - You open the map with <strong>[M]</strong> key
 - You open the doors with <strong>[E]</strong> key
-- An additional objective is to try to finish the map with as little movement as possible.<br>
-This won't influence anything, just another way to improve your performance!
-- If you want to stop playing, just press 'ESC' or close the window with the X button.
+- If you want to stop playing, just press <strong>[ESC]</strong> or close the window with the <strong>X</strong> button.
 <br>
