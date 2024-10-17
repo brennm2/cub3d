@@ -2,9 +2,10 @@
   <h1>What is this all about?</h1>
 </div>
 
-<p>Esse projeto e sobre criar uma replica do famoso wolfenstein 3D (1992)
+<p>This project is about creating a replication of the famous Wolfenstein 3D (1992)
 
-<p>Voce precisa criar um mini-jogo/labirinto em 2D e transforma-lo em "3D" usando o algoritimo de Ray-Casting. Obviamente, tudo precisa ser funcional e sem problemas ou leaks.
+<p>We needed to create a 2D mini-game/labyrinth and transform it into “3D” using the Ray-Casting algorithm. Obviously, everything needs to be functional and without problems or leaks.
+<p>Our game is inspired by, of course, DOOM (1993), and for me, it was a proof of concept and study in optimizing code and graphics to get the best performance and use of available resources, i.e. the highest possible FPS.
 <div align="center">
   <img src="">
 </div>
@@ -56,3 +57,10 @@ Now you need to put in the following inputs:<br>
 - You open the doors with <strong>[E]</strong> key
 - If you want to stop playing, just press <strong>[ESC]</strong> or close the window with the <strong>X</strong> button.
 <br>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3173cdc9-8a4b-48fa-8610-86cd80eca81e">
+</div>
+
+
+
