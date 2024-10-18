@@ -82,7 +82,7 @@ Now you need to put in the following inputs:<br>
 - It has to be enclosed by Walls (1)
 - And it needs to be filled with floors (0)
 - It can be on any shape, but it HAS to be closed by wall
-- The map can only use the following characters: 1, 0, [SPACE], [N,S,W,E] and D -> (D is for Doors in bonus)
+- The map can only use the following characters: 1, 0, [SPACE], [N,S,W,E] and D -> (D is for Doors only in bonus)
 - The map extension must be ".cub"
 ```
 <br>
@@ -90,19 +90,49 @@ Now you need to put in the following inputs:<br>
 <p>Here's a simple example:</p>
 
 ```bash
-11111111111
-1000E0CX001
-1000P00C001
-10011111001
-1X0CX0X0011
-1000C000001
-10011111001
-100C0000001
-1000C000X01
-11111111111
+NO assets/sprites/default/north_wall.xpm
+SO assets/sprites/default/south_wall.xpm
+WE assets/sprites/default/west_wall.xpm
+EA assets/sprites/default/east_wall.xpm
+
+F 18,53,25
+C 153,204,255
+
+111111111
+100000001
+1000W0001
+100000001
+111111111
 ```
 <br>
 <br>
+<div align="center">
+<h3>--------- 42 Rules ---------</h3>
+</div>
+<br>
+<p>In every project we must follow certain rules, here are the rules for this project:</p>
 
+```bash
+- The project must not have memory leaks
+- The project must use the flags -Wall -Wextra -Werror
+- Each function can have a maximum of 25 lines
+- Each file should only have 5 functions
+- We should keep the code as clean as possible, for example, declarations should be on separate lines
+- We cannot use "for", "do...while", "switch", "case", "goto", ternary operators, or variable-length arrays
+```
+
+<br>
+<br>
+<div align="center">
+
+<h3>--------- Credits ---------</h3>
+</div>
+
+* My awesome duo in this project: [Bruno](https://github.com/Bruno0798)
+* [Textures](https://little-martian.itch.io/retro-texture-pack) and little of handwork of me
+* [Ray-Casting]
+*   - [Ahmed Fatir](https://medium.com/@afatir.ahmedfatir/cub3d-tutorial-af5dd31d2fcf) (Cub3d Tutorial)
+    - [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html#The_Basic_Idea_)
+* All my friends who helped me do this project
 
 
