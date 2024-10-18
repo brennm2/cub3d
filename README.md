@@ -4,8 +4,9 @@
 
 <p>This project is about creating a replication of the famous Wolfenstein 3D (1992)
 
-<p>We needed to create a 2D mini-game/labyrinth and transform it into “3D” using the Ray-Casting algorithm. Obviously, everything needs to be functional and without problems or leaks.
-  In addition, as in the [SO_LONG](https://github.com/brennm2/so_long) project, we need to have strong parsing for the map, because in it, the player can create it, modify textures and even change the color of the ceiling and floor
+We needed to create a 2D mini-game/labyrinth and transform it into “3D” using the Ray-Casting algorithm. Obviously, everything needs to be functional and without problems or leaks.
+  In addition, as in the [SO_LONG](https://github.com/brennm2/so_long) project, we need to have strong parsing for the map, because in it, the player can create it, modify textures and even change the color of the ceiling and floor.
+  
 <p>Our game is inspired by, of course, DOOM (1993), and for me, it was a proof of concept and study in optimizing code and graphics to get the best performance and use of available resources, i.e. the highest possible FPS.
 <div align="center">
   <img src="">
@@ -62,6 +63,46 @@ Now you need to put in the following inputs:<br>
 <div align="center">
   <img src="https://github.com/user-attachments/assets/3173cdc9-8a4b-48fa-8610-86cd80eca81e">
 </div>
+
+
+<div align="center">
+  <h1>Considerations and Explanations</h1>
+</div>
+
+<div align="center">
+<h3>--------- The Map ---------</h3>
+</div>
+<br>
+<p>The map can be modified, altered or even created in a simple and functional way, as long as it follows these rules:</p>
+
+```bash
+- Only have ONE Player and depending on the letter, which direction will you look when you start the game ([N][S][W][E])
+- It has to got a valid RGB value for Floor[F] and Ceiling[C] (No duplicated or invalid RGB value)
+- It has to got a valid texture PATH (No duplicated paths or invalid path)
+- It has to be enclosed by Walls (1)
+- And it needs to be filled with floors (0)
+- It can be on any shape, but it HAS to be closed by wall
+- The map can only use the following characters: 1, 0, [SPACE], [N,S,W,E] and D -> (D is for Doors in bonus)
+- The map extension must be ".cub"
+```
+<br>
+<br>
+<p>Here's a simple example:</p>
+
+```bash
+11111111111
+1000E0CX001
+1000P00C001
+10011111001
+1X0CX0X0011
+1000C000001
+10011111001
+100C0000001
+1000C000X01
+11111111111
+```
+<br>
+<br>
 
 
 
