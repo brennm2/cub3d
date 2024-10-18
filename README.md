@@ -8,9 +8,19 @@ We needed to create a 2D mini-game/labyrinth and transform it into “3D” usin
   In addition, as in the [SO_LONG](https://github.com/brennm2/so_long) project, we need to have strong parsing for the map, because in it, the player can create it, modify textures and even change the color of the ceiling and floor.
   
 <p>Our game is inspired by, of course, DOOM (1993), and for me, it was a proof of concept and study in optimizing code and graphics to get the best performance and use of available resources, i.e. the highest possible FPS.
-<div align="center">
-  <img src="">
-</div>
+
+  To put it simply, the aim of the project is: transform map (text / 2D) into “3D” objects and textures. All using rays and perspective.
+  <div align="center">
+  <p><h3>Just like that: </h3> 
+  <div>
+  <img src="https://github.com/user-attachments/assets/f2a0b67c-85a5-4b29-b982-0cfd759a4e25"style="width:60%">
+  </div>
+  </div>
+
+
+  
+  
+
 
 
 <div align="center">
