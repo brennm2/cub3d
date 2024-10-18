@@ -1,4 +1,8 @@
 <div align="center">
+  <img src="https://i.imgur.com/vwyPraS.png">
+</div>
+
+<div align="center">
   <h1>What is this all about?</h1>
 </div>
 
@@ -29,10 +33,6 @@ We needed to create a 2D mini-game/labyrinth and transform it into “3D” usin
 <div align="center">
 <p>I'm glad you asked! The process is very simple.</p>
 </div>
-<div align="center">
-  <img src="https://i.imgur.com/vwyPraS.png">
-</div>
-
 <br>
 <h4>1º Step - Download the files:</h4>
 
