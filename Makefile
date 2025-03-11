@@ -126,7 +126,7 @@ norm:
 	@norminette $(shell find . -type f -name "*.c" -not -path "./libs/minilibx-linux/*" -not -path "./libs/minilibx-mac/*")
 
 update:
-	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
+	@wget https://cdn.intra.42.fr/document/document/31395/minilibx-linux.tgz
 	@tar -xzf minilibx-linux.tgz -C libs
 	@rm minilibx-linux.tgz
 
